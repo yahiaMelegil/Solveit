@@ -90,6 +90,36 @@ class AuthorizationTest extends TestCase
         $this->assertTrue($target->fresh()->hasRole(AdminRole::SupportAdmin->value));
     }
 
+    public function test_non_super_admin_cannot_assign_the_super_admin_role(): void
+    {
+        $role = Role::create(['name' => 'role_manager', 'guard_name' => 'admin']);
+        $role->givePermissionTo(AdminPermission::AdminsAssignRoles->value);
+        $actor = Admin::factory()->create();
+        $actor->assignRole($role);
+        $target = Admin::factory()->create();
+        $superAdminRole = Role::findByName(AdminRole::SuperAdmin->value, 'admin');
+
+        $this->withToken($this->tokenFor($actor))
+            ->postJson("/api/admin/admins/{$target->id}/roles/{$superAdminRole->id}")
+            ->assertForbidden();
+
+        $this->assertFalse($target->fresh()->hasRole(AdminRole::SuperAdmin->value));
+    }
+
+    public function test_non_super_admin_cannot_manage_an_existing_super_admin_roles(): void
+    {
+        $role = Role::create(['name' => 'role_manager', 'guard_name' => 'admin']);
+        $role->givePermissionTo(AdminPermission::AdminsAssignRoles->value);
+        $actor = Admin::factory()->create();
+        $actor->assignRole($role);
+        $target = $this->superAdmin();
+        $supportRole = Role::findByName(AdminRole::SupportAdmin->value, 'admin');
+
+        $this->withToken($this->tokenFor($actor))
+            ->postJson("/api/admin/admins/{$target->id}/roles/{$supportRole->id}")
+            ->assertForbidden();
+    }
+
     public function test_super_admin_can_create_show_update_and_delete_a_role(): void
     {
         $admin = $this->superAdmin();
@@ -183,6 +213,32 @@ class AuthorizationTest extends TestCase
         $this->withToken($this->tokenFor($admin))
             ->deleteJson("/api/admin/roles/{$role->id}")
             ->assertConflict();
+    }
+
+    public function test_custom_permissions_cannot_modify_or_delete_the_super_admin_role(): void
+    {
+        $roleManager = Role::create([
+            'name' => 'system_role_editor',
+            'guard_name' => 'admin',
+        ]);
+        $roleManager->givePermissionTo([
+            AdminPermission::RolesUpdate->value,
+            AdminPermission::RolesDelete->value,
+        ]);
+        $actor = Admin::factory()->create();
+        $actor->assignRole($roleManager);
+        $superAdminRole = Role::findByName(AdminRole::SuperAdmin->value, 'admin');
+
+        $this->withToken($this->tokenFor($actor))
+            ->putJson("/api/admin/roles/{$superAdminRole->id}", [
+                'name' => AdminRole::SuperAdmin->value,
+                'permissions' => [AdminPermission::UsersView->value],
+            ])
+            ->assertForbidden();
+
+        $this->withToken($this->tokenFor($actor))
+            ->deleteJson("/api/admin/roles/{$superAdminRole->id}")
+            ->assertForbidden();
     }
 
     private function superAdmin(): Admin

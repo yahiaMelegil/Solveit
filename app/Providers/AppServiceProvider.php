@@ -40,6 +40,18 @@ class AppServiceProvider extends ServiceProvider
             return Limit::perMinute(5)->by($email.'|'.$request->ip());
         });
 
+        RateLimiter::for('admin-invitation-accept', function (Request $request): array {
+            $key = $this->emailAndIpKey($request);
+
+            return [
+                Limit::perMinute(5)->by($key),
+                Limit::perMinute(20)->by('admin-invitation-accept|'.$request->ip()),
+            ];
+        });
+
+        RateLimiter::for('admin-management-write', fn (Request $request): Limit => Limit::perMinute(20)
+            ->by($this->authenticatedKey($request)));
+
         RateLimiter::for('user-verification', function (Request $request): array {
             $userId = $request->user()?->getAuthIdentifier() ?? 'guest';
 

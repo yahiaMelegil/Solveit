@@ -11,6 +11,7 @@ use App\Http\Resources\Admin\AdminResource;
 use App\Http\Resources\Admin\RoleResource;
 use App\Models\Admin;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Gate;
 use Spatie\Permission\Models\Permission;
@@ -119,20 +120,22 @@ class AuthorizationController extends Controller
         return response()->json(['status' => true, 'data' => ['permissions' => $permissions]]);
     }
 
-    public function assignRole(Admin $admin, Role $role): JsonResponse
+    public function assignRole(Request $request, Admin $admin, Role $role): JsonResponse
     {
         Gate::authorize('assignRoles', $admin);
         $this->ensureAdminRole($role);
+        $this->ensureSuperAdminRoleIsManagedBySuperAdmin($request, $role);
 
         $admin->assignRole($role);
 
         return $this->adminResponse($admin, 'Role assigned successfully.');
     }
 
-    public function revokeRole(Admin $admin, Role $role): JsonResponse
+    public function revokeRole(Request $request, Admin $admin, Role $role): JsonResponse
     {
         Gate::authorize('assignRoles', $admin);
         $this->ensureAdminRole($role);
+        $this->ensureSuperAdminRoleIsManagedBySuperAdmin($request, $role);
 
         if ($role->name === AdminRole::SuperAdmin->value && $admin->hasRole($role)) {
             $otherSuperAdmins = Admin::role(AdminRole::SuperAdmin->value)
@@ -151,6 +154,21 @@ class AuthorizationController extends Controller
     private function ensureAdminRole(Role $role): void
     {
         abort_unless($role->guard_name === 'admin', 404);
+    }
+
+    private function ensureSuperAdminRoleIsManagedBySuperAdmin(
+        Request $request,
+        Role $role,
+    ): void {
+        if ($role->name !== AdminRole::SuperAdmin->value) {
+            return;
+        }
+
+        abort_unless(
+            $request->user()?->hasRole(AdminRole::SuperAdmin->value),
+            403,
+            'Only a super administrator can assign or revoke the super administrator role.',
+        );
     }
 
     private function adminResponse(Admin $admin, string $message): JsonResponse

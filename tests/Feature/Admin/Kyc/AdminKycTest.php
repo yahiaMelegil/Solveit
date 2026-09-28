@@ -42,6 +42,19 @@ class AdminKycTest extends TestCase
         $this->getJson('/api/admin/kyc/applications')->assertForbidden();
     }
 
+    public function test_kyc_reviewer_can_access_admin_kyc_with_a_real_bearer_token(): void
+    {
+        $admin = $this->kycReviewer();
+        $token = $admin
+            ->createToken('Admin Dashboard', [Admin::ACCESS_ABILITY])
+            ->plainTextToken;
+
+        $this->withToken($token)
+            ->getJson('/api/admin/kyc/applications')
+            ->assertOk()
+            ->assertJsonPath('status', true);
+    }
+
     public function test_admin_list_supports_search_status_filter_and_pagination_without_paths(): void
     {
         $first = $this->submittedApplication('Legal Expert', 'legal');

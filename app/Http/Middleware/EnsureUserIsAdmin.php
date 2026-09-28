@@ -16,7 +16,9 @@ class EnsureUserIsAdmin
     {
         $admin = $request->user();
 
-        if (! $admin instanceof Admin || ! $admin->is_active) {
+        if (! $admin instanceof Admin
+            || ! $admin->is_active
+            || $admin->invitation_accepted_at === null) {
             return response()->json([
                 'status' => false,
                 'message' => 'You are not authorized to access the administration area.',

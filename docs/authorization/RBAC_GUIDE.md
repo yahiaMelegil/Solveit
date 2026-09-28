@@ -1,5 +1,10 @@
 # Administrator RBAC authorization
 
+Administrator account creation, invitation acceptance, profile editing, and
+activation/deactivation are documented in
+[`docs/admin-management/README.md`](../admin-management/README.md). Role changes
+continue to use the RBAC endpoints described in this guide.
+
 ## Request flow
 
 Every protected administrator operation passes through these checks:
@@ -41,7 +46,10 @@ they authorize permissions.
 ## KYC protection
 
 Every `/api/admin/kyc/*` route additionally requires
-`experts.reviewKyc` through middleware. Every KYC controller method also calls:
+`experts.reviewKyc` through Laravel's `can` middleware. The route deliberately
+does not force the session-based `admin` guard because the administrator is
+authenticated by Sanctum's Bearer Token guard. Every KYC controller method also
+calls:
 
 ```php
 Gate::authorize(AdminPermission::ExpertsReviewKyc->value);
@@ -81,7 +89,8 @@ Role create/update payload:
 Role names use lower snake case. Permission names must already exist for the
 `admin` guard. The `super_admin` role cannot be renamed or deleted; an assigned
 role cannot be deleted; and the last active super administrator cannot lose the
-role.
+role. Only an existing super administrator can assign or revoke the
+`super_admin` role, and custom permissions cannot bypass that boundary.
 
 ## Installation and deployment
 

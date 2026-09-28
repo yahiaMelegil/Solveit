@@ -19,6 +19,11 @@ class AdminResource extends JsonResource
             'name' => $this->name,
             'email' => $this->email,
             'is_active' => $this->is_active,
+            'status' => $this->invitation_accepted_at === null
+                ? 'pending_invitation'
+                : ($this->is_active ? 'active' : 'inactive'),
+            'invitation_accepted_at' => $this->invitation_accepted_at?->toISOString(),
+            'last_login_at' => $this->last_login_at?->toISOString(),
             'roles' => $this->whenLoaded(
                 'roles',
                 fn () => $this->roles->pluck('name')->values(),

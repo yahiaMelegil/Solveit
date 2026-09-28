@@ -3,6 +3,7 @@
 namespace App\Policies;
 
 use App\Enums\AdminPermission;
+use App\Enums\AdminRole;
 use App\Models\Admin;
 
 class AdminPolicy
@@ -24,11 +25,19 @@ class AdminPolicy
 
     public function update(Admin $actor, Admin $target): bool
     {
+        if ($target->hasRole(AdminRole::SuperAdmin->value)) {
+            return $actor->hasRole(AdminRole::SuperAdmin->value);
+        }
+
         return $actor->can(AdminPermission::AdminsUpdate->value);
     }
 
     public function assignRoles(Admin $actor, Admin $target): bool
     {
+        if ($target->hasRole(AdminRole::SuperAdmin->value)) {
+            return $actor->hasRole(AdminRole::SuperAdmin->value);
+        }
+
         return $actor->can(AdminPermission::AdminsAssignRoles->value);
     }
 }

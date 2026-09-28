@@ -51,6 +51,7 @@ class AuthenticationTest extends TestCase
         $this->assertNotNull($token);
         $this->assertTrue($token->can(Admin::ACCESS_ABILITY));
         $this->assertFalse($token->can('user:access'));
+        $this->assertNotNull($admin->fresh()->last_login_at);
         $this->assertDatabaseHas('personal_access_tokens', [
             'tokenable_id' => $admin->id,
             'tokenable_type' => Admin::class,
@@ -294,6 +295,7 @@ class AuthenticationTest extends TestCase
         $admin = Admin::query()->where('email', mb_strtolower($email))->firstOrFail();
 
         $this->assertTrue($admin->is_active);
+        $this->assertNotNull($admin->invitation_accepted_at);
         $this->assertTrue(Hash::check($password, $admin->password));
         $this->assertTrue($admin->hasRole(AdminRole::SuperAdmin->value));
     }

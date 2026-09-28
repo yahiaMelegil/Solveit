@@ -3,15 +3,35 @@
 namespace App\Http\Controllers\Api\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\Auth\AcceptInvitationRequest;
 use App\Http\Requests\Admin\Auth\LoginRequest;
 use App\Http\Resources\Admin\AdminResource;
 use App\Models\Admin;
+use App\Services\Admin\AdminInvitationManager;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
+    public function acceptInvitation(
+        AcceptInvitationRequest $request,
+        AdminInvitationManager $invitations,
+    ): JsonResponse {
+        $validated = $request->validated();
+        $invitations->accept(
+            $validated['email'],
+            $validated['token'],
+            $validated['password'],
+        );
+
+        return response()->json([
+            'status' => true,
+            'message' => 'Administrator invitation accepted successfully. You can now sign in.',
+            'data' => null,
+        ]);
+    }
+
     /**
      * Authenticate an administrator and issue a restricted access token.
      */
@@ -19,16 +39,31 @@ class AuthController extends Controller
     {
         $validated = $request->validated();
         $admin = Admin::query()
-            ->select(['id', 'name', 'email', 'password', 'is_active', 'created_at', 'updated_at'])
+            ->select([
+                'id',
+                'name',
+                'email',
+                'password',
+                'is_active',
+                'invitation_accepted_at',
+                'last_login_at',
+                'created_at',
+                'updated_at',
+            ])
             ->where('email', $validated['email'])
             ->first();
 
-        if (! $admin || ! Hash::check($validated['password'], $admin->password) || ! $admin->is_active) {
+        if (! $admin
+            || ! Hash::check($validated['password'], $admin->password)
+            || ! $admin->is_active
+            || $admin->invitation_accepted_at === null) {
             return response()->json([
                 'status' => false,
                 'message' => 'The provided credentials are incorrect.',
             ], 401);
         }
+
+        $admin->forceFill(['last_login_at' => now()])->save();
 
         $plainTextToken = $admin
             ->createToken($this->tokenName($validated), [Admin::ACCESS_ABILITY])

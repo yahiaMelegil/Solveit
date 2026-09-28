@@ -24,6 +24,8 @@ class AdminFactory extends Factory
             'email' => fake()->unique()->safeEmail(),
             'password' => Hash::make(Str::password(16)),
             'is_active' => true,
+            'invitation_accepted_at' => now(),
+            'last_login_at' => null,
         ];
     }
 
@@ -34,6 +36,14 @@ class AdminFactory extends Factory
     {
         return $this->state(fn (array $attributes) => [
             'is_active' => false,
+        ]);
+    }
+
+    public function pendingInvitation(): static
+    {
+        return $this->state(fn (array $attributes) => [
+            'is_active' => false,
+            'invitation_accepted_at' => null,
         ]);
     }
 }

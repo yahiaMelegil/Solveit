@@ -42,6 +42,10 @@ class AdminSeeder extends Seeder
             ],
         );
 
+        if ($admin->wasRecentlyCreated) {
+            $admin->forceFill(['invitation_accepted_at' => now()])->save();
+        }
+
         $this->call(AuthorizationSeeder::class);
         $admin->assignRole(AdminRole::SuperAdmin->value);
 

@@ -28,7 +28,7 @@ Route::prefix('admin/kyc')->name('admin.kyc.')
         'auth:sanctum',
         'admin',
         'abilities:admin:access',
-        'permission:experts.reviewKyc,admin',
+        'can:experts.reviewKyc',
     ])
     ->group(function (): void {
         Route::get('/applications', [AdminKycController::class, 'index'])->name('applications.index');
@@ -130,6 +130,9 @@ Route::prefix('admin/auth')->name('admin.auth.')->group(function (): void {
     Route::post('/login', [AdminAuthController::class, 'login'])
         ->middleware('throttle:admin-login')
         ->name('login');
+    Route::post('/invitations/accept', [AdminAuthController::class, 'acceptInvitation'])
+        ->middleware('throttle:admin-invitation-accept')
+        ->name('invitations.accept');
 
     Route::middleware(['auth:sanctum', 'admin', 'abilities:admin:access'])->group(function (): void {
         Route::get('/me', [AdminAuthController::class, 'me'])->name('me');
@@ -143,7 +146,19 @@ Route::prefix('admin')
     ->middleware(['auth:sanctum', 'admin', 'abilities:admin:access'])
     ->group(function (): void {
         Route::get('/admins', [AdminManagementController::class, 'index'])->name('admins.index');
+        Route::post('/admins', [AdminManagementController::class, 'store'])
+            ->middleware('throttle:admin-management-write')
+            ->name('admins.store');
         Route::get('/admins/{admin}', [AdminManagementController::class, 'show'])->name('admins.show');
+        Route::match(['put', 'patch'], '/admins/{admin}', [AdminManagementController::class, 'update'])
+            ->middleware('throttle:admin-management-write')
+            ->name('admins.update');
+        Route::patch('/admins/{admin}/status', [AdminManagementController::class, 'updateStatus'])
+            ->middleware('throttle:admin-management-write')
+            ->name('admins.status.update');
+        Route::post('/admins/{admin}/invitation', [AdminManagementController::class, 'resendInvitation'])
+            ->middleware('throttle:admin-management-write')
+            ->name('admins.invitation.resend');
 
         Route::get('/roles', [AdminAuthorizationController::class, 'roles'])->name('roles.index');
         Route::post('/roles', [AdminAuthorizationController::class, 'storeRole'])->name('roles.store');

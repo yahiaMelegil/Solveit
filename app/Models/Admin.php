@@ -7,7 +7,9 @@ use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Attributes\Hidden;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 
@@ -16,7 +18,7 @@ use Spatie\Permission\Traits\HasRoles;
 class Admin extends Authenticatable
 {
     /** @use HasFactory<AdminFactory> */
-    use HasApiTokens, HasFactory, HasRoles;
+    use HasApiTokens, HasFactory, HasRoles, Notifiable;
 
     protected string $guard_name = 'admin';
 
@@ -32,6 +34,11 @@ class Admin extends Authenticatable
         return $this->hasMany(ExpertVerifiedScope::class, 'verified_by_admin_id');
     }
 
+    public function invitation(): HasOne
+    {
+        return $this->hasOne(AdminInvitation::class);
+    }
+
     /**
      * Get the attributes that should be cast.
      *
@@ -41,6 +48,8 @@ class Admin extends Authenticatable
     {
         return [
             'is_active' => 'boolean',
+            'invitation_accepted_at' => 'datetime',
+            'last_login_at' => 'datetime',
             'password' => 'hashed',
         ];
     }
