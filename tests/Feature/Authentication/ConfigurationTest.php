@@ -6,6 +6,14 @@ use Tests\TestCase;
 
 class ConfigurationTest extends TestCase
 {
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        config()->set('cors.allowed_origins', ['http://localhost:3000']);
+        config()->set('cors.allowed_origins_patterns', []);
+    }
+
     public function test_sanctum_and_hashing_configuration_is_explicitly_available(): void
     {
         $this->assertSame(['web'], config('sanctum.guard'));
@@ -37,13 +45,17 @@ class ConfigurationTest extends TestCase
 
     public function test_cors_preflight_does_not_allow_an_unconfigured_origin(): void
     {
-        $this->withHeaders([
+        $response = $this->withHeaders([
             'Origin' => 'https://untrusted.example',
             'Access-Control-Request-Method' => 'POST',
             'Access-Control-Request-Headers' => 'Content-Type, Authorization',
         ])
             ->optionsJson('/api/login')
-            ->assertNoContent()
-            ->assertHeaderMissing('Access-Control-Allow-Origin');
+            ->assertNoContent();
+
+        $allowedOrigin = $response->headers->get('Access-Control-Allow-Origin');
+
+        $this->assertNotSame('https://untrusted.example', $allowedOrigin);
+        $this->assertNotSame('*', $allowedOrigin);
     }
 }

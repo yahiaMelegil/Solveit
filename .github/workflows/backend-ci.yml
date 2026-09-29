@@ -1,0 +1,28 @@
+name: Backend checks
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  laravel:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          extensions: mbstring, dom, fileinfo, pdo_sqlite, sqlite3
+          coverage: none
+      - name: Validate lockfile
+        run: composer validate --strict
+      - name: Install locked dependencies
+        run: composer install --no-interaction --prefer-dist --no-progress
+      - name: Inspect application and API routes
+        run: |
+          php artisan about
+          php artisan route:list --path=api
+      - name: Run tests on an in-memory SQLite database
+        run: php artisan test
+      - name: Check formatting
+        run: vendor/bin/pint --test

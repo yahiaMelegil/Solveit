@@ -1,9 +1,9 @@
 <?php
 
-use App\Http\Controllers\Api\Admin\AuthController as AdminAuthController;
 use App\Http\Controllers\Api\Admin\AdminExpertController;
 use App\Http\Controllers\Api\Admin\AdminManagementController;
 use App\Http\Controllers\Api\Admin\AdminUserController;
+use App\Http\Controllers\Api\Admin\AuthController as AdminAuthController;
 use App\Http\Controllers\Api\Admin\AuthorizationController as AdminAuthorizationController;
 use App\Http\Controllers\Api\Admin\KycController as AdminKycController;
 use App\Http\Controllers\Api\AuthController;

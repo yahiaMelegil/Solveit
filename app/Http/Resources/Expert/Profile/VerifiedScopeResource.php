@@ -13,6 +13,7 @@ class VerifiedScopeResource extends JsonResource
             'id' => $this->id,
             'domain' => $this->domain,
             'jurisdiction' => $this->jurisdiction,
+            'jurisdictionCountry' => $this->verified_country,
             'role' => $this->role,
             'serviceTypes' => $this->service_types ?? [],
             'languages' => $this->languages ?? [],

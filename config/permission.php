@@ -1,9 +1,12 @@
 <?php
 
+use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
+
 return [
     'models' => [
-        'permission' => Spatie\Permission\Models\Permission::class,
-        'role' => Spatie\Permission\Models\Role::class,
+        'permission' => Permission::class,
+        'role' => Role::class,
     ],
 
     'table_names' => [

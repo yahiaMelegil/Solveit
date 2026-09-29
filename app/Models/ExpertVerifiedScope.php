@@ -18,6 +18,16 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
     'status',
     'valid_from',
     'valid_until',
+    'evidence_type',
+    'evidence_id',
+    'evidence_document_id',
+    'verified_country',
+    'regulator',
+    'registration_number',
+    'verification_source',
+    'status_checked',
+    'checked_at',
+    'next_review_at',
 ])]
 class ExpertVerifiedScope extends Model
 {
@@ -29,6 +39,8 @@ class ExpertVerifiedScope extends Model
             'status' => ExpertScopeStatus::class,
             'valid_from' => 'date',
             'valid_until' => 'date',
+            'checked_at' => 'datetime',
+            'next_review_at' => 'date',
         ];
     }
 

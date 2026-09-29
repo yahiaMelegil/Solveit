@@ -154,15 +154,14 @@ class KycController extends Controller
     public function approve(
         ApproveKycApplicationRequest $request,
         ExpertKycApplication $application,
-    ): JsonResponse
-    {
+    ): JsonResponse {
         Gate::authorize(AdminPermission::ExpertsReviewKyc->value);
 
         /** @var Admin $admin */
         $admin = $request->user();
 
         return $this->applicationResponse(
-            $this->workflow->approve($application, $admin, $request->validated('scopes', [])),
+            $this->workflow->approve($application, $admin, $request->validated('scopes')),
             'KYC application approved successfully.',
         );
     }
@@ -183,8 +182,7 @@ class KycController extends Controller
     public function requestInformation(
         RequestKycInformationRequest $request,
         ExpertKycApplication $application,
-    ): JsonResponse
-    {
+    ): JsonResponse {
         Gate::authorize(AdminPermission::ExpertsReviewKyc->value);
 
         /** @var Admin $admin */

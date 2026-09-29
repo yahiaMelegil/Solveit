@@ -87,20 +87,13 @@ class AdminKycTest extends TestCase
             ])->assertOk();
         }
 
-        $this->postJson("/api/admin/kyc/applications/{$application->id}/approve", [
-            'scopes' => [[
-                'domain' => 'legal',
-                'jurisdiction' => 'Jordan',
-                'role' => 'Legal consultant',
-                'serviceTypes' => ['written_consultation', 'document_review'],
-                'languages' => ['ar', 'en'],
-                'validUntil' => now()->addYear()->toDateString(),
-            ]],
-        ])
+        $this->postJson("/api/admin/kyc/applications/{$application->id}/approve", $this->legalApproval($application))
             ->assertOk()
             ->assertJsonPath('data.application.status', 'verified')
             ->assertJsonPath('data.application.verifiedScopes.0.role', 'Legal consultant')
-            ->assertJsonPath('data.application.verifiedScopes.0.isEffective', true);
+            ->assertJsonPath('data.application.verifiedScopes.0.isEffective', true)
+            ->assertJsonPath('data.application.professionalReviews.0.verifiedCountry', 'JO')
+            ->assertJsonMissingPath('data.application.verifiedScopes.0.registrationNumber');
 
         $this->assertSame(ExpertKycStatus::Approved, $application->expert->refresh()->kyc_status);
         $this->assertDatabaseHas('expert_kyc_applications', [
@@ -116,6 +109,9 @@ class AdminKycTest extends TestCase
             'jurisdiction' => 'Jordan',
             'role' => 'Legal consultant',
             'status' => 'active',
+            'evidence_type' => 'credential',
+            'verified_country' => 'JO',
+            'registration_number' => 'EXAMPLE-123',
         ]);
         $this->assertDatabaseCount('expert_kyc_status_histories', 4);
         Notification::assertSentTo(
@@ -131,9 +127,197 @@ class AdminKycTest extends TestCase
         Sanctum::actingAs($this->kycReviewer(), [Admin::ACCESS_ABILITY]);
         $this->postJson("/api/admin/kyc/applications/{$application->id}/start-review")->assertOk();
 
-        $this->postJson("/api/admin/kyc/applications/{$application->id}/approve")
+        $this->postJson("/api/admin/kyc/applications/{$application->id}/approve", $this->legalApproval($application))
             ->assertUnprocessable()
             ->assertJsonValidationErrors('documents');
+    }
+
+    public function test_approval_requires_explicit_scopes_and_never_creates_a_default(): void
+    {
+        $application = $this->submittedApplication();
+        Sanctum::actingAs($this->kycReviewer(), [Admin::ACCESS_ABILITY]);
+        $this->reviewAll($application);
+
+        $this->postJson("/api/admin/kyc/applications/{$application->id}/approve", [])
+            ->assertUnprocessable()
+            ->assertJsonValidationErrors('scopes');
+
+        $this->assertDatabaseHas('expert_kyc_applications', ['id' => $application->id, 'status' => 'under_review']);
+        $this->assertDatabaseCount('expert_verified_scopes', 0);
+    }
+
+    public function test_admin_without_kyc_permission_gets_forbidden_even_for_an_invalid_approval_body(): void
+    {
+        $application = $this->submittedApplication();
+        Sanctum::actingAs(Admin::factory()->create(), [Admin::ACCESS_ABILITY]);
+
+        $this->postJson("/api/admin/kyc/applications/{$application->id}/approve", [])
+            ->assertForbidden();
+
+        $this->assertDatabaseCount('expert_verified_scopes', 0);
+    }
+
+    public function test_regulated_scope_rejects_experience_without_a_verified_licence(): void
+    {
+        $application = $this->submittedApplication('Unlicensed Legal Expert', 'legal', false);
+        Sanctum::actingAs($this->kycReviewer(), [Admin::ACCESS_ABILITY]);
+        $this->reviewAll($application);
+
+        $payload = $this->legalApproval($application);
+        $payload['scopes'][0]['evidence'] = [
+            'type' => 'experience',
+            'id' => $application->experiences()->firstOrFail()->id,
+        ];
+
+        $this->postJson("/api/admin/kyc/applications/{$application->id}/approve", $payload)
+            ->assertUnprocessable()
+            ->assertJsonValidationErrors('scopes.0.evidence');
+
+        $this->assertDatabaseHas('expert_kyc_applications', ['id' => $application->id, 'status' => 'under_review']);
+        $this->assertDatabaseCount('expert_verified_scopes', 0);
+    }
+
+    public function test_approval_rejects_licence_evidence_from_another_expert(): void
+    {
+        $first = $this->submittedApplication('First Lawyer');
+        $other = $this->submittedApplication('Second Lawyer');
+        Sanctum::actingAs($this->kycReviewer(), [Admin::ACCESS_ABILITY]);
+        $this->reviewAll($first);
+
+        $payload = $this->legalApproval($first);
+        $payload['scopes'][0]['evidence']['id'] = $other->credentials()->firstOrFail()->id;
+
+        $this->postJson("/api/admin/kyc/applications/{$first->id}/approve", $payload)
+            ->assertUnprocessable()
+            ->assertJsonValidationErrors('scopes.0.evidence.id');
+
+        $this->assertDatabaseCount('expert_verified_scopes', 0);
+    }
+
+    public function test_approval_rejects_unverified_country_and_an_expired_licence(): void
+    {
+        $application = $this->submittedApplication();
+        Sanctum::actingAs($this->kycReviewer(), [Admin::ACCESS_ABILITY]);
+        $this->reviewAll($application);
+
+        $payload = $this->legalApproval($application);
+        $payload['scopes'][0]['professionalReview']['verifiedCountry'] = 'GB';
+        $this->postJson("/api/admin/kyc/applications/{$application->id}/approve", $payload)
+            ->assertUnprocessable()
+            ->assertJsonValidationErrors('scopes.0.professionalReview.verifiedCountry');
+
+        $application->credentials()->firstOrFail()->update(['expiry_date' => now()->subDay()->toDateString()]);
+        $this->postJson("/api/admin/kyc/applications/{$application->id}/approve", $this->legalApproval($application))
+            ->assertUnprocessable()
+            ->assertJsonValidationErrors('scopes.0.evidence.id');
+
+        $this->assertDatabaseCount('expert_verified_scopes', 0);
+    }
+
+    public function test_a_licence_in_one_reviewed_country_can_approve_an_expert_residing_elsewhere(): void
+    {
+        $application = $this->submittedApplication();
+        $application->update(['jurisdiction' => 'England and Wales']);
+        Sanctum::actingAs($this->kycReviewer(), [Admin::ACCESS_ABILITY]);
+        $this->reviewAll($application);
+
+        $payload = $this->legalApproval($application);
+        $payload['scopes'][0]['jurisdiction'] = 'England and Wales';
+        $payload['scopes'][0]['jurisdictionCountry'] = 'GB';
+        $payload['scopes'][0]['professionalReview']['verifiedCountry'] = 'GB';
+
+        $this->postJson("/api/admin/kyc/applications/{$application->id}/approve", $payload)
+            ->assertOk()
+            ->assertJsonPath('data.application.verifiedScopes.0.jurisdictionCountry', 'GB');
+
+        $this->assertDatabaseHas('expert_verified_scopes', [
+            'expert_id' => $application->expert_id,
+            'verified_country' => 'GB',
+            'jurisdiction' => 'England and Wales',
+        ]);
+        $this->assertSame('JO', $application->expert->refresh()->country);
+    }
+
+    public function test_regulated_scope_requires_an_authoritative_review_and_bounds_validity(): void
+    {
+        $application = $this->submittedApplication();
+        Sanctum::actingAs($this->kycReviewer(), [Admin::ACCESS_ABILITY]);
+        $this->reviewAll($application);
+
+        $payload = $this->legalApproval($application);
+        unset($payload['scopes'][0]['professionalReview']);
+        $this->postJson("/api/admin/kyc/applications/{$application->id}/approve", $payload)
+            ->assertUnprocessable()
+            ->assertJsonValidationErrors('scopes.0.professionalReview.verifiedCountry');
+
+        $payload = $this->legalApproval($application);
+        $payload['scopes'][0]['professionalReview']['verificationSource'] = 'http://example.invalid/register';
+        $this->postJson("/api/admin/kyc/applications/{$application->id}/approve", $payload)
+            ->assertUnprocessable()
+            ->assertJsonValidationErrors('scopes.0.professionalReview');
+
+        $payload = $this->legalApproval($application);
+        $payload['scopes'][0]['validUntil'] = now()->addMonths(9)->toDateString();
+        $this->postJson("/api/admin/kyc/applications/{$application->id}/approve", $payload)
+            ->assertUnprocessable()
+            ->assertJsonValidationErrors('scopes.0.validUntil');
+
+        $this->assertDatabaseHas('expert_kyc_applications', ['id' => $application->id, 'status' => 'under_review']);
+        $this->assertDatabaseCount('expert_verified_scopes', 0);
+    }
+
+    public function test_unclassified_domain_is_not_silently_treated_as_unregulated(): void
+    {
+        $application = $this->submittedApplication('Other Expert', 'unclassified', false);
+        Sanctum::actingAs($this->kycReviewer(), [Admin::ACCESS_ABILITY]);
+        $this->reviewAll($application);
+
+        $this->postJson("/api/admin/kyc/applications/{$application->id}/approve", [
+            'scopes' => [[
+                'domain' => 'unclassified',
+                'jurisdiction' => 'Jordan',
+                'jurisdictionCountry' => 'JO',
+                'role' => 'Consultant',
+                'serviceTypes' => ['written_consultation'],
+                'languages' => ['ar'],
+                'evidence' => [
+                    'type' => 'experience',
+                    'id' => $application->experiences()->firstOrFail()->id,
+                ],
+            ]],
+        ])->assertUnprocessable()->assertJsonValidationErrors('scopes.0.domain');
+
+        $this->assertDatabaseCount('expert_verified_scopes', 0);
+    }
+
+    public function test_non_regulated_scope_accepts_reviewed_experience_without_a_licence(): void
+    {
+        $application = $this->submittedApplication('Technology Expert', 'technology', false);
+        Sanctum::actingAs($this->kycReviewer(), [Admin::ACCESS_ABILITY]);
+        $this->reviewAll($application);
+
+        $this->postJson("/api/admin/kyc/applications/{$application->id}/approve", [
+            'scopes' => [[
+                'domain' => 'technology',
+                'jurisdiction' => 'Jordan',
+                'jurisdictionCountry' => 'JO',
+                'role' => 'Software consultant',
+                'serviceTypes' => ['written_consultation'],
+                'languages' => ['ar'],
+                'evidence' => [
+                    'type' => 'experience',
+                    'id' => $application->experiences()->firstOrFail()->id,
+                ],
+            ]],
+        ])->assertOk()
+            ->assertJsonPath('data.application.status', 'verified');
+
+        $this->assertDatabaseHas('expert_verified_scopes', [
+            'expert_id' => $application->expert_id,
+            'domain' => 'technology',
+            'evidence_type' => 'experience',
+            'status' => 'active',
+        ]);
     }
 
     public function test_reject_and_request_information_require_a_reason(): void
@@ -212,7 +396,7 @@ class AdminKycTest extends TestCase
             'reason' => 'The submitted identity evidence is invalid.',
         ])->assertOk();
 
-        $this->postJson("/api/admin/kyc/applications/{$application->id}/approve")
+        $this->postJson("/api/admin/kyc/applications/{$application->id}/approve", $this->legalApproval($application))
             ->assertStatus(409);
     }
 
@@ -236,12 +420,16 @@ class AdminKycTest extends TestCase
         $this->getJson("/api/admin/kyc/applications/{$application->id}")->assertNotFound();
     }
 
-    private function submittedApplication(string $name = 'Ahmad Ali', string $domain = 'legal'): ExpertKycApplication
+    private function submittedApplication(string $name = 'Ahmad Ali', string $domain = 'legal', bool $withLicense = true): ExpertKycApplication
     {
-        $expert = Expert::factory()->verified()->create(['name' => $name, 'domain' => $domain]);
+        $expert = Expert::factory()->verified()->create([
+            'name' => $name,
+            'country' => 'JO',
+            'domain' => $domain,
+        ]);
         Sanctum::actingAs($expert, [Expert::ACCESS_ABILITY]);
 
-        $this->putJson('/api/expert/kyc', [
+        $response = $this->putJson('/api/expert/kyc', [
             'fullName' => $name,
             'country' => 'JO',
             'language' => 'ar',
@@ -253,13 +441,29 @@ class AdminKycTest extends TestCase
                 'current' => true,
             ]],
             'qualifications' => [],
-            'credentials' => [],
+            'credentials' => $withLicense && $domain === 'legal' ? [[
+                'type' => 'license',
+                'name' => 'Professional practice licence',
+                'issuer' => 'Example regulator',
+                'issueDate' => now()->subYear()->toDateString(),
+                'expiryDate' => now()->addYear()->toDateString(),
+            ]] : [],
         ])->assertOk();
+
+        $credentialId = $response->json('data.application.credentials.0.id');
 
         foreach (['identity', 'cv'] as $type) {
             $this->post('/api/expert/kyc/documents', [
                 'documentType' => $type,
                 'file' => UploadedFile::fake()->create($type.'.pdf', 100, 'application/pdf'),
+            ], ['Accept' => 'application/json'])->assertCreated();
+        }
+
+        if ($credentialId !== null) {
+            $this->post('/api/expert/kyc/documents', [
+                'documentType' => 'credential',
+                'credentialId' => $credentialId,
+                'file' => UploadedFile::fake()->create('licence.pdf', 100, 'application/pdf'),
             ], ['Accept' => 'application/json'])->assertCreated();
         }
 
@@ -269,6 +473,45 @@ class AdminKycTest extends TestCase
             ->where('expert_id', $expert->id)
             ->with(['expert', 'documents'])
             ->firstOrFail();
+    }
+
+    private function reviewAll(ExpertKycApplication $application): void
+    {
+        $this->postJson("/api/admin/kyc/applications/{$application->id}/start-review")->assertOk();
+
+        foreach ($application->documents as $document) {
+            $this->putJson("/api/admin/kyc/applications/{$application->id}/documents/{$document->id}/review", [
+                'reviewed' => true,
+            ])->assertOk();
+        }
+    }
+
+    private function legalApproval(ExpertKycApplication $application): array
+    {
+        return [
+            'scopes' => [
+                [
+                    'domain' => 'legal',
+                    'jurisdiction' => 'Jordan',
+                    'jurisdictionCountry' => 'JO',
+                    'role' => 'Legal consultant',
+                    'serviceTypes' => ['written_consultation', 'document_review'],
+                    'languages' => ['ar', 'en'],
+                    'evidence' => [
+                        'type' => 'credential',
+                        'id' => $application->credentials()->first()?->id ?? 0,
+                    ],
+                    'professionalReview' => [
+                        'verifiedCountry' => 'JO',
+                        'regulator' => 'Example regulator',
+                        'registrationNumber' => 'EXAMPLE-123',
+                        'verificationSource' => 'https://example.invalid/register',
+                        'statusChecked' => 'active',
+                        'nextReviewAt' => now()->addMonths(6)->toDateString(),
+                    ],
+                ],
+            ],
+        ];
     }
 
     private function kycReviewer(): Admin

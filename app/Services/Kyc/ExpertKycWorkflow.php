@@ -7,7 +7,6 @@ use App\Enums\ExpertKycApplicationStatus;
 use App\Enums\ExpertKycDocumentType;
 use App\Enums\ExpertKycStatus;
 use App\Enums\ExpertScopeStatus;
-use App\Enums\ExpertServiceType;
 use App\Exceptions\InvalidKycTransitionException;
 use App\Models\Admin;
 use App\Models\Expert;
@@ -17,6 +16,7 @@ use App\Models\ExpertKycQualification;
 use App\Notifications\Expert\KycReviewStatusNotification;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
@@ -118,12 +118,11 @@ class ExpertKycWorkflow
         ExpertKycApplication $application,
         Admin $admin,
         array $scopes = [],
-    ): ExpertKycApplication
-    {
+    ): ExpertKycApplication {
         $result = DB::transaction(function () use ($application, $admin, $scopes): ExpertKycApplication {
             $locked = ExpertKycApplication::query()->lockForUpdate()->findOrFail($application->getKey());
             $this->assertStatus($locked, ExpertKycApplicationStatus::UnderReview);
-            $locked->load(['experiences', 'documents']);
+            $locked->load(['experiences', 'qualifications.document', 'credentials.document', 'documents']);
             $this->ensureComplete($locked);
 
             if ($locked->documents->contains(fn ($document): bool => $document->reviewed_at === null)) {
@@ -132,6 +131,8 @@ class ExpertKycWorkflow
                 ]);
             }
 
+            $verifiedScopes = $this->verifiedScopeEvidence($locked, $scopes);
+
             $this->transition($locked, ExpertKycApplicationStatus::Verified, ExpertKycActorType::Admin, $admin->getKey());
             $locked->forceFill([
                 'reviewed_by_admin_id' => $admin->getKey(),
@@ -139,7 +140,7 @@ class ExpertKycWorkflow
                 'decision_reason' => null,
             ])->save();
             $locked->expert()->update(['kyc_status' => ExpertKycStatus::Approved]);
-            $this->replaceVerifiedScopes($locked, $admin, $scopes);
+            $this->replaceVerifiedScopes($locked, $admin, $verifiedScopes);
 
             return $this->loadApplication($locked->refresh());
         });
@@ -557,24 +558,12 @@ class ExpertKycWorkflow
         Admin $admin,
         array $scopes,
     ): void {
-        $normalized = $scopes !== [] ? $scopes : [[
-            'domain' => $application->domain,
-            'jurisdiction' => $application->jurisdiction,
-            'role' => 'consultant',
-            'serviceTypes' => [
-                ExpertServiceType::WrittenConsultation->value,
-                ExpertServiceType::DocumentReview->value,
-            ],
-            'languages' => $this->scopeLanguages($application->language),
-            'validUntil' => null,
-        ]];
-
         $application->expert->verifiedScopes()
             ->where('status', ExpertScopeStatus::Active->value)
             ->where('domain', $application->domain)
             ->update(['status' => ExpertScopeStatus::Revoked->value]);
 
-        foreach ($normalized as $scope) {
+        foreach ($scopes as $scope) {
             $application->expert->verifiedScopes()->create([
                 'kyc_application_id' => $application->getKey(),
                 'verified_by_admin_id' => $admin->getKey(),
@@ -586,21 +575,168 @@ class ExpertKycWorkflow
                 'status' => ExpertScopeStatus::Active,
                 'valid_from' => today(),
                 'valid_until' => $scope['validUntil'] ?? null,
+                'evidence_type' => $scope['evidence']['type'],
+                'evidence_id' => $scope['evidence']['id'],
+                'evidence_document_id' => $scope['evidenceDocumentId'],
+                'verified_country' => $scope['jurisdictionCountry'] ?? $application->country,
+                'regulator' => $scope['professionalReview']['regulator'] ?? null,
+                'registration_number' => $scope['professionalReview']['registrationNumber'] ?? null,
+                'verification_source' => $scope['professionalReview']['verificationSource'] ?? null,
+                'status_checked' => $scope['professionalReview']['statusChecked'] ?? null,
+                'checked_at' => now(),
+                'next_review_at' => $scope['professionalReview']['nextReviewAt'] ?? null,
             ]);
         }
     }
 
     /**
-     * @return list<string>
+     * Validate the reviewer-selected evidence again inside the locked approval
+     * transaction. FormRequest validation alone cannot protect direct callers.
+     *
+     * @param  array<int, array<string, mixed>>  $scopes
+     * @return array<int, array<string, mixed>>
      */
-    private function scopeLanguages(?string $language): array
+    private function verifiedScopeEvidence(ExpertKycApplication $application, array $scopes): array
     {
-        $languages = array_values(array_filter(
-            preg_split('/[-,]/', (string) $language) ?: [],
-            static fn (string $value): bool => in_array($value, ['ar', 'en'], true),
-        ));
+        if ($scopes === []) {
+            throw ValidationException::withMessages([
+                'scopes' => ['At least one evidence-backed scope is required for approval.'],
+            ]);
+        }
 
-        return $languages !== [] ? array_values(array_unique($languages)) : ['en'];
+        $validated = [];
+
+        foreach ($scopes as $index => $scope) {
+            $prefix = "scopes.{$index}";
+            $domain = mb_strtolower((string) ($scope['domain'] ?? ''));
+
+            if ($domain !== mb_strtolower((string) $application->domain)
+                || ($scope['jurisdiction'] ?? null) !== $application->jurisdiction) {
+                throw ValidationException::withMessages([
+                    $prefix => ['A verified scope must match the reviewed domain and jurisdiction.'],
+                ]);
+            }
+
+            $regulated = in_array($domain, config('expert_verification.regulated_domains', []), true);
+            $unregulated = in_array($domain, config('expert_verification.non_regulated_domains', []), true);
+
+            if (! $regulated && ! $unregulated) {
+                throw ValidationException::withMessages([
+                    "$prefix.domain" => ['This professional domain has no approved verification policy.'],
+                ]);
+            }
+
+            $type = $scope['evidence']['type'] ?? null;
+            $id = (int) ($scope['evidence']['id'] ?? 0);
+            $record = match ($type) {
+                'credential' => $application->credentials->firstWhere('id', $id),
+                'qualification' => $application->qualifications->firstWhere('id', $id),
+                'experience' => $application->experiences->firstWhere('id', $id),
+                default => null,
+            };
+
+            if (! $record) {
+                throw ValidationException::withMessages([
+                    "$prefix.evidence.id" => ['Evidence must belong to this KYC application.'],
+                ]);
+            }
+
+            $document = $type === 'experience'
+                ? $application->documents->first(fn ($item): bool => in_array($item->document_type, [
+                    ExpertKycDocumentType::Cv, ExpertKycDocumentType::WorkSample,
+                ], true) && $item->reviewed_at !== null)
+                : $record->document;
+
+            if (! $document || (int) $document->application_id !== (int) $application->getKey()
+                || $document->reviewed_at === null) {
+                throw ValidationException::withMessages([
+                    "$prefix.evidence" => ['Selected evidence needs a reviewed document from this application.'],
+                ]);
+            }
+
+            $scope['evidenceDocumentId'] = $document->getKey();
+
+            if ($type === 'credential' && $record->expiry_date?->isPast()) {
+                throw ValidationException::withMessages([
+                    "$prefix.evidence.id" => ['An expired credential cannot support an active scope.'],
+                ]);
+            }
+
+            if ($regulated) {
+                $review = $scope['professionalReview'] ?? [];
+
+                if ($type !== 'credential' || $record->type !== 'license') {
+                    throw ValidationException::withMessages([
+                        "$prefix.evidence" => ['A regulated scope requires a reviewed professional licence.'],
+                    ]);
+                }
+
+                if (blank($scope['jurisdictionCountry'] ?? null)) {
+                    throw ValidationException::withMessages([
+                        "$prefix.jurisdictionCountry" => ['A regulated scope must name its licensed country.'],
+                    ]);
+                }
+
+                foreach (['verifiedCountry', 'regulator', 'registrationNumber', 'verificationSource', 'statusChecked', 'nextReviewAt'] as $field) {
+                    if (blank($review[$field] ?? null)) {
+                        throw ValidationException::withMessages([
+                            "$prefix.professionalReview.$field" => ['An authoritative licence review is required.'],
+                        ]);
+                    }
+                }
+
+                if (mb_strtoupper((string) $review['verifiedCountry']) !== mb_strtoupper((string) $scope['jurisdictionCountry'])) {
+                    throw ValidationException::withMessages([
+                        "$prefix.professionalReview.verifiedCountry" => ['The verified country must match the scope jurisdiction country.'],
+                    ]);
+                }
+
+                $scope['jurisdictionCountry'] = mb_strtoupper((string) $scope['jurisdictionCountry']);
+
+                if ($review['statusChecked'] !== 'active'
+                    || ! str_starts_with((string) $review['verificationSource'], 'https://')) {
+                    throw ValidationException::withMessages([
+                        "$prefix.professionalReview" => ['An active licence and an HTTPS authoritative source are required.'],
+                    ]);
+                }
+
+                $recheck = Carbon::parse($review['nextReviewAt']);
+
+                if ($recheck->isToday() || $recheck->isPast() || $recheck->gt(today()->addYear())) {
+                    throw ValidationException::withMessages([
+                        "$prefix.professionalReview.nextReviewAt" => ['The next review must be within one year.'],
+                    ]);
+                }
+
+                $latestValidity = $record->expiry_date && $record->expiry_date->lt($recheck)
+                    ? $record->expiry_date
+                    : $recheck;
+
+                if (isset($scope['validUntil']) && Carbon::parse($scope['validUntil'])->gt($latestValidity)) {
+                    throw ValidationException::withMessages([
+                        "$prefix.validUntil" => ['Scope validity cannot outlast licence expiry or the next review.'],
+                    ]);
+                }
+
+                $scope['validUntil'] ??= $latestValidity->toDateString();
+            } elseif ($type === 'credential' && $record->expiry_date) {
+                if (isset($scope['validUntil']) && Carbon::parse($scope['validUntil'])->gt($record->expiry_date)) {
+                    throw ValidationException::withMessages([
+                        "$prefix.validUntil" => ['Scope validity cannot outlast the selected credential.'],
+                    ]);
+                }
+
+                $scope['validUntil'] ??= $record->expiry_date->toDateString();
+            }
+
+            if (! $regulated) {
+                $scope['professionalReview'] = [];
+            }
+
+            $validated[] = $scope;
+        }
+
+        return $validated;
     }
 
     private function transition(

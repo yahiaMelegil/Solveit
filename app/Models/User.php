@@ -4,8 +4,8 @@ namespace App\Models;
 
 use App\Notifications\User\ResetPasswordNotification;
 use App\Notifications\User\VerifyEmailNotification;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Database\Factories\UserFactory;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Attributes\Hidden;
 use Illuminate\Database\Eloquent\Casts\Attribute;

@@ -2,9 +2,11 @@
 
 namespace App\Http\Requests\Admin\Kyc;
 
+use App\Enums\AdminPermission;
 use App\Enums\ExpertServiceType;
 use App\Models\ExpertKycApplication;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\Validator;
 
@@ -12,21 +14,34 @@ class ApproveKycApplicationRequest extends FormRequest
 {
     public function authorize(): bool
     {
+        Gate::authorize(AdminPermission::ExpertsReviewKyc->value);
+
         return true;
     }
 
     public function rules(): array
     {
         return [
-            'scopes' => ['sometimes', 'array', 'min:1', 'max:5'],
+            'scopes' => ['required', 'array', 'min:1', 'max:5'],
             'scopes.*.domain' => ['required', 'string', 'max:50'],
             'scopes.*.jurisdiction' => ['required', 'string', 'max:255'],
+            'scopes.*.jurisdictionCountry' => ['sometimes', 'string', 'size:2', 'alpha'],
             'scopes.*.role' => ['required', 'string', 'min:2', 'max:100'],
             'scopes.*.serviceTypes' => ['required', 'array', 'min:1', 'max:5'],
             'scopes.*.serviceTypes.*' => ['required', Rule::enum(ExpertServiceType::class), 'distinct:strict'],
             'scopes.*.languages' => ['required', 'array', 'min:1', 'max:5'],
             'scopes.*.languages.*' => ['required', Rule::in(['ar', 'en']), 'distinct:strict'],
             'scopes.*.validUntil' => ['nullable', 'date_format:Y-m-d', 'after:today'],
+            'scopes.*.evidence' => ['required', 'array'],
+            'scopes.*.evidence.type' => ['required', Rule::in(['credential', 'qualification', 'experience'])],
+            'scopes.*.evidence.id' => ['required', 'integer', 'min:1'],
+            'scopes.*.professionalReview' => ['sometimes', 'array'],
+            'scopes.*.professionalReview.verifiedCountry' => ['sometimes', 'string', 'max:16'],
+            'scopes.*.professionalReview.regulator' => ['sometimes', 'string', 'max:255'],
+            'scopes.*.professionalReview.registrationNumber' => ['sometimes', 'string', 'max:100'],
+            'scopes.*.professionalReview.verificationSource' => ['sometimes', 'url:http,https', 'max:2048'],
+            'scopes.*.professionalReview.statusChecked' => ['sometimes', Rule::in(['active'])],
+            'scopes.*.professionalReview.nextReviewAt' => ['sometimes', 'date_format:Y-m-d', 'after:today'],
         ];
     }
 
