@@ -207,3 +207,7 @@ Route::prefix('expert/auth')->name('expert.auth.')->group(function (): void {
         Route::post('/logout-all', [ExpertAuthController::class, 'logoutAll'])->name('logout-all');
     });
 });
+
+require __DIR__.'/privacy.php';
+
+require __DIR__.'/expert_renewals.php';

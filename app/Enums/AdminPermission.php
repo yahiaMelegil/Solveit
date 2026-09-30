@@ -20,11 +20,18 @@ enum AdminPermission: string
     case UsersViewAny = 'users.viewAny';
     case UsersView = 'users.view';
     case UsersUpdate = 'users.update';
+    case UsersConsentMetadataView = 'users.consentMetadata.view';
+    case DataRequestsViewAny = 'dataRequests.viewAny';
+    case DataRequestsView = 'dataRequests.view';
 
     case ExpertsViewAny = 'experts.viewAny';
     case ExpertsView = 'experts.view';
     case ExpertsUpdate = 'experts.update';
     case ExpertsReviewKyc = 'experts.reviewKyc';
+    case ExpertRenewalsViewAny = 'expertRenewals.viewAny';
+    case ExpertRenewalsView = 'expertRenewals.view';
+    case ExpertRenewalsViewEvidence = 'expertRenewals.viewEvidence';
+    case ExpertRenewalsReview = 'expertRenewals.review';
 
     case SupportViewAny = 'support.viewAny';
     case SupportView = 'support.view';

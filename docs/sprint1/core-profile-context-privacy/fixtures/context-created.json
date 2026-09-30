@@ -1,0 +1,66 @@
+{
+    "contractVersion": "1.0.0",
+    "synthetic": true,
+    "note": "",
+    "request": {
+        "method": "POST",
+        "url": "\/api\/user\/contexts",
+        "headers": {
+            "Accept": "application\/json",
+            "Authorization": "Bearer <ACCOUNT_TOKEN>",
+            "Idempotency-Key": "1d539768-dd84-4f64-b6a7-beb2c1c27883"
+        },
+        "body": {
+            "domain": "technology",
+            "country": "PS",
+            "schemaVersion": 1,
+            "title": "Store platform review",
+            "facts": [
+                {
+                    "key": "goal",
+                    "value": "Review my store API",
+                    "source": "user_reported",
+                    "effectiveDate": "2026-01-01"
+                }
+            ],
+            "allowCaseReuse": true
+        }
+    },
+    "response": {
+        "status": 201,
+        "headers": {
+            "Content-Type": "application\/json",
+            "Cache-Control": "no-store, private"
+        },
+        "body": {
+            "status": true,
+            "message": "Context created.",
+            "data": {
+                "item": {
+                    "id": 1,
+                    "domain": "technology",
+                    "country": "PS",
+                    "status": "active",
+                    "version": 1,
+                    "schemaVersion": 1,
+                    "title": "Store platform review",
+                    "facts": [
+                        {
+                            "key": "goal",
+                            "value": "Review my store API",
+                            "source": "user_reported",
+                            "effectiveDate": "2026-01-01"
+                        }
+                    ],
+                    "conflictStatus": "none",
+                    "clarification": null,
+                    "allowCaseReuse": true,
+                    "canUseInFutureCase": true,
+                    "visibility": "private",
+                    "createdAt": "2026-09-29T12:00:00.000000Z",
+                    "updatedAt": "2026-09-29T12:00:00.000000Z"
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,29 @@
+{
+    "contractVersion": "1.0.0",
+    "synthetic": true,
+    "note": "",
+    "request": {
+        "method": "PATCH",
+        "url": "\/api\/user\/profile",
+        "headers": {
+            "Accept": "application\/json",
+            "Authorization": "Bearer <ACCOUNT_TOKEN>"
+        },
+        "body": {
+            "expectedVersion": 0,
+            "name": "A stale edit"
+        }
+    },
+    "response": {
+        "status": 409,
+        "headers": {
+            "Content-Type": "application\/json",
+            "Cache-Control": "no-store, private"
+        },
+        "body": {
+            "status": false,
+            "code": "VERSION_CONFLICT",
+            "message": "The record changed. Reload it before saving."
+        }
+    }
+}

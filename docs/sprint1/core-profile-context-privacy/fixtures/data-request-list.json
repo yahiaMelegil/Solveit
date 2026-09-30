@@ -1,0 +1,97 @@
+{
+    "contractVersion": "1.0.0",
+    "synthetic": true,
+    "note": "",
+    "request": {
+        "method": "GET",
+        "url": "\/api\/user\/data-requests?perPage=10&sortBy=dueAt",
+        "headers": {
+            "Accept": "application\/json",
+            "Authorization": "Bearer <ACCOUNT_TOKEN>"
+        },
+        "body": {}
+    },
+    "response": {
+        "status": 200,
+        "headers": {
+            "Content-Type": "application\/json",
+            "Cache-Control": "no-store, private"
+        },
+        "body": {
+            "status": true,
+            "message": "Records retrieved successfully.",
+            "data": {
+                "items": [
+                    {
+                        "id": 3,
+                        "reference": "0ef1abe9-77ce-4079-8c34-bd6c28f1d0d4",
+                        "type": "deletion",
+                        "scope": "account",
+                        "status": "rejected",
+                        "version": 3,
+                        "requestedAt": "2026-09-29T12:00:00.000000Z",
+                        "dueAt": "2026-10-29T12:00:00.000000Z",
+                        "startedAt": "2026-09-29T12:00:00.000000Z",
+                        "completedAt": "2026-09-29T12:00:00.000000Z",
+                        "reasonCode": "TEST_REJECTION_ONLY",
+                        "outcome": null,
+                        "downloadAvailable": false,
+                        "downloadExpiresAt": null
+                    },
+                    {
+                        "id": 2,
+                        "reference": "c2a32d19-b2e3-448f-8000-a27ca5f8ec14",
+                        "type": "deletion",
+                        "scope": "account",
+                        "status": "cancelled",
+                        "version": 4,
+                        "requestedAt": "2026-09-29T12:00:00.000000Z",
+                        "dueAt": "2026-10-29T12:00:00.000000Z",
+                        "startedAt": "2026-09-29T12:00:00.000000Z",
+                        "completedAt": "2026-09-29T12:00:00.000000Z",
+                        "reasonCode": null,
+                        "outcome": {
+                            "execution": "deferred",
+                            "deleted": false,
+                            "anonymized": false
+                        },
+                        "downloadAvailable": false,
+                        "downloadExpiresAt": null
+                    },
+                    {
+                        "id": 1,
+                        "reference": "12dd2b30-def7-4c61-8777-f8fd7a9a2928",
+                        "type": "export",
+                        "scope": "account",
+                        "status": "completed",
+                        "version": 5,
+                        "requestedAt": "2026-09-29T12:00:00.000000Z",
+                        "dueAt": "2026-10-29T12:00:00.000000Z",
+                        "startedAt": "2026-09-29T12:00:00.000000Z",
+                        "completedAt": "2026-09-29T12:00:00.000000Z",
+                        "reasonCode": null,
+                        "outcome": {
+                            "format": "solveit.account-export.v1",
+                            "sections": [
+                                "account",
+                                "profile",
+                                "preferences",
+                                "contexts",
+                                "consents",
+                                "data_requests"
+                            ]
+                        },
+                        "downloadAvailable": true,
+                        "downloadExpiresAt": "2026-09-30T12:00:00.000000Z"
+                    }
+                ],
+                "pagination": {
+                    "currentPage": 1,
+                    "perPage": 10,
+                    "lastPage": 1,
+                    "total": 3
+                }
+            }
+        }
+    }
+}

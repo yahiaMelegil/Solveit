@@ -34,9 +34,10 @@ return [
         'Content-Type',
         'Origin',
         'X-Requested-With',
+        'Idempotency-Key',
     ],
 
-    'exposed_headers' => [],
+    'exposed_headers' => ['Retry-After', 'Idempotency-Replayed', 'X-Request-ID', 'Content-Disposition'],
 
     'max_age' => 600,
 

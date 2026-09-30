@@ -20,3 +20,7 @@ Never store plaintext tokens, passwords, identity document contents, payment sec
 `user.registered`, `user.email_verified`, `user.password_reset`, `expert.registered`, `expert.email_verified`, `expert.kyc_submitted`, `expert.kyc_review_started`, `expert.kyc_decided`, `expert.scope_changed`, `admin.invitation_issued`, `admin.invitation_accepted`, `admin.status_changed`, `admin.role_assigned`, `admin.role_revoked`, `admin.role_permissions_changed`.
 
 The same event should be emitted once after a successful committed transition. Future financial and webhook operations require idempotency keys and provider references. Failed authorization can be aggregated with redacted request context; do not persist user-supplied secrets. `expert_kyc_status_histories` currently captures only KYC state changes and does not meet the full SRS audit requirement.
+
+## 2026-09-29 Sprint 1 implementation
+
+The baseline above remains the historical design. Core Profile/Context/Privacy now adds a scoped audit_events table and transactional events documented in `docs/sprint1/core-profile-context-privacy/AUDIT_AND_SECURITY.md`. It does not backfill or claim implementation of every baseline event. KYC histories remain unchanged. Application-level append-only guards, minimal allowlisted metadata and FK retention restrictions are implemented; production immutable archival and final legal retention remain deployment-policy dependencies.

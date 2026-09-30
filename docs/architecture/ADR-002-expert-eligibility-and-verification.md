@@ -35,3 +35,11 @@ Sprint 0 delivered no application code, migration, endpoint, or frontend feature
 ## Sprint 1 implementation boundary
 
 The existing approval endpoint now requires an explicit scope and reviewed evidence from the same KYC application. Regulated domains require a linked active licence review with a licensed scope country, registration, regulator, authoritative HTTPS source, and bounded next-review date. The scope country can differ from Expert residence; the application jurisdiction text must match the scope. Approval in one country never implies authority in another. Unknown domains fail closed until their policy is classified. Approval remains a manual Admin attestation, not an automated regulator lookup. The new nullable scope columns preserve historic records without inventing verification evidence. The public-safe `jurisdictionCountry` field is additive to verified scope responses; private review metadata remains Admin only. Existing approvals need a separate re-review before regulated booking. Scope renewal, adding another jurisdiction through a verified amendment, policy-specific service catalogue and booking gates remain future work. See `docs/api/SPRINT1_EXPERT_ELIGIBILITY_CONTRACT.md` for the request/response and frontend impact. PHP tests, migration and Staging checks are still pending.
+
+## 2026-09-30 — accepted single-scope renewal addition
+
+Historical future-work/runtime-pending notes above describe their original delivery. Single-scope
+renewal is now implemented under docs/api/SPRINT1_EXPERT_RENEWAL_CONTRACT.md and locally tested.
+The evidence decision in this ADR is unchanged. Approval appends evidence and creates one successor
+scope, preserving prior evidence/identity/other scopes. New-country extensions, active Case handling,
+formal appeal and automated regulator checks remain future work; no Staging claim is made.

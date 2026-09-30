@@ -1,0 +1,57 @@
+{
+  "dateUtc": "2026-09-29",
+  "php": "8.3.6",
+  "dependencies": {
+    "laravel/framework": "v13.33.0",
+    "laravel/sanctum": "v4.3.3",
+    "spatie/laravel-permission": "8.3.0",
+    "phpunit/phpunit": "12.5.35",
+    "laravel/pint": "v1.32.1"
+  },
+  "composerValidateStrict": {
+    "exitCode": 0,
+    "result": "passed"
+  },
+  "pintTest": {
+    "tool": "pint",
+    "result": "passed"
+  },
+  "focusedPrivacyTests": {
+    "tool": "phpunit",
+    "result": "passed",
+    "tests": 55,
+    "passed": 55,
+    "assertions": 469,
+    "duration_ms": 7576
+  },
+  "fullRegressionTests": {
+    "tool": "phpunit",
+    "result": "passed",
+    "tests": 211,
+    "passed": 211,
+    "assertions": 1333,
+    "duration_ms": 16612
+  },
+  "apiRouteCount": 93,
+  "newEndpointCount": 26,
+  "newTables": 11,
+  "fixtures": 46,
+  "migrations": {
+    "result": "passed",
+    "engine": "SQLite",
+    "baselineUserPreserved": true,
+    "foreignKeyViolations": 0
+  },
+  "staging": "not_run",
+  "reactIntegration": "not_run",
+  "productionDatabaseConcurrency": "not_run",
+  "deliveryRevision": 2,
+  "localQueueIntegration": {
+    "tool": "phpunit",
+    "result": "passed",
+    "tests": 1,
+    "passed": 1,
+    "assertions": 51,
+    "duration_ms": 3461
+  }
+}

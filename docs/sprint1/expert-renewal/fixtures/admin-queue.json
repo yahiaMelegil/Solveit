@@ -1,0 +1,45 @@
+{
+    "contractVersion": "1.0.0",
+    "synthetic": true,
+    "request": {
+        "method": "GET",
+        "url": "\/api\/admin\/scope-renewals?status=submitted&perPage=10",
+        "headers": {
+            "Authorization": "Bearer <ACCOUNT_TOKEN>",
+            "Accept": "application\/json",
+            "Content-Type": "application\/json"
+        },
+        "body": {}
+    },
+    "response": {
+        "status": 200,
+        "headers": {
+            "Cache-Control": "no-store, private"
+        },
+        "body": {
+            "status": true,
+            "data": {
+                "requests": [
+                    {
+                        "id": 1,
+                        "scopeId": 1,
+                        "status": "submitted",
+                        "version": 3,
+                        "currentSubmissionId": 1,
+                        "replacementScopeId": null,
+                        "createdAt": "2026-09-30T00:00:00.000000Z",
+                        "updatedAt": "2026-09-30T00:00:00.000000Z",
+                        "submittedAt": "2026-09-30T00:00:00.000000Z",
+                        "decidedAt": null
+                    }
+                ],
+                "pagination": {
+                    "currentPage": 1,
+                    "perPage": 10,
+                    "total": 1,
+                    "lastPage": 1
+                }
+            }
+        }
+    }
+}

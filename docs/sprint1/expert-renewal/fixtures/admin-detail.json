@@ -1,0 +1,92 @@
+{
+    "contractVersion": "1.0.0",
+    "synthetic": true,
+    "request": {
+        "method": "GET",
+        "url": "\/api\/admin\/scope-renewals\/1",
+        "headers": {
+            "Authorization": "Bearer <ACCOUNT_TOKEN>",
+            "Accept": "application\/json",
+            "Content-Type": "application\/json"
+        },
+        "body": {}
+    },
+    "response": {
+        "status": 200,
+        "headers": {
+            "Cache-Control": "no-store, private"
+        },
+        "body": {
+            "status": true,
+            "data": {
+                "request": {
+                    "id": 1,
+                    "scopeId": 1,
+                    "status": "submitted",
+                    "version": 3,
+                    "currentSubmissionId": 1,
+                    "replacementScopeId": null,
+                    "createdAt": "2026-09-30T00:00:00.000000Z",
+                    "updatedAt": "2026-09-30T00:00:00.000000Z",
+                    "submittedAt": "2026-09-30T00:00:00.000000Z",
+                    "decidedAt": null,
+                    "scope": {
+                        "id": 1,
+                        "domain": "legal",
+                        "jurisdiction": "Jordan",
+                        "jurisdictionCountry": "JO",
+                        "role": "Consultant",
+                        "serviceTypes": [
+                            "written_consultation"
+                        ],
+                        "languages": [
+                            "ar",
+                            "en"
+                        ],
+                        "status": "active",
+                        "isEffective": true,
+                        "validFrom": "2025-09-30",
+                        "validUntil": "2026-10-15",
+                        "verifiedAt": "2026-09-30T00:00:00.000000Z"
+                    },
+                    "nextReviewAt": "2026-10-15",
+                    "feedback": null,
+                    "history": [
+                        {
+                            "from": "draft",
+                            "to": "draft",
+                            "action": "evidence",
+                            "reason": null,
+                            "at": "2026-09-30T00:00:00.000000Z"
+                        },
+                        {
+                            "from": "draft",
+                            "to": "submitted",
+                            "action": "submit",
+                            "reason": null,
+                            "at": "2026-09-30T00:00:00.000000Z"
+                        }
+                    ],
+                    "submissions": [
+                        {
+                            "id": 1,
+                            "evidence": {
+                                "type": "credential",
+                                "credentialType": "license",
+                                "name": "Renewed professional practice license",
+                                "issuer": "Example Jordan regulator",
+                                "issueDate": "2026-09-01",
+                                "expiryDate": "2027-08-01"
+                            },
+                            "file": {
+                                "mimeType": "application\/pdf",
+                                "size": 4096
+                            },
+                            "createdAt": "2026-09-30T00:00:00.000000Z"
+                        }
+                    ]
+                }
+            }
+        }
+    }
+}

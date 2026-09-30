@@ -1,0 +1,44 @@
+{
+    "contractVersion": "1.0.0",
+    "synthetic": true,
+    "note": "",
+    "request": {
+        "method": "PATCH",
+        "url": "\/api\/user\/preferences",
+        "headers": {
+            "Accept": "application\/json",
+            "Authorization": "Bearer <ACCOUNT_TOKEN>"
+        },
+        "body": {
+            "expectedVersion": 0,
+            "contactChannels": [],
+            "aiAssistanceEnabled": true,
+            "recordingPreference": false,
+            "contextVisibility": "private"
+        }
+    },
+    "response": {
+        "status": 200,
+        "headers": {
+            "Content-Type": "application\/json",
+            "Cache-Control": "no-store, private"
+        },
+        "body": {
+            "status": true,
+            "message": "Request completed successfully.",
+            "data": {
+                "item": {
+                    "contactChannels": [],
+                    "essentialChannels": [
+                        "email"
+                    ],
+                    "aiAssistanceEnabled": true,
+                    "recordingPreference": false,
+                    "contextVisibility": "private",
+                    "aiTrainingEnabled": false,
+                    "version": 1
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,38 @@
+{
+    "contractVersion": "1.0.0",
+    "synthetic": true,
+    "note": "",
+    "request": {
+        "method": "GET",
+        "url": "\/api\/user\/profile",
+        "headers": {
+            "Accept": "application\/json",
+            "Authorization": "Bearer <ACCOUNT_TOKEN>"
+        },
+        "body": {}
+    },
+    "response": {
+        "status": 200,
+        "headers": {
+            "Content-Type": "application\/json",
+            "Cache-Control": "no-store, private"
+        },
+        "body": {
+            "status": true,
+            "message": "Request completed successfully.",
+            "data": {
+                "item": {
+                    "name": "Mariam Hasan",
+                    "email": "mariam@example.com",
+                    "phone": null,
+                    "phoneVerified": false,
+                    "country": null,
+                    "language": null,
+                    "timezone": null,
+                    "version": 0,
+                    "updatedAt": null
+                }
+            }
+        }
+    }
+}

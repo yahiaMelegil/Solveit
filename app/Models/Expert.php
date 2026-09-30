@@ -74,6 +74,11 @@ class Expert extends Authenticatable implements MustVerifyEmail
         return $this->hasOne(ExpertAvailabilitySetting::class);
     }
 
+    public function scopeRenewals(): HasMany
+    {
+        return $this->hasMany(ExpertScopeRenewal::class);
+    }
+
     public function verifiedScopes(): HasMany
     {
         return $this->hasMany(ExpertVerifiedScope::class);

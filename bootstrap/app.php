@@ -1,18 +1,22 @@
 <?php
 
 use App\Exceptions\InvalidKycTransitionException;
+use App\Exceptions\PrivacyException;
 use App\Http\Middleware\EnsureExpertEmailIsVerified;
 use App\Http\Middleware\EnsureUserEmailIsVerified;
 use App\Http\Middleware\EnsureUserIsAdmin;
 use App\Http\Middleware\EnsureUserIsExpert;
 use App\Http\Middleware\EnsureUserIsRegularUser;
+use App\Http\Middleware\SprintOneApi;
 use Illuminate\Auth\AuthenticationException;
+use Illuminate\Contracts\Auth\Middleware\AuthenticatesRequests;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
 use Illuminate\Http\Exceptions\ThrottleRequestsException;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Exceptions\InvalidSignatureException;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Validation\ValidationException;
 use Laravel\Sanctum\Http\Middleware\CheckAbilities;
 use Spatie\Permission\Middleware\PermissionMiddleware;
@@ -29,6 +33,8 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
+        $middleware->trimStrings(except: ['currentPassword']);
+        $middleware->prependToPriorityList(AuthenticatesRequests::class, SprintOneApi::class);
         $middleware->alias([
             'abilities' => CheckAbilities::class,
             'admin' => EnsureUserIsAdmin::class,
@@ -42,6 +48,24 @@ return Application::configure(basePath: dirname(__DIR__))
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
+        $exceptions->report(function (Throwable $exception) {
+            if (in_array(SprintOneApi::class, request()->route()?->gatherMiddleware() ?? [], true)) {
+                Log::error('Sprint 1 API operation failed.', [
+                    'exception_type' => $exception::class,
+                    'request_id' => request()->attributes->get('privacy_request_id'),
+                ]);
+
+                return false;
+            }
+        });
+        $exceptions->dontFlash(['currentPassword']);
+        $exceptions->render(function (PrivacyException $exception, Request $request) {
+            if (! in_array(SprintOneApi::class, $request->route()?->gatherMiddleware() ?? [], true)) {
+                return null;
+            }
+
+            return response()->json(['status' => false, 'code' => $exception->errorCode, 'message' => $exception->getMessage()], $exception->httpStatus);
+        });
         $exceptions->shouldRenderJsonWhen(
             fn (Request $request) => $request->is('api/*') || $request->expectsJson(),
         );

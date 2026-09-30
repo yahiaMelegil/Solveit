@@ -1,0 +1,286 @@
+{
+    "contractVersion": "1.0.0",
+    "synthetic": true,
+    "note": "",
+    "request": {
+        "method": "GET",
+        "url": "\/api\/user\/data-requests\/1\/download",
+        "headers": {
+            "Accept": "application\/json",
+            "Authorization": "Bearer <ACCOUNT_TOKEN>"
+        },
+        "body": {}
+    },
+    "response": {
+        "status": 200,
+        "headers": {
+            "Content-Type": "application\/json",
+            "Cache-Control": "no-store, private",
+            "Content-Disposition": "attachment; filename=\"solveit-export-12dd2b30-def7-4c61-8777-f8fd7a9a2928.json\""
+        },
+        "body": {
+            "manifest": {
+                "formatVersion": "solveit.account-export.v1",
+                "generatedAt": "2026-09-29T12:00:00.000000Z",
+                "scope": "current_user_account",
+                "sections": [
+                    "account",
+                    "profile",
+                    "preferences",
+                    "contexts",
+                    "consents",
+                    "data_requests"
+                ],
+                "snapshotSemantics": "best_effort_with_immutable_version_references",
+                "exclusions": [
+                    "credentials_and_tokens",
+                    "other_account_types",
+                    "kyc",
+                    "security_audit_metadata",
+                    "case_data_not_implemented"
+                ]
+            },
+            "account": {
+                "id": 1,
+                "name": "مريم حسن",
+                "email": "mariam@example.com",
+                "createdAt": "2026-09-22T12:00:00.000000Z"
+            },
+            "profile": {
+                "current": {
+                    "name": "مريم حسن",
+                    "phone": "+970599123456",
+                    "country": "PS",
+                    "language": "ar",
+                    "timezone": "Asia\/Hebron"
+                },
+                "versions": [
+                    {
+                        "version": 0,
+                        "snapshot": {
+                            "name": "Mariam Hasan",
+                            "phone": null,
+                            "country": null,
+                            "language": null,
+                            "timezone": null
+                        },
+                        "createdAt": "2026-09-29T12:00:00.000000Z"
+                    },
+                    {
+                        "version": 1,
+                        "snapshot": {
+                            "name": "مريم حسن",
+                            "phone": "+970599123456",
+                            "country": "PS",
+                            "language": "ar",
+                            "timezone": "Asia\/Hebron"
+                        },
+                        "createdAt": "2026-09-29T12:00:00.000000Z"
+                    }
+                ]
+            },
+            "preferences": {
+                "contactChannels": [],
+                "essentialChannels": [
+                    "email"
+                ],
+                "aiAssistanceEnabled": true,
+                "recordingPreference": false,
+                "contextVisibility": "private",
+                "aiTrainingEnabled": false,
+                "version": 1
+            },
+            "contexts": [
+                {
+                    "id": 1,
+                    "domain": "technology",
+                    "country": "PS",
+                    "status": "deleted",
+                    "versions": [
+                        {
+                            "version": 1,
+                            "schemaVersion": 1,
+                            "payload": {
+                                "title": "Store platform review",
+                                "facts": [
+                                    {
+                                        "key": "goal",
+                                        "value": "Review my store API",
+                                        "source": "user_reported",
+                                        "effectiveDate": "2026-01-01"
+                                    }
+                                ],
+                                "domain": "technology",
+                                "country": "PS",
+                                "status": "active",
+                                "allowCaseReuse": true
+                            },
+                            "conflictStatus": "none",
+                            "clarification": null,
+                            "createdAt": "2026-09-29T12:00:00.000000Z"
+                        },
+                        {
+                            "version": 2,
+                            "schemaVersion": 1,
+                            "payload": {
+                                "title": "Store platform review",
+                                "facts": [
+                                    {
+                                        "key": "goal",
+                                        "value": "Review a mobile booking API",
+                                        "source": "user_reported",
+                                        "effectiveDate": "2026-01-01"
+                                    }
+                                ],
+                                "domain": "technology",
+                                "country": "PS",
+                                "status": "active",
+                                "allowCaseReuse": true
+                            },
+                            "conflictStatus": "unresolved",
+                            "clarification": null,
+                            "createdAt": "2026-09-29T12:00:00.000000Z"
+                        },
+                        {
+                            "version": 3,
+                            "schemaVersion": 1,
+                            "payload": {
+                                "title": "Store platform review",
+                                "facts": [
+                                    {
+                                        "key": "goal",
+                                        "value": "Review a mobile booking API",
+                                        "source": "user_reported",
+                                        "effectiveDate": "2026-01-01"
+                                    }
+                                ],
+                                "domain": "technology",
+                                "country": "PS",
+                                "status": "active",
+                                "allowCaseReuse": true
+                            },
+                            "conflictStatus": "clarified",
+                            "clarification": "I entered the old project goal by mistake.",
+                            "createdAt": "2026-09-29T12:00:00.000000Z"
+                        },
+                        {
+                            "version": 4,
+                            "schemaVersion": 1,
+                            "payload": {
+                                "title": "Store platform review",
+                                "facts": [
+                                    {
+                                        "key": "goal",
+                                        "value": "Review a mobile booking API",
+                                        "source": "user_reported",
+                                        "effectiveDate": "2026-01-01"
+                                    }
+                                ],
+                                "domain": "technology",
+                                "country": "PS",
+                                "status": "archived",
+                                "allowCaseReuse": true
+                            },
+                            "conflictStatus": "clarified",
+                            "clarification": null,
+                            "createdAt": "2026-09-29T12:00:00.000000Z"
+                        },
+                        {
+                            "version": 5,
+                            "schemaVersion": 1,
+                            "payload": {
+                                "title": "Store platform review",
+                                "facts": [
+                                    {
+                                        "key": "goal",
+                                        "value": "Review a mobile booking API",
+                                        "source": "user_reported",
+                                        "effectiveDate": "2026-01-01"
+                                    }
+                                ],
+                                "domain": "technology",
+                                "country": "PS",
+                                "status": "active",
+                                "allowCaseReuse": true
+                            },
+                            "conflictStatus": "clarified",
+                            "clarification": null,
+                            "createdAt": "2026-09-29T12:00:00.000000Z"
+                        },
+                        {
+                            "version": 6,
+                            "schemaVersion": 1,
+                            "payload": {
+                                "title": "Store platform review",
+                                "facts": [
+                                    {
+                                        "key": "goal",
+                                        "value": "Review a mobile booking API",
+                                        "source": "user_reported",
+                                        "effectiveDate": "2026-01-01"
+                                    }
+                                ],
+                                "domain": "technology",
+                                "country": "PS",
+                                "status": "deleted",
+                                "allowCaseReuse": true
+                            },
+                            "conflictStatus": "clarified",
+                            "clarification": null,
+                            "createdAt": "2026-09-29T12:00:00.000000Z"
+                        }
+                    ]
+                }
+            ],
+            "consents": [
+                {
+                    "id": 1,
+                    "purpose": "marketing",
+                    "decision": "granted",
+                    "policyVersion": "demo-1",
+                    "policyLocale": "en",
+                    "policyHash": "2973b023ba089c63bc9814950476202f6e31c54dfef294acbe5cec12287519f5",
+                    "decidedAt": "2026-09-29T12:00:00.000000Z"
+                },
+                {
+                    "id": 2,
+                    "purpose": "marketing",
+                    "decision": "withdrawn",
+                    "policyVersion": "demo-1",
+                    "policyLocale": "en",
+                    "policyHash": "2973b023ba089c63bc9814950476202f6e31c54dfef294acbe5cec12287519f5",
+                    "decidedAt": "2026-09-29T12:00:00.000000Z"
+                },
+                {
+                    "id": 3,
+                    "purpose": "ai_assistance",
+                    "decision": "declined",
+                    "policyVersion": "demo-1",
+                    "policyLocale": "en",
+                    "policyHash": "2973b023ba089c63bc9814950476202f6e31c54dfef294acbe5cec12287519f5",
+                    "decidedAt": "2026-09-29T12:00:00.000000Z"
+                },
+                {
+                    "id": 4,
+                    "purpose": "marketing",
+                    "decision": "granted",
+                    "policyVersion": "demo-1",
+                    "policyLocale": "en",
+                    "policyHash": "2973b023ba089c63bc9814950476202f6e31c54dfef294acbe5cec12287519f5",
+                    "decidedAt": "2026-09-29T12:00:00.000000Z"
+                }
+            ],
+            "dataRequests": [
+                {
+                    "reference": "12dd2b30-def7-4c61-8777-f8fd7a9a2928",
+                    "type": "export",
+                    "status": "processing",
+                    "requestedAt": "2026-09-29T12:00:00.000000Z",
+                    "dueAt": "2026-10-29T12:00:00.000000Z",
+                    "reasonCode": null,
+                    "outcome": null
+                }
+            ]
+        }
+    }
+}

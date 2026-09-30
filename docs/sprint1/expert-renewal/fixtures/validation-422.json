@@ -1,0 +1,30 @@
+{
+    "contractVersion": "1.0.0",
+    "synthetic": true,
+    "request": {
+        "method": "POST",
+        "url": "\/api\/expert\/scope-renewals\/1\/submit",
+        "headers": {
+            "Authorization": "Bearer <ACCOUNT_TOKEN>",
+            "Accept": "application\/json",
+            "Content-Type": "application\/json"
+        },
+        "body": {}
+    },
+    "response": {
+        "status": 422,
+        "headers": {
+            "Cache-Control": "no-store, private"
+        },
+        "body": {
+            "status": false,
+            "message": "The provided data is invalid.",
+            "errors": {
+                "version": [
+                    "The version field is required."
+                ]
+            },
+            "code": "VALIDATION_FAILED"
+        }
+    }
+}

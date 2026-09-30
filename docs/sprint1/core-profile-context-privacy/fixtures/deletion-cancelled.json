@@ -1,0 +1,94 @@
+{
+    "contractVersion": "1.0.0",
+    "synthetic": true,
+    "note": "",
+    "request": {
+        "method": "POST",
+        "url": "\/api\/user\/data-requests\/2\/cancel",
+        "headers": {
+            "Accept": "application\/json",
+            "Authorization": "Bearer <ACCOUNT_TOKEN>",
+            "Idempotency-Key": "0054255c-400a-4477-806a-7533ce1d1388"
+        },
+        "body": {
+            "expectedVersion": 3
+        }
+    },
+    "response": {
+        "status": 200,
+        "headers": {
+            "Content-Type": "application\/json",
+            "Cache-Control": "no-store, private"
+        },
+        "body": {
+            "status": true,
+            "message": "Request completed successfully.",
+            "data": {
+                "item": {
+                    "id": 2,
+                    "reference": "c2a32d19-b2e3-448f-8000-a27ca5f8ec14",
+                    "type": "deletion",
+                    "scope": "account",
+                    "status": "cancelled",
+                    "version": 4,
+                    "requestedAt": "2026-09-29T12:00:00.000000Z",
+                    "dueAt": "2026-10-29T12:00:00.000000Z",
+                    "startedAt": "2026-09-29T12:00:00.000000Z",
+                    "completedAt": "2026-09-29T12:00:00.000000Z",
+                    "reasonCode": null,
+                    "outcome": {
+                        "execution": "deferred",
+                        "deleted": false,
+                        "anonymized": false
+                    },
+                    "downloadAvailable": false,
+                    "downloadExpiresAt": null,
+                    "items": [
+                        {
+                            "recordClass": "account",
+                            "status": "cancelled",
+                            "reasonCode": "RETENTION_POLICY_PENDING",
+                            "retainUntil": null,
+                            "reviewAt": "2026-10-29T12:00:00.000000Z"
+                        },
+                        {
+                            "recordClass": "profile",
+                            "status": "cancelled",
+                            "reasonCode": "RETENTION_POLICY_PENDING",
+                            "retainUntil": null,
+                            "reviewAt": "2026-10-29T12:00:00.000000Z"
+                        },
+                        {
+                            "recordClass": "preferences",
+                            "status": "cancelled",
+                            "reasonCode": "RETENTION_POLICY_PENDING",
+                            "retainUntil": null,
+                            "reviewAt": "2026-10-29T12:00:00.000000Z"
+                        },
+                        {
+                            "recordClass": "contexts",
+                            "status": "cancelled",
+                            "reasonCode": "RETENTION_POLICY_PENDING",
+                            "retainUntil": null,
+                            "reviewAt": "2026-10-29T12:00:00.000000Z"
+                        },
+                        {
+                            "recordClass": "consents",
+                            "status": "cancelled",
+                            "reasonCode": "RETENTION_POLICY_PENDING",
+                            "retainUntil": null,
+                            "reviewAt": "2026-10-29T12:00:00.000000Z"
+                        },
+                        {
+                            "recordClass": "data_requests",
+                            "status": "cancelled",
+                            "reasonCode": "RETENTION_POLICY_PENDING",
+                            "retainUntil": null,
+                            "reviewAt": "2026-10-29T12:00:00.000000Z"
+                        }
+                    ]
+                }
+            }
+        }
+    }
+}

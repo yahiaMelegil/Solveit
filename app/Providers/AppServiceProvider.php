@@ -4,12 +4,22 @@ namespace App\Providers;
 
 use App\Enums\AdminRole;
 use App\Models\Admin;
+use App\Models\DataRightsRequest;
 use App\Models\Expert;
+use App\Models\SpecializedContext;
 use App\Models\User;
+use App\Models\UserConsentRecord;
+use App\Models\UserPreference;
+use App\Models\UserProfile;
 use App\Policies\AdminPolicy;
+use App\Policies\DataRightsRequestPolicy;
 use App\Policies\ExpertPolicy;
 use App\Policies\RolePolicy;
+use App\Policies\SpecializedContextPolicy;
+use App\Policies\UserConsentRecordPolicy;
 use App\Policies\UserPolicy;
+use App\Policies\UserPreferencePolicy;
+use App\Policies\UserProfilePolicy;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
@@ -33,6 +43,15 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         $this->registerAuthorization();
+
+        RateLimiter::for('privacy-read', fn (Request $request): Limit => Limit::perMinute(120)->by($this->privacyKey($request)));
+        RateLimiter::for('privacy-write', fn (Request $request): Limit => Limit::perMinute(30)->by($this->privacyKey($request)));
+        RateLimiter::for('privacy-request', fn (Request $request): Limit => Limit::perHour(5)->by($this->privacyKey($request)));
+        RateLimiter::for('privacy-download', fn (Request $request): Limit => Limit::perMinute(10)->by($this->privacyKey($request)));
+        RateLimiter::for('privacy-confirm', fn (Request $request): array => [
+            Limit::perMinute(5)->by($this->privacyKey($request)),
+            Limit::perMinute(20)->by('privacy-confirm-ip|'.$request->ip()),
+        ]);
 
         RateLimiter::for('admin-login', function (Request $request): Limit {
             $email = mb_strtolower(trim((string) $request->input('email')));
@@ -151,6 +170,15 @@ class AppServiceProvider extends ServiceProvider
 
     private function registerAuthorization(): void
     {
+        foreach ([
+            UserProfile::class => UserProfilePolicy::class,
+            UserPreference::class => UserPreferencePolicy::class,
+            SpecializedContext::class => SpecializedContextPolicy::class,
+            UserConsentRecord::class => UserConsentRecordPolicy::class,
+            DataRightsRequest::class => DataRightsRequestPolicy::class,
+        ] as $model => $policy) {
+            Gate::policy($model, $policy);
+        }
         Gate::policy(Admin::class, AdminPolicy::class);
         Gate::policy(User::class, UserPolicy::class);
         Gate::policy(Expert::class, ExpertPolicy::class);
@@ -173,5 +201,12 @@ class AppServiceProvider extends ServiceProvider
     private function authenticatedKey(Request $request): string
     {
         return ($request->user()?->getAuthIdentifier() ?? 'guest').'|'.$request->ip();
+    }
+
+    private function privacyKey(Request $request): string
+    {
+        $actor = $request->user();
+
+        return $actor ? $actor::class.':'.$actor->getAuthIdentifier() : 'guest:'.$request->ip();
     }
 }

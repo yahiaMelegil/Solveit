@@ -6,6 +6,7 @@ use App\Enums\ExpertScopeStatus;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 #[Fillable([
     'kyc_application_id',
@@ -57,6 +58,11 @@ class ExpertVerifiedScope extends Model
     public function verifiedBy(): BelongsTo
     {
         return $this->belongsTo(Admin::class, 'verified_by_admin_id');
+    }
+
+    public function renewals(): HasMany
+    {
+        return $this->hasMany(ExpertScopeRenewal::class, 'scope_id');
     }
 
     public function isEffective(): bool

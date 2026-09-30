@@ -1,0 +1,45 @@
+{
+    "contractVersion": "1.0.0",
+    "synthetic": true,
+    "note": "",
+    "request": {
+        "method": "PATCH",
+        "url": "\/api\/user\/profile",
+        "headers": {
+            "Accept": "application\/json",
+            "Authorization": "Bearer <ACCOUNT_TOKEN>"
+        },
+        "body": {
+            "expectedVersion": 0,
+            "name": "مريم حسن",
+            "phone": "+970599123456",
+            "country": "PS",
+            "language": "ar",
+            "timezone": "Asia\/Hebron"
+        }
+    },
+    "response": {
+        "status": 200,
+        "headers": {
+            "Content-Type": "application\/json",
+            "Cache-Control": "no-store, private"
+        },
+        "body": {
+            "status": true,
+            "message": "Request completed successfully.",
+            "data": {
+                "item": {
+                    "name": "مريم حسن",
+                    "email": "mariam@example.com",
+                    "phone": "+970599123456",
+                    "phoneVerified": false,
+                    "country": "PS",
+                    "language": "ar",
+                    "timezone": "Asia\/Hebron",
+                    "version": 1,
+                    "updatedAt": "2026-09-29T12:00:00.000000Z"
+                }
+            }
+        }
+    }
+}

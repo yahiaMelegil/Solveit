@@ -1,0 +1,28 @@
+{
+  "result": "passed",
+  "engine": "SQLite",
+  "baselineUserPreserved": true,
+  "foreignKeyViolations": 0,
+  "steps": [
+    {
+      "command": "migrate",
+      "exit": 0,
+      "output": "INFO  Preparing database.  \n\n  Creating migration table ....................................... 1.75ms DONE\n\n   INFO  Running migrations.  \n\n  0001_01_01_000000_create_users_table ........................... 1.35ms DONE\n  0001_01_01_000001_create_cache_table ........................... 0.62ms DONE\n  0001_01_01_000002_create_jobs_table ............................ 1.26ms DONE\n  2026_09_10_000000_create_personal_access_tokens_table .......... 0.58ms DONE\n  2026_09_11_000000_create_admins_table .......................... 0.37ms DONE\n  2026_09_12_000000_create_experts_table ......................... 0.53ms DONE\n  2026_09_12_000001_create_expert_password_reset_tokens_table .... 0.25ms DONE\n  2026_09_16_000000_add_registration_context_to_experts_table .... 0.89ms DONE\n  2026_09_16_000001_create_expert_kyc_applications_table ......... 2.89ms DONE\n  2026_09_16_000002_create_expert_kyc_experiences_table .......... 0.34ms DONE\n  2026_09_16_000003_create_expert_kyc_qualifications_table ....... 0.31ms DONE\n  2026_09_16_000004_create_expert_kyc_credentials_table .......... 0.36ms DONE\n  2026_09_16_000005_create_expert_kyc_documents_table ............ 0.64ms DONE\n  2026_09_16_000006_create_expert_kyc_status_histories_table ..... 0.51ms DONE\n  2026_09_17_000000_add_review_feedback_to_expert_kyc_applications_table  3.66ms DONE\n  2026_09_18_000000_create_expert_profiles_table ................. 0.67ms DONE\n  2026_09_18_000001_create_expert_verified_scopes_table .......... 0.70ms DONE\n  2026_09_18_000002_create_expert_availability_settings_table .... 0.54ms DONE\n  2026_09_20_000000_create_permission_tables ..................... 1.66ms DONE\n  2026_09_27_000000_add_admin_invitations_and_activity_fields .... 1.61ms DONE\n  2026_09_28_000000_add_evidence_review_to_expert_verified_scopes_table  6.21ms DONE"
+    },
+    {
+      "command": "migrate",
+      "exit": 0,
+      "output": "INFO  Running migrations.  \n\n  2026_09_29_000000_create_user_privacy_foundation ............... 5.80ms DONE"
+    },
+    {
+      "command": "migrate:rollback",
+      "exit": 0,
+      "output": "INFO  Rolling back migrations.  \n\n  2026_09_29_000000_create_user_privacy_foundation ............... 1.95ms DONE"
+    },
+    {
+      "command": "migrate",
+      "exit": 0,
+      "output": "INFO  Running migrations.  \n\n  2026_09_29_000000_create_user_privacy_foundation ............... 6.04ms DONE"
+    }
+  ]
+}

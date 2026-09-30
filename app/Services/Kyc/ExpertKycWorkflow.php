@@ -596,7 +596,7 @@ class ExpertKycWorkflow
      * @param  array<int, array<string, mixed>>  $scopes
      * @return array<int, array<string, mixed>>
      */
-    private function verifiedScopeEvidence(ExpertKycApplication $application, array $scopes): array
+    public function verifiedScopeEvidence(ExpertKycApplication $application, array $scopes): array
     {
         if ($scopes === []) {
             throw ValidationException::withMessages([

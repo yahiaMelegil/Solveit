@@ -1,0 +1,45 @@
+{
+    "contractVersion": "1.0.0",
+    "synthetic": true,
+    "note": "",
+    "request": {
+        "method": "DELETE",
+        "url": "\/api\/user\/contexts\/1",
+        "headers": {
+            "Accept": "application\/json",
+            "Authorization": "Bearer <ACCOUNT_TOKEN>",
+            "Idempotency-Key": "56b61b10-4c5f-4632-89cc-1940b7bbff01"
+        },
+        "body": {
+            "expectedVersion": 5
+        }
+    },
+    "response": {
+        "status": 200,
+        "headers": {
+            "Content-Type": "application\/json",
+            "Cache-Control": "no-store, private"
+        },
+        "body": {
+            "status": true,
+            "message": "Request completed successfully.",
+            "data": {
+                "item": {
+                    "id": 1,
+                    "domain": "technology",
+                    "country": "PS",
+                    "status": "deleted",
+                    "version": 6,
+                    "schemaVersion": 1,
+                    "title": null,
+                    "conflictStatus": null,
+                    "allowCaseReuse": true,
+                    "canUseInFutureCase": false,
+                    "visibility": "private",
+                    "createdAt": "2026-09-29T12:00:00.000000Z",
+                    "updatedAt": "2026-09-29T12:00:00.000000Z"
+                }
+            }
+        }
+    }
+}

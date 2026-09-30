@@ -1,0 +1,25 @@
+{
+    "contractVersion": "1.0.0",
+    "synthetic": true,
+    "request": {
+        "method": "GET",
+        "url": "\/api\/expert\/scope-renewals\/999999",
+        "headers": {
+            "Authorization": "Bearer <ACCOUNT_TOKEN>",
+            "Accept": "application\/json",
+            "Content-Type": "application\/json"
+        },
+        "body": {}
+    },
+    "response": {
+        "status": 404,
+        "headers": {
+            "Cache-Control": "no-store, private"
+        },
+        "body": {
+            "status": false,
+            "code": "RESOURCE_NOT_FOUND",
+            "message": "The requested resource was not found."
+        }
+    }
+}

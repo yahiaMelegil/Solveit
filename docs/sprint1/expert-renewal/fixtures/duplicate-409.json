@@ -1,0 +1,25 @@
+{
+    "contractVersion": "1.0.0",
+    "synthetic": true,
+    "request": {
+        "method": "POST",
+        "url": "\/api\/expert\/scopes\/1\/renewals",
+        "headers": {
+            "Authorization": "Bearer <ACCOUNT_TOKEN>",
+            "Accept": "application\/json",
+            "Content-Type": "application\/json"
+        },
+        "body": {}
+    },
+    "response": {
+        "status": 409,
+        "headers": {
+            "Cache-Control": "no-store, private"
+        },
+        "body": {
+            "status": false,
+            "code": "OPEN_RENEWAL_EXISTS",
+            "message": "This scope cannot open a renewal request at this time."
+        }
+    }
+}

@@ -1,0 +1,91 @@
+{
+    "contractVersion": "1.0.0",
+    "synthetic": true,
+    "note": "30 days is a synthetic test SLA only.",
+    "request": {
+        "method": "POST",
+        "url": "\/api\/user\/data-requests",
+        "headers": {
+            "Accept": "application\/json",
+            "Authorization": "Bearer <ACCOUNT_TOKEN>",
+            "Idempotency-Key": "6adefe3c-6045-4dd5-93c9-0c46a152f26b"
+        },
+        "body": {
+            "type": "export",
+            "scope": "account"
+        }
+    },
+    "response": {
+        "status": 202,
+        "headers": {
+            "Content-Type": "application\/json",
+            "Cache-Control": "no-store, private"
+        },
+        "body": {
+            "status": true,
+            "message": "Data request accepted for processing.",
+            "data": {
+                "item": {
+                    "id": 1,
+                    "reference": "12dd2b30-def7-4c61-8777-f8fd7a9a2928",
+                    "type": "export",
+                    "scope": "account",
+                    "status": "requested",
+                    "version": 1,
+                    "requestedAt": "2026-09-29T12:00:00.000000Z",
+                    "dueAt": "2026-10-29T12:00:00.000000Z",
+                    "startedAt": null,
+                    "completedAt": null,
+                    "reasonCode": null,
+                    "outcome": null,
+                    "downloadAvailable": false,
+                    "downloadExpiresAt": null,
+                    "items": [
+                        {
+                            "recordClass": "account",
+                            "status": "pending",
+                            "reasonCode": null,
+                            "retainUntil": null,
+                            "reviewAt": null
+                        },
+                        {
+                            "recordClass": "profile",
+                            "status": "pending",
+                            "reasonCode": null,
+                            "retainUntil": null,
+                            "reviewAt": null
+                        },
+                        {
+                            "recordClass": "preferences",
+                            "status": "pending",
+                            "reasonCode": null,
+                            "retainUntil": null,
+                            "reviewAt": null
+                        },
+                        {
+                            "recordClass": "contexts",
+                            "status": "pending",
+                            "reasonCode": null,
+                            "retainUntil": null,
+                            "reviewAt": null
+                        },
+                        {
+                            "recordClass": "consents",
+                            "status": "pending",
+                            "reasonCode": null,
+                            "retainUntil": null,
+                            "reviewAt": null
+                        },
+                        {
+                            "recordClass": "data_requests",
+                            "status": "pending",
+                            "reasonCode": null,
+                            "retainUntil": null,
+                            "reviewAt": null
+                        }
+                    ]
+                }
+            }
+        }
+    }
+}

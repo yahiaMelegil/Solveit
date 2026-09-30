@@ -1,0 +1,87 @@
+{
+    "contractVersion": "1.0.0",
+    "synthetic": true,
+    "note": "Reserved state seeded internally for UI rendering; no rejection workflow ships in Sprint 1.",
+    "request": {
+        "method": "GET",
+        "url": "\/api\/user\/data-requests\/3",
+        "headers": {
+            "Accept": "application\/json",
+            "Authorization": "Bearer <ACCOUNT_TOKEN>"
+        },
+        "body": {}
+    },
+    "response": {
+        "status": 200,
+        "headers": {
+            "Content-Type": "application\/json",
+            "Cache-Control": "no-store, private"
+        },
+        "body": {
+            "status": true,
+            "message": "Request completed successfully.",
+            "data": {
+                "item": {
+                    "id": 3,
+                    "reference": "0ef1abe9-77ce-4079-8c34-bd6c28f1d0d4",
+                    "type": "deletion",
+                    "scope": "account",
+                    "status": "rejected",
+                    "version": 3,
+                    "requestedAt": "2026-09-29T12:00:00.000000Z",
+                    "dueAt": "2026-10-29T12:00:00.000000Z",
+                    "startedAt": "2026-09-29T12:00:00.000000Z",
+                    "completedAt": "2026-09-29T12:00:00.000000Z",
+                    "reasonCode": "TEST_REJECTION_ONLY",
+                    "outcome": null,
+                    "downloadAvailable": false,
+                    "downloadExpiresAt": null,
+                    "items": [
+                        {
+                            "recordClass": "account",
+                            "status": "pending",
+                            "reasonCode": null,
+                            "retainUntil": null,
+                            "reviewAt": null
+                        },
+                        {
+                            "recordClass": "profile",
+                            "status": "pending",
+                            "reasonCode": null,
+                            "retainUntil": null,
+                            "reviewAt": null
+                        },
+                        {
+                            "recordClass": "preferences",
+                            "status": "pending",
+                            "reasonCode": null,
+                            "retainUntil": null,
+                            "reviewAt": null
+                        },
+                        {
+                            "recordClass": "contexts",
+                            "status": "pending",
+                            "reasonCode": null,
+                            "retainUntil": null,
+                            "reviewAt": null
+                        },
+                        {
+                            "recordClass": "consents",
+                            "status": "pending",
+                            "reasonCode": null,
+                            "retainUntil": null,
+                            "reviewAt": null
+                        },
+                        {
+                            "recordClass": "data_requests",
+                            "status": "pending",
+                            "reasonCode": null,
+                            "retainUntil": null,
+                            "reviewAt": null
+                        }
+                    ]
+                }
+            }
+        }
+    }
+}

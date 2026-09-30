@@ -1,0 +1,117 @@
+{
+    "contractVersion": "1.0.0",
+    "synthetic": true,
+    "note": "Synthetic policy texts, not approved legal policies.",
+    "request": {
+        "method": "GET",
+        "url": "\/api\/user\/policies",
+        "headers": {
+            "Accept": "application\/json",
+            "Authorization": "Bearer <ACCOUNT_TOKEN>"
+        },
+        "body": {}
+    },
+    "response": {
+        "status": 200,
+        "headers": {
+            "Content-Type": "application\/json",
+            "Cache-Control": "no-store, private"
+        },
+        "body": {
+            "status": true,
+            "message": "Published policy versions.",
+            "data": {
+                "items": [
+                    {
+                        "id": 8,
+                        "policyKey": "demo_ai_assistance",
+                        "purpose": "ai_assistance",
+                        "version": "demo-1",
+                        "locale": "ar",
+                        "content": "نص تجريبي للاختبار فقط، ليس سياسة قانونية معتمدة.",
+                        "contentHash": "9dce00c8253d70fdc5df6d42f2487fbccba3aaa472d3b21b7c3a10ceffbf7432",
+                        "effectiveAt": "2026-09-28T13:45:40.000000Z",
+                        "requiresReconsent": true
+                    },
+                    {
+                        "id": 7,
+                        "policyKey": "demo_ai_assistance",
+                        "purpose": "ai_assistance",
+                        "version": "demo-1",
+                        "locale": "en",
+                        "content": "SYNTHETIC TEST POLICY ONLY. Not approved legal terms.",
+                        "contentHash": "2973b023ba089c63bc9814950476202f6e31c54dfef294acbe5cec12287519f5",
+                        "effectiveAt": "2026-09-28T13:45:40.000000Z",
+                        "requiresReconsent": true
+                    },
+                    {
+                        "id": 6,
+                        "policyKey": "demo_marketing",
+                        "purpose": "marketing",
+                        "version": "demo-1",
+                        "locale": "ar",
+                        "content": "نص تجريبي للاختبار فقط، ليس سياسة قانونية معتمدة.",
+                        "contentHash": "9dce00c8253d70fdc5df6d42f2487fbccba3aaa472d3b21b7c3a10ceffbf7432",
+                        "effectiveAt": "2026-09-28T13:45:40.000000Z",
+                        "requiresReconsent": true
+                    },
+                    {
+                        "id": 5,
+                        "policyKey": "demo_marketing",
+                        "purpose": "marketing",
+                        "version": "demo-1",
+                        "locale": "en",
+                        "content": "SYNTHETIC TEST POLICY ONLY. Not approved legal terms.",
+                        "contentHash": "2973b023ba089c63bc9814950476202f6e31c54dfef294acbe5cec12287519f5",
+                        "effectiveAt": "2026-09-28T13:45:40.000000Z",
+                        "requiresReconsent": true
+                    },
+                    {
+                        "id": 4,
+                        "policyKey": "demo_privacy",
+                        "purpose": "privacy",
+                        "version": "demo-1",
+                        "locale": "ar",
+                        "content": "نص تجريبي للاختبار فقط، ليس سياسة قانونية معتمدة.",
+                        "contentHash": "9dce00c8253d70fdc5df6d42f2487fbccba3aaa472d3b21b7c3a10ceffbf7432",
+                        "effectiveAt": "2026-09-28T13:45:40.000000Z",
+                        "requiresReconsent": true
+                    },
+                    {
+                        "id": 3,
+                        "policyKey": "demo_privacy",
+                        "purpose": "privacy",
+                        "version": "demo-1",
+                        "locale": "en",
+                        "content": "SYNTHETIC TEST POLICY ONLY. Not approved legal terms.",
+                        "contentHash": "2973b023ba089c63bc9814950476202f6e31c54dfef294acbe5cec12287519f5",
+                        "effectiveAt": "2026-09-28T13:45:40.000000Z",
+                        "requiresReconsent": true
+                    },
+                    {
+                        "id": 2,
+                        "policyKey": "demo_terms",
+                        "purpose": "terms",
+                        "version": "demo-1",
+                        "locale": "ar",
+                        "content": "نص تجريبي للاختبار فقط، ليس سياسة قانونية معتمدة.",
+                        "contentHash": "9dce00c8253d70fdc5df6d42f2487fbccba3aaa472d3b21b7c3a10ceffbf7432",
+                        "effectiveAt": "2026-09-28T13:45:40.000000Z",
+                        "requiresReconsent": true
+                    },
+                    {
+                        "id": 1,
+                        "policyKey": "demo_terms",
+                        "purpose": "terms",
+                        "version": "demo-1",
+                        "locale": "en",
+                        "content": "SYNTHETIC TEST POLICY ONLY. Not approved legal terms.",
+                        "contentHash": "2973b023ba089c63bc9814950476202f6e31c54dfef294acbe5cec12287519f5",
+                        "effectiveAt": "2026-09-28T13:45:40.000000Z",
+                        "requiresReconsent": true
+                    }
+                ]
+            }
+        }
+    }
+}

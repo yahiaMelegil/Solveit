@@ -17,6 +17,9 @@ class AuthorizationSeeder extends Seeder
     {
         app(PermissionRegistrar::class)->forgetCachedPermissions();
 
+        // Sprint 1 privacy permissions are registered here and granted only to super_admin
+        // by default. Existing operational roles retain their explicit allowlists below.
+        // Use PrivacyPermissionsSeeder for additive upgrades without resyncing existing role grants.
         foreach (AdminPermission::cases() as $permission) {
             Permission::findOrCreate($permission->value, self::GUARD);
         }
@@ -55,6 +58,10 @@ class AuthorizationSeeder extends Seeder
             AdminPermission::ExpertsViewAny->value,
             AdminPermission::ExpertsView->value,
             AdminPermission::ExpertsReviewKyc->value,
+            AdminPermission::ExpertRenewalsViewAny->value,
+            AdminPermission::ExpertRenewalsView->value,
+            AdminPermission::ExpertRenewalsViewEvidence->value,
+            AdminPermission::ExpertRenewalsReview->value,
         ]);
 
         app(PermissionRegistrar::class)->forgetCachedPermissions();

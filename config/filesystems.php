@@ -38,6 +38,15 @@ return [
             'report' => false,
         ],
 
+        'data-exports' => [
+            'driver' => 'local',
+            'root' => storage_path('app/private/data-exports'),
+            'visibility' => 'private',
+            'serve' => false,
+            'throw' => true,
+            'report' => false,
+        ],
+
         'kyc' => [
             'driver' => 'local',
             'root' => storage_path('app/private/kyc'),

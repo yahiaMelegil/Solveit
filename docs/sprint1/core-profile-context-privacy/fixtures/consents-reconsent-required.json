@@ -1,0 +1,69 @@
+{
+    "contractVersion": "1.0.0",
+    "synthetic": true,
+    "note": "",
+    "request": {
+        "method": "GET",
+        "url": "\/api\/user\/consents",
+        "headers": {
+            "Accept": "application\/json",
+            "Authorization": "Bearer <ACCOUNT_TOKEN>"
+        },
+        "body": {}
+    },
+    "response": {
+        "status": 200,
+        "headers": {
+            "Content-Type": "application\/json",
+            "Cache-Control": "no-store, private"
+        },
+        "body": {
+            "status": true,
+            "message": "Current consent decisions.",
+            "data": {
+                "items": [
+                    {
+                        "purpose": "terms",
+                        "decision": "not_recorded",
+                        "recordId": null,
+                        "policyVersionId": null,
+                        "decidedAt": null,
+                        "requiresReconsent": false,
+                        "effective": false,
+                        "withdrawable": false
+                    },
+                    {
+                        "purpose": "privacy",
+                        "decision": "not_recorded",
+                        "recordId": null,
+                        "policyVersionId": null,
+                        "decidedAt": null,
+                        "requiresReconsent": false,
+                        "effective": false,
+                        "withdrawable": false
+                    },
+                    {
+                        "purpose": "marketing",
+                        "decision": "granted",
+                        "recordId": 4,
+                        "policyVersionId": 5,
+                        "decidedAt": "2026-09-29T12:00:00.000000Z",
+                        "requiresReconsent": true,
+                        "effective": false,
+                        "withdrawable": true
+                    },
+                    {
+                        "purpose": "ai_assistance",
+                        "decision": "declined",
+                        "recordId": 3,
+                        "policyVersionId": 7,
+                        "decidedAt": "2026-09-29T12:00:00.000000Z",
+                        "requiresReconsent": false,
+                        "effective": false,
+                        "withdrawable": true
+                    }
+                ]
+            }
+        }
+    }
+}

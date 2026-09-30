@@ -1,0 +1,40 @@
+{
+    "contractVersion": "1.0.0",
+    "synthetic": true,
+    "note": "",
+    "request": {
+        "method": "GET",
+        "url": "\/api\/user\/preferences",
+        "headers": {
+            "Accept": "application\/json",
+            "Authorization": "Bearer <ACCOUNT_TOKEN>"
+        },
+        "body": {}
+    },
+    "response": {
+        "status": 200,
+        "headers": {
+            "Content-Type": "application\/json",
+            "Cache-Control": "no-store, private"
+        },
+        "body": {
+            "status": true,
+            "message": "Request completed successfully.",
+            "data": {
+                "item": {
+                    "contactChannels": [
+                        "email"
+                    ],
+                    "essentialChannels": [
+                        "email"
+                    ],
+                    "aiAssistanceEnabled": false,
+                    "recordingPreference": false,
+                    "contextVisibility": "private",
+                    "aiTrainingEnabled": false,
+                    "version": 0
+                }
+            }
+        }
+    }
+}

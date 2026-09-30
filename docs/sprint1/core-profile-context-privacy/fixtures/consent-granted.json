@@ -1,0 +1,43 @@
+{
+    "contractVersion": "1.0.0",
+    "synthetic": true,
+    "note": "",
+    "request": {
+        "method": "POST",
+        "url": "\/api\/user\/consents",
+        "headers": {
+            "Accept": "application\/json",
+            "Authorization": "Bearer <ACCOUNT_TOKEN>",
+            "Idempotency-Key": "9c5a043b-d0ec-465c-9adc-15fd5a4a48e3"
+        },
+        "body": {
+            "purpose": "marketing",
+            "policyVersionId": 5,
+            "decision": "granted"
+        }
+    },
+    "response": {
+        "status": 201,
+        "headers": {
+            "Content-Type": "application\/json",
+            "Cache-Control": "no-store, private"
+        },
+        "body": {
+            "status": true,
+            "message": "Consent decision recorded.",
+            "data": {
+                "item": {
+                    "id": 1,
+                    "purpose": "marketing",
+                    "policyVersionId": 5,
+                    "policyVersion": "demo-1",
+                    "policyLocale": "en",
+                    "policyHash": "2973b023ba089c63bc9814950476202f6e31c54dfef294acbe5cec12287519f5",
+                    "decision": "granted",
+                    "previousRecordId": null,
+                    "decidedAt": "2026-09-29T12:00:00.000000Z"
+                }
+            }
+        }
+    }
+}

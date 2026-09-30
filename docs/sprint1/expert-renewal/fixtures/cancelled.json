@@ -1,0 +1,70 @@
+{
+    "contractVersion": "1.0.0",
+    "synthetic": true,
+    "request": {
+        "method": "POST",
+        "url": "\/api\/expert\/scope-renewals\/3\/cancel",
+        "headers": {
+            "Authorization": "Bearer <ACCOUNT_TOKEN>",
+            "Accept": "application\/json",
+            "Content-Type": "application\/json"
+        },
+        "body": {
+            "version": 1
+        }
+    },
+    "response": {
+        "status": 200,
+        "headers": {
+            "Cache-Control": "no-store, private"
+        },
+        "body": {
+            "status": true,
+            "data": {
+                "request": {
+                    "id": 3,
+                    "scopeId": 3,
+                    "status": "cancelled",
+                    "version": 2,
+                    "currentSubmissionId": null,
+                    "replacementScopeId": null,
+                    "createdAt": "2026-09-30T00:00:00.000000Z",
+                    "updatedAt": "2026-09-30T00:00:00.000000Z",
+                    "submittedAt": null,
+                    "decidedAt": "2026-09-30T00:00:00.000000Z",
+                    "scope": {
+                        "id": 3,
+                        "domain": "legal",
+                        "jurisdiction": "Jordan",
+                        "jurisdictionCountry": "JO",
+                        "role": "Consultant",
+                        "serviceTypes": [
+                            "written_consultation"
+                        ],
+                        "languages": [
+                            "ar",
+                            "en"
+                        ],
+                        "status": "active",
+                        "isEffective": true,
+                        "validFrom": "2025-09-30",
+                        "validUntil": "2026-10-15",
+                        "verifiedAt": "2026-09-30T00:00:00.000000Z"
+                    },
+                    "nextReviewAt": "2026-10-15",
+                    "feedback": null,
+                    "history": [
+                        {
+                            "from": "draft",
+                            "to": "cancelled",
+                            "action": "cancel",
+                            "reason": null,
+                            "at": "2026-09-30T00:00:00.000000Z"
+                        }
+                    ],
+                    "submissions": []
+                }
+            }
+        }
+    }
+}

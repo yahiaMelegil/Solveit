@@ -1,0 +1,91 @@
+{
+    "contractVersion": "1.0.0",
+    "synthetic": true,
+    "note": "No deletion or anonymization was executed.",
+    "request": {
+        "method": "GET",
+        "url": "\/api\/user\/data-requests\/2",
+        "headers": {
+            "Accept": "application\/json",
+            "Authorization": "Bearer <ACCOUNT_TOKEN>"
+        },
+        "body": {}
+    },
+    "response": {
+        "status": 200,
+        "headers": {
+            "Content-Type": "application\/json",
+            "Cache-Control": "no-store, private"
+        },
+        "body": {
+            "status": true,
+            "message": "Request completed successfully.",
+            "data": {
+                "item": {
+                    "id": 2,
+                    "reference": "c2a32d19-b2e3-448f-8000-a27ca5f8ec14",
+                    "type": "deletion",
+                    "scope": "account",
+                    "status": "deferred",
+                    "version": 3,
+                    "requestedAt": "2026-09-29T12:00:00.000000Z",
+                    "dueAt": "2026-10-29T12:00:00.000000Z",
+                    "startedAt": "2026-09-29T12:00:00.000000Z",
+                    "completedAt": null,
+                    "reasonCode": "RETENTION_POLICY_PENDING",
+                    "outcome": {
+                        "execution": "deferred",
+                        "deleted": false,
+                        "anonymized": false
+                    },
+                    "downloadAvailable": false,
+                    "downloadExpiresAt": null,
+                    "items": [
+                        {
+                            "recordClass": "account",
+                            "status": "deferred",
+                            "reasonCode": "RETENTION_POLICY_PENDING",
+                            "retainUntil": null,
+                            "reviewAt": "2026-10-29T12:00:00.000000Z"
+                        },
+                        {
+                            "recordClass": "profile",
+                            "status": "deferred",
+                            "reasonCode": "RETENTION_POLICY_PENDING",
+                            "retainUntil": null,
+                            "reviewAt": "2026-10-29T12:00:00.000000Z"
+                        },
+                        {
+                            "recordClass": "preferences",
+                            "status": "deferred",
+                            "reasonCode": "RETENTION_POLICY_PENDING",
+                            "retainUntil": null,
+                            "reviewAt": "2026-10-29T12:00:00.000000Z"
+                        },
+                        {
+                            "recordClass": "contexts",
+                            "status": "deferred",
+                            "reasonCode": "RETENTION_POLICY_PENDING",
+                            "retainUntil": null,
+                            "reviewAt": "2026-10-29T12:00:00.000000Z"
+                        },
+                        {
+                            "recordClass": "consents",
+                            "status": "deferred",
+                            "reasonCode": "RETENTION_POLICY_PENDING",
+                            "retainUntil": null,
+                            "reviewAt": "2026-10-29T12:00:00.000000Z"
+                        },
+                        {
+                            "recordClass": "data_requests",
+                            "status": "deferred",
+                            "reasonCode": "RETENTION_POLICY_PENDING",
+                            "retainUntil": null,
+                            "reviewAt": "2026-10-29T12:00:00.000000Z"
+                        }
+                    ]
+                }
+            }
+        }
+    }
+}

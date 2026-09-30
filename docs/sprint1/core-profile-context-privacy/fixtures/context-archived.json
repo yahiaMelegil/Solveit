@@ -1,0 +1,54 @@
+{
+    "contractVersion": "1.0.0",
+    "synthetic": true,
+    "note": "",
+    "request": {
+        "method": "POST",
+        "url": "\/api\/user\/contexts\/1\/archive",
+        "headers": {
+            "Accept": "application\/json",
+            "Authorization": "Bearer <ACCOUNT_TOKEN>",
+            "Idempotency-Key": "4b48a1f9-576e-4359-be62-d97cdef0c128"
+        },
+        "body": {
+            "expectedVersion": 3
+        }
+    },
+    "response": {
+        "status": 200,
+        "headers": {
+            "Content-Type": "application\/json",
+            "Cache-Control": "no-store, private"
+        },
+        "body": {
+            "status": true,
+            "message": "Request completed successfully.",
+            "data": {
+                "item": {
+                    "id": 1,
+                    "domain": "technology",
+                    "country": "PS",
+                    "status": "archived",
+                    "version": 4,
+                    "schemaVersion": 1,
+                    "title": "Store platform review",
+                    "facts": [
+                        {
+                            "key": "goal",
+                            "value": "Review a mobile booking API",
+                            "source": "user_reported",
+                            "effectiveDate": "2026-01-01"
+                        }
+                    ],
+                    "conflictStatus": "clarified",
+                    "clarification": null,
+                    "allowCaseReuse": true,
+                    "canUseInFutureCase": false,
+                    "visibility": "private",
+                    "createdAt": "2026-09-29T12:00:00.000000Z",
+                    "updatedAt": "2026-09-29T12:00:00.000000Z"
+                }
+            }
+        }
+    }
+}

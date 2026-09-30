@@ -1,0 +1,106 @@
+{
+    "contractVersion": "1.0.0",
+    "synthetic": true,
+    "note": "",
+    "request": {
+        "method": "GET",
+        "url": "\/api\/user\/context-schemas",
+        "headers": {
+            "Accept": "application\/json",
+            "Authorization": "Bearer <ACCOUNT_TOKEN>"
+        },
+        "body": {}
+    },
+    "response": {
+        "status": 200,
+        "headers": {
+            "Content-Type": "application\/json",
+            "Cache-Control": "no-store, private"
+        },
+        "body": {
+            "status": true,
+            "message": "Private context schemas.",
+            "data": {
+                "items": [
+                    {
+                        "domain": "technology",
+                        "schemaVersion": 1,
+                        "factKeys": [
+                            "goal",
+                            "background",
+                            "tools",
+                            "constraints"
+                        ],
+                        "visibility": "private"
+                    },
+                    {
+                        "domain": "business",
+                        "schemaVersion": 1,
+                        "factKeys": [
+                            "goal",
+                            "background",
+                            "business_stage",
+                            "constraints"
+                        ],
+                        "visibility": "private"
+                    },
+                    {
+                        "domain": "design",
+                        "schemaVersion": 1,
+                        "factKeys": [
+                            "goal",
+                            "background",
+                            "audience",
+                            "constraints"
+                        ],
+                        "visibility": "private"
+                    },
+                    {
+                        "domain": "marketing",
+                        "schemaVersion": 1,
+                        "factKeys": [
+                            "goal",
+                            "background",
+                            "channels",
+                            "audience"
+                        ],
+                        "visibility": "private"
+                    },
+                    {
+                        "domain": "career",
+                        "schemaVersion": 1,
+                        "factKeys": [
+                            "goal",
+                            "background",
+                            "skills",
+                            "constraints"
+                        ],
+                        "visibility": "private"
+                    },
+                    {
+                        "domain": "education",
+                        "schemaVersion": 1,
+                        "factKeys": [
+                            "goal",
+                            "background",
+                            "subject",
+                            "constraints"
+                        ],
+                        "visibility": "private"
+                    },
+                    {
+                        "domain": "translation",
+                        "schemaVersion": 1,
+                        "factKeys": [
+                            "goal",
+                            "background",
+                            "source_language",
+                            "target_language"
+                        ],
+                        "visibility": "private"
+                    }
+                ]
+            }
+        }
+    }
+}

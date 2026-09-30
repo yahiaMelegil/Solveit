@@ -1,0 +1,97 @@
+{
+    "contractVersion": "1.0.0",
+    "synthetic": true,
+    "note": "",
+    "request": {
+        "method": "GET",
+        "url": "\/api\/user\/data-requests\/1",
+        "headers": {
+            "Accept": "application\/json",
+            "Authorization": "Bearer <ACCOUNT_TOKEN>"
+        },
+        "body": {}
+    },
+    "response": {
+        "status": 200,
+        "headers": {
+            "Content-Type": "application\/json",
+            "Cache-Control": "no-store, private"
+        },
+        "body": {
+            "status": true,
+            "message": "Request completed successfully.",
+            "data": {
+                "item": {
+                    "id": 1,
+                    "reference": "12dd2b30-def7-4c61-8777-f8fd7a9a2928",
+                    "type": "export",
+                    "scope": "account",
+                    "status": "completed",
+                    "version": 5,
+                    "requestedAt": "2026-09-29T12:00:00.000000Z",
+                    "dueAt": "2026-10-29T12:00:00.000000Z",
+                    "startedAt": "2026-09-29T12:00:00.000000Z",
+                    "completedAt": "2026-09-29T12:00:00.000000Z",
+                    "reasonCode": null,
+                    "outcome": {
+                        "format": "solveit.account-export.v1",
+                        "sections": [
+                            "account",
+                            "profile",
+                            "preferences",
+                            "contexts",
+                            "consents",
+                            "data_requests"
+                        ]
+                    },
+                    "downloadAvailable": false,
+                    "downloadExpiresAt": "2026-09-30T12:00:00.000000Z",
+                    "items": [
+                        {
+                            "recordClass": "account",
+                            "status": "exported",
+                            "reasonCode": null,
+                            "retainUntil": null,
+                            "reviewAt": null
+                        },
+                        {
+                            "recordClass": "profile",
+                            "status": "exported",
+                            "reasonCode": null,
+                            "retainUntil": null,
+                            "reviewAt": null
+                        },
+                        {
+                            "recordClass": "preferences",
+                            "status": "exported",
+                            "reasonCode": null,
+                            "retainUntil": null,
+                            "reviewAt": null
+                        },
+                        {
+                            "recordClass": "contexts",
+                            "status": "exported",
+                            "reasonCode": null,
+                            "retainUntil": null,
+                            "reviewAt": null
+                        },
+                        {
+                            "recordClass": "consents",
+                            "status": "exported",
+                            "reasonCode": null,
+                            "retainUntil": null,
+                            "reviewAt": null
+                        },
+                        {
+                            "recordClass": "data_requests",
+                            "status": "exported",
+                            "reasonCode": null,
+                            "retainUntil": null,
+                            "reviewAt": null
+                        }
+                    ]
+                }
+            }
+        }
+    }
+}

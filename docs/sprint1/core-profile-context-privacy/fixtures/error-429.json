@@ -1,0 +1,30 @@
+{
+    "contractVersion": "1.0.0",
+    "synthetic": true,
+    "note": "",
+    "request": {
+        "method": "POST",
+        "url": "\/api\/user\/security\/confirm-password",
+        "headers": {
+            "Accept": "application\/json",
+            "Authorization": "Bearer <ACCOUNT_TOKEN>"
+        },
+        "body": {
+            "currentPassword": "<CURRENT_PASSWORD>",
+            "purpose": "export"
+        }
+    },
+    "response": {
+        "status": 429,
+        "headers": {
+            "Content-Type": "application\/json",
+            "Cache-Control": "no-store, private",
+            "Retry-After": "60"
+        },
+        "body": {
+            "status": false,
+            "message": "Too many attempts. Please try again later.",
+            "code": "RATE_LIMITED"
+        }
+    }
+}

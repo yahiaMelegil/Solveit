@@ -1,0 +1,150 @@
+{
+    "contractVersion": "1.0.0",
+    "synthetic": true,
+    "note": "",
+    "request": {
+        "method": "GET",
+        "url": "\/api\/user\/contexts\/1\/versions?perPage=10&sortDirection=asc",
+        "headers": {
+            "Accept": "application\/json",
+            "Authorization": "Bearer <ACCOUNT_TOKEN>"
+        },
+        "body": {}
+    },
+    "response": {
+        "status": 200,
+        "headers": {
+            "Content-Type": "application\/json",
+            "Cache-Control": "no-store, private"
+        },
+        "body": {
+            "status": true,
+            "message": "Records retrieved successfully.",
+            "data": {
+                "items": [
+                    {
+                        "version": 1,
+                        "schemaVersion": 1,
+                        "payload": {
+                            "title": "Store platform review",
+                            "facts": [
+                                {
+                                    "key": "goal",
+                                    "value": "Review my store API",
+                                    "source": "user_reported",
+                                    "effectiveDate": "2026-01-01"
+                                }
+                            ],
+                            "domain": "technology",
+                            "country": "PS",
+                            "status": "active",
+                            "allowCaseReuse": true
+                        },
+                        "conflictStatus": "none",
+                        "clarification": null,
+                        "supersedesVersion": null,
+                        "createdAt": "2026-09-29T12:00:00.000000Z"
+                    },
+                    {
+                        "version": 2,
+                        "schemaVersion": 1,
+                        "payload": {
+                            "title": "Store platform review",
+                            "facts": [
+                                {
+                                    "key": "goal",
+                                    "value": "Review a mobile booking API",
+                                    "source": "user_reported",
+                                    "effectiveDate": "2026-01-01"
+                                }
+                            ],
+                            "domain": "technology",
+                            "country": "PS",
+                            "status": "active",
+                            "allowCaseReuse": true
+                        },
+                        "conflictStatus": "unresolved",
+                        "clarification": null,
+                        "supersedesVersion": 1,
+                        "createdAt": "2026-09-29T12:00:00.000000Z"
+                    },
+                    {
+                        "version": 3,
+                        "schemaVersion": 1,
+                        "payload": {
+                            "title": "Store platform review",
+                            "facts": [
+                                {
+                                    "key": "goal",
+                                    "value": "Review a mobile booking API",
+                                    "source": "user_reported",
+                                    "effectiveDate": "2026-01-01"
+                                }
+                            ],
+                            "domain": "technology",
+                            "country": "PS",
+                            "status": "active",
+                            "allowCaseReuse": true
+                        },
+                        "conflictStatus": "clarified",
+                        "clarification": "I entered the old project goal by mistake.",
+                        "supersedesVersion": 2,
+                        "createdAt": "2026-09-29T12:00:00.000000Z"
+                    },
+                    {
+                        "version": 4,
+                        "schemaVersion": 1,
+                        "payload": {
+                            "title": "Store platform review",
+                            "facts": [
+                                {
+                                    "key": "goal",
+                                    "value": "Review a mobile booking API",
+                                    "source": "user_reported",
+                                    "effectiveDate": "2026-01-01"
+                                }
+                            ],
+                            "domain": "technology",
+                            "country": "PS",
+                            "status": "archived",
+                            "allowCaseReuse": true
+                        },
+                        "conflictStatus": "clarified",
+                        "clarification": null,
+                        "supersedesVersion": 3,
+                        "createdAt": "2026-09-29T12:00:00.000000Z"
+                    },
+                    {
+                        "version": 5,
+                        "schemaVersion": 1,
+                        "payload": {
+                            "title": "Store platform review",
+                            "facts": [
+                                {
+                                    "key": "goal",
+                                    "value": "Review a mobile booking API",
+                                    "source": "user_reported",
+                                    "effectiveDate": "2026-01-01"
+                                }
+                            ],
+                            "domain": "technology",
+                            "country": "PS",
+                            "status": "active",
+                            "allowCaseReuse": true
+                        },
+                        "conflictStatus": "clarified",
+                        "clarification": null,
+                        "supersedesVersion": 4,
+                        "createdAt": "2026-09-29T12:00:00.000000Z"
+                    }
+                ],
+                "pagination": {
+                    "currentPage": 1,
+                    "perPage": 10,
+                    "lastPage": 1,
+                    "total": 5
+                }
+            }
+        }
+    }
+}

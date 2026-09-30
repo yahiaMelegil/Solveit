@@ -1,0 +1,109 @@
+{
+    "contractVersion": "1.0.0",
+    "synthetic": true,
+    "request": {
+        "method": "POST",
+        "url": "\/api\/admin\/scope-renewals\/2\/reject",
+        "headers": {
+            "Authorization": "Bearer <ACCOUNT_TOKEN>",
+            "Accept": "application\/json",
+            "Content-Type": "application\/json"
+        },
+        "body": {
+            "version": 4,
+            "reason": "The license status could not be confirmed with the regulator."
+        }
+    },
+    "response": {
+        "status": 200,
+        "headers": {
+            "Cache-Control": "no-store, private"
+        },
+        "body": {
+            "status": true,
+            "data": {
+                "request": {
+                    "id": 2,
+                    "scopeId": 3,
+                    "status": "rejected",
+                    "version": 5,
+                    "currentSubmissionId": 3,
+                    "replacementScopeId": null,
+                    "createdAt": "2026-09-30T00:00:00.000000Z",
+                    "updatedAt": "2026-09-30T00:00:00.000000Z",
+                    "submittedAt": "2026-09-30T00:00:00.000000Z",
+                    "decidedAt": "2026-09-30T00:00:00.000000Z",
+                    "scope": {
+                        "id": 3,
+                        "domain": "legal",
+                        "jurisdiction": "Jordan",
+                        "jurisdictionCountry": "JO",
+                        "role": "Consultant",
+                        "serviceTypes": [
+                            "written_consultation"
+                        ],
+                        "languages": [
+                            "ar",
+                            "en"
+                        ],
+                        "status": "active",
+                        "isEffective": true,
+                        "validFrom": "2025-09-30",
+                        "validUntil": "2026-10-15",
+                        "verifiedAt": "2026-09-30T00:00:00.000000Z"
+                    },
+                    "nextReviewAt": "2026-10-15",
+                    "feedback": "The license status could not be confirmed with the regulator.",
+                    "history": [
+                        {
+                            "from": "draft",
+                            "to": "draft",
+                            "action": "evidence",
+                            "reason": null,
+                            "at": "2026-09-30T00:00:00.000000Z"
+                        },
+                        {
+                            "from": "draft",
+                            "to": "submitted",
+                            "action": "submit",
+                            "reason": null,
+                            "at": "2026-09-30T00:00:00.000000Z"
+                        },
+                        {
+                            "from": "submitted",
+                            "to": "under_review",
+                            "action": "startReview",
+                            "reason": null,
+                            "at": "2026-09-30T00:00:00.000000Z"
+                        },
+                        {
+                            "from": "under_review",
+                            "to": "rejected",
+                            "action": "reject",
+                            "reason": "The license status could not be confirmed with the regulator.",
+                            "at": "2026-09-30T00:00:00.000000Z"
+                        }
+                    ],
+                    "submissions": [
+                        {
+                            "id": 3,
+                            "evidence": {
+                                "type": "credential",
+                                "credentialType": "license",
+                                "name": "Renewed professional license",
+                                "issuer": "Example regulator",
+                                "issueDate": "2026-09-01",
+                                "expiryDate": "2027-08-01"
+                            },
+                            "file": {
+                                "mimeType": "application\/pdf",
+                                "size": 4096
+                            },
+                            "createdAt": "2026-09-30T00:00:00.000000Z"
+                        }
+                    ]
+                }
+            }
+        }
+    }
+}

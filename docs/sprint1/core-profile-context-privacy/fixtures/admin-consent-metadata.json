@@ -1,0 +1,71 @@
+{
+    "contractVersion": "1.0.0",
+    "synthetic": true,
+    "note": "",
+    "request": {
+        "method": "GET",
+        "url": "\/api\/admin\/users\/1\/consents",
+        "headers": {
+            "Accept": "application\/json",
+            "Authorization": "Bearer <ACCOUNT_TOKEN>"
+        },
+        "body": {}
+    },
+    "response": {
+        "status": 200,
+        "headers": {
+            "Content-Type": "application\/json",
+            "Cache-Control": "no-store, private"
+        },
+        "body": {
+            "status": true,
+            "message": "Records retrieved successfully.",
+            "data": {
+                "items": [
+                    {
+                        "id": 4,
+                        "userId": 1,
+                        "purpose": "marketing",
+                        "policyVersionId": 5,
+                        "policyVersion": "demo-1",
+                        "decision": "granted",
+                        "decidedAt": "2026-09-29T12:00:00.000000Z"
+                    },
+                    {
+                        "id": 3,
+                        "userId": 1,
+                        "purpose": "ai_assistance",
+                        "policyVersionId": 7,
+                        "policyVersion": "demo-1",
+                        "decision": "declined",
+                        "decidedAt": "2026-09-29T12:00:00.000000Z"
+                    },
+                    {
+                        "id": 2,
+                        "userId": 1,
+                        "purpose": "marketing",
+                        "policyVersionId": 5,
+                        "policyVersion": "demo-1",
+                        "decision": "withdrawn",
+                        "decidedAt": "2026-09-29T12:00:00.000000Z"
+                    },
+                    {
+                        "id": 1,
+                        "userId": 1,
+                        "purpose": "marketing",
+                        "policyVersionId": 5,
+                        "policyVersion": "demo-1",
+                        "decision": "granted",
+                        "decidedAt": "2026-09-29T12:00:00.000000Z"
+                    }
+                ],
+                "pagination": {
+                    "currentPage": 1,
+                    "perPage": 20,
+                    "lastPage": 1,
+                    "total": 4
+                }
+            }
+        }
+    }
+}
