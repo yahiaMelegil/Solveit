@@ -1,0 +1,14 @@
+{
+  "tests/Feature/Privacy/ContractFixturesTest.php": {
+    "unchanged": true,
+    "sha256": "28c0b5bd86273a779cfe58da1e11200f181c6cef465821946a5f014328b3ce59"
+  },
+  "composer.json": {
+    "unchanged": true,
+    "sha256": "d1671199b6e6b32863f948182b9d70337a961eddd2d032cf4bb95ebefb4a9129"
+  },
+  "composer.lock": {
+    "unchanged": true,
+    "sha256": "da3f491ad782eb3172ebb073051e0fa2a184d4972e121aee9c76be634a42e930"
+  }
+}

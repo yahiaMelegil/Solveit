@@ -1,3 +1,25 @@
+## 2026-10-01 — Case Core v2 / Service Catalog 2.0.0
+- Adds database-managed taxonomy and versioned service policy, review/impact/publish/pause decisions and six independent permissions.
+- Adds explicit evidence-based expert grants per catalog version/jurisdiction; preserves KYC and Renewal R3 boundaries.
+- Adds 12 v2 Case/Admin routes and 23 Catalog routes, multiple service scopes, dynamic intake and partial-consent submission.
+- Blocks readiness without current enabled policy, complete intake/consent/documents and eligible coverage in every jurisdiction.
+- Pins immutable policy/intake/context/document/consent references; flags professional risk without silent snapshot rewrite.
+- v1 submit cannot bypass v2. Self cases only. Optional KYC catalogPolicyVersionId applies stricter service licensing.
+- Fixes ContractFixturesTest clock before seeding. Preserves v2 JSON object/list identity on idempotent replay.
+- Adds development-only Larastan: strict level5 new modules, level0 existing app. No runtime package, .env edit or deployment.
+- Full handoff/fixtures/deployment/verification: docs/sprint2-v2. Earlier entries below are historical results, not current release status.
+
+# 2026-09-30: Sprint 2 Case Core contract 1.0.0
+
+- Added22 routes (20 User incl bootstrap,2 Admin),7 tables, versioned encrypted intake, explicit Context snapshots,
+  deterministic suggestions/suitability, private document revisions/scanning, audited submit/cancel and metadata oversight.
+- Added cases.viewAny and cases.view through additive CasePermissionsSeeder; no Expert access.
+- Existing Sprint0/1 routes and request/response shapes remain unchanged. Account-export v1 exclusion identifier
+  corrected from case_data_not_implemented to case_data_outside_export_v1; section content remains unchanged.
+  Core React export consumers must accept extensible informational exclusion codes. No endpoint deprecation.
+- Known Privacy ContractFixturesTest timing failure explicitly deferred, not skipped or repaired in this branch.
+- Published contract/handoff/mapping/fixtures under docs/api and docs/sprint2. See VERIFICATION.md for actual results.
+
 # API contract changelog
 
 ## 2026-09-30 — Expert scope renewal contract1.0.0 (Sprint1)

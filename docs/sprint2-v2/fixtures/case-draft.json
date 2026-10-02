@@ -1,0 +1,64 @@
+{
+    "contractVersion": "2.0.0",
+    "synthetic": true,
+    "request": {
+        "method": "POST",
+        "url": "\/api\/v2\/user\/cases",
+        "headers": {
+            "Accept": "application\/json",
+            "Authorization": "Bearer <ACCOUNT_TOKEN>",
+            "Idempotency-Key": "21130dcb-0877-4b67-82ae-35c84bc5a35a"
+        },
+        "body": {
+            "title": "مراجعة نظام متجر",
+            "problemDescription": "أحتاج مراجعة برمجية لمتجري",
+            "desiredOutcome": "تحسين موثوقية النظام",
+            "caseCountry": "PS",
+            "language": "ar",
+            "urgency": "normal",
+            "answers": {
+                "immediateDanger": false,
+                "requiresInPerson": false,
+                "ambiguousHighRisk": false
+            }
+        }
+    },
+    "response": {
+        "status": 201,
+        "headers": {
+            "X-Request-ID": "a804cc0c-a3dd-41dd-b0a6-50a7f4cf55cb",
+            "Retry-After": null
+        },
+        "body": {
+            "status": true,
+            "message": "Case updated.",
+            "data": {
+                "item": {
+                    "id": 1,
+                    "contractVersion": "2.0.0",
+                    "status": "draft",
+                    "version": 1,
+                    "intake": {
+                        "privacyChoice": "private",
+                        "subjectType": "self",
+                        "answers": {
+                            "immediateDanger": false,
+                            "requiresInPerson": false,
+                            "ambiguousHighRisk": false
+                        },
+                        "title": "مراجعة نظام متجر",
+                        "problemDescription": "أحتاج مراجعة برمجية لمتجري",
+                        "desiredOutcome": "تحسين موثوقية النظام",
+                        "language": "ar",
+                        "urgency": "normal",
+                        "caseCountry": "PS"
+                    },
+                    "scopes": [],
+                    "readinessCheckedAt": null,
+                    "createdAt": "2026-10-01T12:00:00.000000Z",
+                    "updatedAt": "2026-10-01T12:00:00.000000Z"
+                }
+            }
+        }
+    }
+}

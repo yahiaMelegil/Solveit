@@ -1,0 +1,83 @@
+{
+    "contractVersion": "2.0.0",
+    "synthetic": true,
+    "request": {
+        "method": "PUT",
+        "url": "\/api\/v2\/user\/cases\/1\/scopes",
+        "headers": {
+            "Accept": "application\/json",
+            "Authorization": "Bearer <ACCOUNT_TOKEN>",
+            "Idempotency-Key": "741c6263-4f47-441a-9c1a-cfcd48a82ae8"
+        },
+        "body": {
+            "expectedVersion": 1,
+            "scopes": [
+                {
+                    "catalogEntryId": 42,
+                    "catalogVersion": 1,
+                    "deliveryMode": "written_consultation",
+                    "jurisdictionCodes": [],
+                    "answers": [],
+                    "confirmed": true
+                }
+            ]
+        }
+    },
+    "response": {
+        "status": 200,
+        "headers": {
+            "X-Request-ID": "fb537296-3dfe-4365-a3f1-6b97a91892b9",
+            "Retry-After": null
+        },
+        "body": {
+            "status": true,
+            "message": "Case updated.",
+            "data": {
+                "item": {
+                    "id": 1,
+                    "contractVersion": "2.0.0",
+                    "status": "intake_in_progress",
+                    "version": 2,
+                    "intake": {
+                        "privacyChoice": "private",
+                        "subjectType": "self",
+                        "answers": {
+                            "immediateDanger": false,
+                            "requiresInPerson": false,
+                            "ambiguousHighRisk": false
+                        },
+                        "title": "مراجعة نظام متجر",
+                        "problemDescription": "أحتاج مراجعة برمجية لمتجري",
+                        "desiredOutcome": "تحسين موثوقية النظام",
+                        "language": "ar",
+                        "urgency": "normal",
+                        "caseCountry": "PS"
+                    },
+                    "scopes": [
+                        {
+                            "id": 1,
+                            "catalogEntryId": 42,
+                            "catalogVersion": 1,
+                            "domain": "technology",
+                            "specialty": "technology_software",
+                            "serviceType": "technology_software_advisory",
+                            "deliveryMode": "written_consultation",
+                            "jurisdictionMode": "GLOBAL",
+                            "jurisdictionCodes": [],
+                            "answers": {},
+                            "confirmed": true,
+                            "status": "draft",
+                            "reasonCodes": [],
+                            "policySnapshot": null,
+                            "readinessCheckedAt": null,
+                            "submittedAt": null
+                        }
+                    ],
+                    "readinessCheckedAt": null,
+                    "createdAt": "2026-10-01T12:00:00.000000Z",
+                    "updatedAt": "2026-10-01T12:00:00.000000Z"
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,25 @@
+{
+    "contractVersion": "2.0.0",
+    "synthetic": true,
+    "request": {
+        "method": "GET",
+        "url": "\/api\/v2\/user\/cases",
+        "headers": {
+            "Accept": "application\/json",
+            "Authorization": "Bearer <ACCOUNT_TOKEN>"
+        },
+        "body": {}
+    },
+    "response": {
+        "status": 429,
+        "headers": {
+            "X-Request-ID": "0437b1b6-563b-4d18-9bd1-3ecc4ebe7f69",
+            "Retry-After": "60"
+        },
+        "body": {
+            "status": false,
+            "message": "Too many attempts. Please try again later.",
+            "code": "RATE_LIMITED"
+        }
+    }
+}

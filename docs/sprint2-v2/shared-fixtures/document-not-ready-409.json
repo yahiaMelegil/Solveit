@@ -1,0 +1,27 @@
+{
+    "contractVersion": "1.0.0",
+    "synthetic": true,
+    "request": {
+        "method": "GET",
+        "url": "\/api\/user\/cases\/5\/documents\/1\/versions\/1\/download",
+        "headers": {
+            "Accept": "application\/json",
+            "Authorization": "Bearer <ACCOUNT_TOKEN>",
+            "Content-Type": "application\/json"
+        },
+        "body": {}
+    },
+    "response": {
+        "status": 409,
+        "headers": {
+            "Content-Type": "application\/json",
+            "Cache-Control": "no-store, private",
+            "Retry-After": null
+        },
+        "body": {
+            "status": false,
+            "code": "DOCUMENT_NOT_READY",
+            "message": "This document is not available for the requested operation."
+        }
+    }
+}

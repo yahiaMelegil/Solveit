@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests\Expert\Profile;
 
-use App\Enums\ExpertServiceType;
+use App\Services\Catalog\CatalogTaxonomy;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\Validator;
@@ -19,7 +19,7 @@ class UpdateExpertAvailabilityRequest extends FormRequest
         return [
             'timezone' => ['required', 'string', 'timezone:all'],
             'serviceModes' => ['required', 'array', 'min:1', 'max:5'],
-            'serviceModes.*' => ['required', Rule::enum(ExpertServiceType::class), 'distinct:strict'],
+            'serviceModes.*' => ['required', Rule::in(CatalogTaxonomy::deliveryModes()), 'distinct:strict'],
             'weeklySchedule' => ['required', 'array', 'min:1', 'max:7'],
             'weeklySchedule.*.day' => ['required', Rule::in(['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun']), 'distinct:strict'],
             'weeklySchedule.*.enabled' => ['required', 'boolean'],

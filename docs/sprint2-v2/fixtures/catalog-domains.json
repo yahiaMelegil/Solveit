@@ -1,0 +1,125 @@
+{
+    "contractVersion": "2.0.0",
+    "synthetic": true,
+    "request": {
+        "method": "GET",
+        "url": "\/api\/catalog\/domains",
+        "headers": {
+            "Accept": "application\/json",
+            "Authorization": "Bearer <ACCOUNT_TOKEN>"
+        },
+        "body": {}
+    },
+    "response": {
+        "status": 200,
+        "headers": {
+            "X-Request-ID": "5e3307b9-2b85-4b90-9d90-bf4bc075850b",
+            "Retry-After": null
+        },
+        "body": {
+            "status": true,
+            "message": "Records retrieved successfully.",
+            "data": {
+                "items": [
+                    {
+                        "id": 31,
+                        "kind": "domain",
+                        "code": "translation",
+                        "parentId": null,
+                        "labels": {
+                            "ar": "الترجمة",
+                            "en": "Translation"
+                        },
+                        "regulated": false,
+                        "status": "enabled",
+                        "version": 1
+                    },
+                    {
+                        "id": 30,
+                        "kind": "domain",
+                        "code": "education",
+                        "parentId": null,
+                        "labels": {
+                            "ar": "التعليم",
+                            "en": "Education"
+                        },
+                        "regulated": false,
+                        "status": "enabled",
+                        "version": 1
+                    },
+                    {
+                        "id": 29,
+                        "kind": "domain",
+                        "code": "career",
+                        "parentId": null,
+                        "labels": {
+                            "ar": "المسار المهني",
+                            "en": "Career"
+                        },
+                        "regulated": false,
+                        "status": "enabled",
+                        "version": 1
+                    },
+                    {
+                        "id": 28,
+                        "kind": "domain",
+                        "code": "marketing",
+                        "parentId": null,
+                        "labels": {
+                            "ar": "التسويق",
+                            "en": "Marketing"
+                        },
+                        "regulated": false,
+                        "status": "enabled",
+                        "version": 1
+                    },
+                    {
+                        "id": 27,
+                        "kind": "domain",
+                        "code": "design",
+                        "parentId": null,
+                        "labels": {
+                            "ar": "التصميم",
+                            "en": "Design"
+                        },
+                        "regulated": false,
+                        "status": "enabled",
+                        "version": 1
+                    },
+                    {
+                        "id": 26,
+                        "kind": "domain",
+                        "code": "business",
+                        "parentId": null,
+                        "labels": {
+                            "ar": "الأعمال",
+                            "en": "Business"
+                        },
+                        "regulated": false,
+                        "status": "enabled",
+                        "version": 1
+                    },
+                    {
+                        "id": 25,
+                        "kind": "domain",
+                        "code": "technology",
+                        "parentId": null,
+                        "labels": {
+                            "ar": "التقنية",
+                            "en": "Technology"
+                        },
+                        "regulated": false,
+                        "status": "enabled",
+                        "version": 1
+                    }
+                ],
+                "pagination": {
+                    "currentPage": 1,
+                    "perPage": 20,
+                    "lastPage": 1,
+                    "total": 7
+                }
+            }
+        }
+    }
+}

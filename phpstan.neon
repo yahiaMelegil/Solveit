@@ -1,0 +1,24 @@
+includes:
+    - vendor/larastan/larastan/extension.neon
+
+parameters:
+    level: 5
+    parseModelCastsMethod: true
+    paths:
+        - app/Services/Catalog
+        - app/Http/Controllers/Api/Catalog
+        - app/Http/Controllers/Api/User/Cases/CaseV2Controller.php
+        - app/Http/Controllers/Api/Admin/CaseV2OversightController.php
+        - app/Http/Requests/Catalog
+        - app/Http/Requests/Cases/CaseV2Request.php
+        - app/Http/Requests/Cases/CaseV2AdminRequest.php
+        - app/Http/Resources/Catalog
+        - app/Http/Resources/Cases/CaseV2Resource.php
+        - app/Http/Resources/Cases/CaseV2MetadataResource.php
+        - app/Console/Commands/ReviewCatalogCases.php
+        - app/Models/CatalogNode.php
+        - app/Models/CatalogEntry.php
+        - app/Models/CatalogVersion.php
+        - app/Models/ExpertCatalogGrant.php
+        - app/Models/CaseServiceScope.php
+    tmpDir: storage/framework/cache/phpstan

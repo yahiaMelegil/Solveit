@@ -1,0 +1,31 @@
+{
+    "contractVersion": "2.0.0",
+    "synthetic": true,
+    "request": {
+        "method": "POST",
+        "url": "\/api\/v2\/user\/cases\/5\/submit",
+        "headers": {
+            "Accept": "application\/json",
+            "Authorization": "Bearer <ACCOUNT_TOKEN>",
+            "Idempotency-Key": "509d3874-a01a-4ad3-8ae4-1d591806e2a4"
+        },
+        "body": {
+            "expectedVersion": 3,
+            "selectedScopeIds": [
+                5
+            ]
+        }
+    },
+    "response": {
+        "status": 409,
+        "headers": {
+            "X-Request-ID": "06a382f9-2ce5-4b1e-8eac-ff4d3c57592a",
+            "Retry-After": null
+        },
+        "body": {
+            "status": false,
+            "code": "PARTIAL_CONSENT_REQUIRED",
+            "message": "Explicit partial submission consent is required."
+        }
+    }
+}

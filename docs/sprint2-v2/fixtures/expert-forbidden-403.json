@@ -1,0 +1,25 @@
+{
+    "contractVersion": "2.0.0",
+    "synthetic": true,
+    "request": {
+        "method": "GET",
+        "url": "\/api\/v2\/user\/cases\/1",
+        "headers": {
+            "Accept": "application\/json",
+            "Authorization": "Bearer <ACCOUNT_TOKEN>"
+        },
+        "body": {}
+    },
+    "response": {
+        "status": 403,
+        "headers": {
+            "X-Request-ID": "59941a7a-93b9-4c25-96a2-ea253ea8efcd",
+            "Retry-After": null
+        },
+        "body": {
+            "status": false,
+            "message": "You are not authorized to access the user area.",
+            "code": "FORBIDDEN"
+        }
+    }
+}

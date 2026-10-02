@@ -1,0 +1,102 @@
+{
+    "contractVersion": "1.0.0",
+    "synthetic": true,
+    "request": {
+        "method": "POST",
+        "url": "\/api\/user\/cases\/3\/intake-assessments",
+        "headers": {
+            "Accept": "application\/json",
+            "Idempotency-Key": "<UNIQUE_REQUEST_KEY>",
+            "Authorization": "Bearer <ACCOUNT_TOKEN>",
+            "Content-Type": "application\/json"
+        },
+        "body": {
+            "expectedVersion": 1
+        }
+    },
+    "response": {
+        "status": 200,
+        "headers": {
+            "Content-Type": "application\/json",
+            "Cache-Control": "no-store, private",
+            "Retry-After": null
+        },
+        "body": {
+            "status": true,
+            "message": "Case updated.",
+            "data": {
+                "item": {
+                    "id": 3,
+                    "status": "needs_information",
+                    "version": 2,
+                    "schemaVersion": 1,
+                    "title": "Store API review",
+                    "primaryDomain": "technology",
+                    "domains": [
+                        "technology"
+                    ],
+                    "language": "en",
+                    "jurisdiction": "US",
+                    "urgency": "normal",
+                    "suitability": "unsupported",
+                    "createdAt": "2026-09-30T13:13:22.000000Z",
+                    "updatedAt": "2026-09-30T13:13:22.000000Z",
+                    "submittedAt": null,
+                    "cancelledAt": null,
+                    "intakeVersion": 1,
+                    "intake": {
+                        "schemaVersion": 1,
+                        "privacyChoice": "private",
+                        "subjectType": "self",
+                        "answers": {
+                            "immediateDanger": false,
+                            "requiresInPerson": false,
+                            "ambiguousHighRisk": false
+                        },
+                        "title": "Store API review",
+                        "problemDescription": "I need a software API review for my store.",
+                        "desiredOutcome": "Identify reliability improvements.",
+                        "primaryDomain": "technology",
+                        "jurisdiction": "US",
+                        "language": "en",
+                        "urgency": "normal",
+                        "lastCompletedStep": "review",
+                        "domains": [
+                            "technology"
+                        ],
+                        "serviceNeeds": [
+                            "written_consultation"
+                        ]
+                    },
+                    "confirmedAssessmentId": null,
+                    "confirmedAt": null,
+                    "contextSnapshots": [],
+                    "assessment": {
+                        "id": 4,
+                        "intakeVersionId": 4,
+                        "rulesVersion": "deterministic-1",
+                        "suitability": "unsupported",
+                        "createdAt": "2026-09-30T13:13:22.000000Z",
+                        "origin": "rules",
+                        "reasonCodes": [
+                            "JURISDICTION_NOT_ENABLED"
+                        ],
+                        "clarifications": [],
+                        "suggestions": [
+                            {
+                                "domain": "technology",
+                                "origin": "rules",
+                                "reasonCode": "KEYWORD_INDICATOR"
+                            }
+                        ],
+                        "nextAction": "review_supported_scope",
+                        "triageUrl": null,
+                        "relatedCases": [
+                            2
+                        ]
+                    }
+                }
+            }
+        }
+    }
+}

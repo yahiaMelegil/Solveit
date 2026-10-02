@@ -1,0 +1,294 @@
+{
+    "contractVersion": "2.0.0",
+    "synthetic": true,
+    "request": {
+        "method": "GET",
+        "url": "\/api\/catalog\/specialties",
+        "headers": {
+            "Accept": "application\/json",
+            "Authorization": "Bearer <ACCOUNT_TOKEN>"
+        },
+        "body": {}
+    },
+    "response": {
+        "status": 200,
+        "headers": {
+            "X-Request-ID": "f58d35d7-1229-42c9-bb2f-486c12a7fc12",
+            "Retry-After": null
+        },
+        "body": {
+            "status": true,
+            "message": "Records retrieved successfully.",
+            "data": {
+                "items": [
+                    {
+                        "id": 124,
+                        "kind": "specialty",
+                        "code": "translation_terminology",
+                        "parentId": 31,
+                        "labels": {
+                            "ar": "إدارة المصطلحات",
+                            "en": "Terminology"
+                        },
+                        "regulated": null,
+                        "status": "enabled",
+                        "version": 1
+                    },
+                    {
+                        "id": 122,
+                        "kind": "specialty",
+                        "code": "translation_proofreading",
+                        "parentId": 31,
+                        "labels": {
+                            "ar": "المراجعة اللغوية",
+                            "en": "Proofreading"
+                        },
+                        "regulated": null,
+                        "status": "enabled",
+                        "version": 1
+                    },
+                    {
+                        "id": 120,
+                        "kind": "specialty",
+                        "code": "translation_localization",
+                        "parentId": 31,
+                        "labels": {
+                            "ar": "التوطين اللغوي",
+                            "en": "Localization"
+                        },
+                        "regulated": null,
+                        "status": "enabled",
+                        "version": 1
+                    },
+                    {
+                        "id": 118,
+                        "kind": "specialty",
+                        "code": "translation_general_translation",
+                        "parentId": 31,
+                        "labels": {
+                            "ar": "الترجمة العامة",
+                            "en": "General Translation"
+                        },
+                        "regulated": null,
+                        "status": "enabled",
+                        "version": 1
+                    },
+                    {
+                        "id": 116,
+                        "kind": "specialty",
+                        "code": "education_research_guidance",
+                        "parentId": 30,
+                        "labels": {
+                            "ar": "الإرشاد البحثي دون تنفيذ الأبحاث",
+                            "en": "Research Guidance"
+                        },
+                        "regulated": null,
+                        "status": "enabled",
+                        "version": 1
+                    },
+                    {
+                        "id": 114,
+                        "kind": "specialty",
+                        "code": "education_learning_paths",
+                        "parentId": 30,
+                        "labels": {
+                            "ar": "اختيار المسارات التعليمية",
+                            "en": "Learning Paths"
+                        },
+                        "regulated": null,
+                        "status": "enabled",
+                        "version": 1
+                    },
+                    {
+                        "id": 112,
+                        "kind": "specialty",
+                        "code": "education_training_design",
+                        "parentId": 30,
+                        "labels": {
+                            "ar": "تصميم البرامج التدريبية",
+                            "en": "Training Design"
+                        },
+                        "regulated": null,
+                        "status": "enabled",
+                        "version": 1
+                    },
+                    {
+                        "id": 110,
+                        "kind": "specialty",
+                        "code": "education_academic_guidance",
+                        "parentId": 30,
+                        "labels": {
+                            "ar": "الإرشاد الأكاديمي",
+                            "en": "Academic Guidance"
+                        },
+                        "regulated": null,
+                        "status": "enabled",
+                        "version": 1
+                    },
+                    {
+                        "id": 108,
+                        "kind": "specialty",
+                        "code": "education_learning_plans",
+                        "parentId": 30,
+                        "labels": {
+                            "ar": "خطط التعلم",
+                            "en": "Learning Plans"
+                        },
+                        "regulated": null,
+                        "status": "enabled",
+                        "version": 1
+                    },
+                    {
+                        "id": 106,
+                        "kind": "specialty",
+                        "code": "career_recruitment_guidance",
+                        "parentId": 29,
+                        "labels": {
+                            "ar": "إرشاد التوظيف دون استشارة قانونية",
+                            "en": "Recruitment Guidance"
+                        },
+                        "regulated": null,
+                        "status": "enabled",
+                        "version": 1
+                    },
+                    {
+                        "id": 104,
+                        "kind": "specialty",
+                        "code": "career_career_planning",
+                        "parentId": 29,
+                        "labels": {
+                            "ar": "التخطيط المهني",
+                            "en": "Career Planning"
+                        },
+                        "regulated": null,
+                        "status": "enabled",
+                        "version": 1
+                    },
+                    {
+                        "id": 102,
+                        "kind": "specialty",
+                        "code": "career_interviews",
+                        "parentId": 29,
+                        "labels": {
+                            "ar": "التحضير للمقابلات",
+                            "en": "Interviews"
+                        },
+                        "regulated": null,
+                        "status": "enabled",
+                        "version": 1
+                    },
+                    {
+                        "id": 100,
+                        "kind": "specialty",
+                        "code": "career_linkedin",
+                        "parentId": 29,
+                        "labels": {
+                            "ar": "مراجعة LinkedIn",
+                            "en": "Linkedin"
+                        },
+                        "regulated": null,
+                        "status": "enabled",
+                        "version": 1
+                    },
+                    {
+                        "id": 98,
+                        "kind": "specialty",
+                        "code": "career_cv_review",
+                        "parentId": 29,
+                        "labels": {
+                            "ar": "مراجعة السيرة الذاتية",
+                            "en": "Cv Review"
+                        },
+                        "regulated": null,
+                        "status": "enabled",
+                        "version": 1
+                    },
+                    {
+                        "id": 96,
+                        "kind": "specialty",
+                        "code": "marketing_market_entry",
+                        "parentId": 28,
+                        "labels": {
+                            "ar": "دخول الأسواق",
+                            "en": "Market Entry"
+                        },
+                        "regulated": null,
+                        "status": "enabled",
+                        "version": 1
+                    },
+                    {
+                        "id": 94,
+                        "kind": "specialty",
+                        "code": "marketing_crm",
+                        "parentId": 28,
+                        "labels": {
+                            "ar": "إدارة علاقات العملاء",
+                            "en": "Crm"
+                        },
+                        "regulated": null,
+                        "status": "enabled",
+                        "version": 1
+                    },
+                    {
+                        "id": 92,
+                        "kind": "specialty",
+                        "code": "marketing_marketing_analytics",
+                        "parentId": 28,
+                        "labels": {
+                            "ar": "تحليلات التسويق",
+                            "en": "Marketing Analytics"
+                        },
+                        "regulated": null,
+                        "status": "enabled",
+                        "version": 1
+                    },
+                    {
+                        "id": 90,
+                        "kind": "specialty",
+                        "code": "marketing_campaigns",
+                        "parentId": 28,
+                        "labels": {
+                            "ar": "الحملات الرقمية",
+                            "en": "Campaigns"
+                        },
+                        "regulated": null,
+                        "status": "enabled",
+                        "version": 1
+                    },
+                    {
+                        "id": 88,
+                        "kind": "specialty",
+                        "code": "marketing_content_strategy",
+                        "parentId": 28,
+                        "labels": {
+                            "ar": "استراتيجية المحتوى",
+                            "en": "Content Strategy"
+                        },
+                        "regulated": null,
+                        "status": "enabled",
+                        "version": 1
+                    },
+                    {
+                        "id": 86,
+                        "kind": "specialty",
+                        "code": "marketing_seo",
+                        "parentId": 28,
+                        "labels": {
+                            "ar": "تحسين محركات البحث",
+                            "en": "Seo"
+                        },
+                        "regulated": null,
+                        "status": "enabled",
+                        "version": 1
+                    }
+                ],
+                "pagination": {
+                    "currentPage": 1,
+                    "perPage": 20,
+                    "lastPage": 3,
+                    "total": 41
+                }
+            }
+        }
+    }
+}

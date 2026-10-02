@@ -68,31 +68,43 @@ class User extends Authenticatable implements MustVerifyEmail
         ];
     }
 
+    /** @return HasMany<CaseRecord, $this> */
+    public function cases(): HasMany
+    {
+        return $this->hasMany(CaseRecord::class, 'user_id');
+    }
+
+    /** @return HasOne<UserProfile, $this> */
     public function profile(): HasOne
     {
         return $this->hasOne(UserProfile::class);
     }
 
+    /** @return HasMany<UserProfileVersion, $this> */
     public function profileVersions(): HasMany
     {
         return $this->hasMany(UserProfileVersion::class);
     }
 
+    /** @return HasOne<UserPreference, $this> */
     public function preferences(): HasOne
     {
         return $this->hasOne(UserPreference::class);
     }
 
+    /** @return HasMany<SpecializedContext, $this> */
     public function contexts(): HasMany
     {
         return $this->hasMany(SpecializedContext::class);
     }
 
+    /** @return HasMany<UserConsentRecord, $this> */
     public function consents(): HasMany
     {
         return $this->hasMany(UserConsentRecord::class);
     }
 
+    /** @return HasMany<DataRightsRequest, $this> */
     public function dataRequests(): HasMany
     {
         return $this->hasMany(DataRightsRequest::class);

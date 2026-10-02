@@ -1,0 +1,67 @@
+{
+    "contractVersion": "2.0.0",
+    "synthetic": true,
+    "request": {
+        "method": "GET",
+        "url": "\/api\/v2\/user\/cases\/2\/readiness",
+        "headers": {
+            "Accept": "application\/json",
+            "Authorization": "Bearer <ACCOUNT_TOKEN>"
+        },
+        "body": {}
+    },
+    "response": {
+        "status": 200,
+        "headers": {
+            "X-Request-ID": "a9a216e5-1433-4171-9077-f9d736d684a8",
+            "Retry-After": null
+        },
+        "body": {
+            "status": true,
+            "message": "Request completed successfully.",
+            "data": {
+                "item": {
+                    "status": "safety_referral_required",
+                    "reasonCodes": [
+                        "SAFETY_OR_EMERGENCY"
+                    ],
+                    "scopes": [
+                        {
+                            "scopeId": 2,
+                            "status": "safety_referral_required",
+                            "reasonCodes": [
+                                "SAFETY_OR_EMERGENCY"
+                            ],
+                            "coverage": [
+                                {
+                                    "jurisdictionCode": "GLOBAL",
+                                    "eligibleExperts": 1,
+                                    "minimumExperts": 1
+                                }
+                            ],
+                            "alreadySubmitted": false
+                        }
+                    ],
+                    "suggestions": [
+                        {
+                            "catalogEntryId": 42,
+                            "catalogVersion": 1,
+                            "domain": "technology",
+                            "specialty": "technology_software",
+                            "serviceType": "technology_software_advisory",
+                            "jurisdictionMode": "GLOBAL",
+                            "jurisdictionCodes": [],
+                            "requiredExperts": 1,
+                            "origin": "rules",
+                            "confidence": null,
+                            "reasonCode": "CATALOG_KEYWORD_INDICATOR",
+                            "requiresConfirmation": true
+                        }
+                    ],
+                    "nextAction": "seek_local_emergency_assistance",
+                    "triageUrl": null
+                }
+            }
+        }
+    }
+}

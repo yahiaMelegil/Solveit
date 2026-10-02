@@ -1,0 +1,548 @@
+[
+  {
+    "domain": null,
+    "method": "GET|HEAD",
+    "uri": "api/admin/catalog/entries",
+    "name": "admin.catalog.entries",
+    "action": "App\\Http\\Controllers\\Api\\Catalog\\CatalogController@entries",
+    "middleware": [
+      "api",
+      "App\\Http\\Middleware\\SprintOneApi",
+      "Illuminate\\Auth\\Middleware\\Authenticate:sanctum",
+      "App\\Http\\Middleware\\EnsureUserIsAdmin",
+      "Laravel\\Sanctum\\Http\\Middleware\\CheckAbilities:admin:access",
+      "Illuminate\\Routing\\Middleware\\ThrottleRequests:catalog-admin"
+    ],
+    "path": null
+  },
+  {
+    "domain": null,
+    "method": "POST",
+    "uri": "api/admin/catalog/entries",
+    "name": "admin.catalog.store",
+    "action": "App\\Http\\Controllers\\Api\\Catalog\\CatalogController@write",
+    "middleware": [
+      "api",
+      "App\\Http\\Middleware\\SprintOneApi",
+      "Illuminate\\Auth\\Middleware\\Authenticate:sanctum",
+      "App\\Http\\Middleware\\EnsureUserIsAdmin",
+      "Laravel\\Sanctum\\Http\\Middleware\\CheckAbilities:admin:access",
+      "Illuminate\\Routing\\Middleware\\ThrottleRequests:catalog-admin"
+    ],
+    "path": null
+  },
+  {
+    "domain": null,
+    "method": "GET|HEAD",
+    "uri": "api/admin/catalog/entries/{entry}",
+    "name": "admin.catalog.detail",
+    "action": "App\\Http\\Controllers\\Api\\Catalog\\CatalogController@detail",
+    "middleware": [
+      "api",
+      "App\\Http\\Middleware\\SprintOneApi",
+      "Illuminate\\Auth\\Middleware\\Authenticate:sanctum",
+      "App\\Http\\Middleware\\EnsureUserIsAdmin",
+      "Laravel\\Sanctum\\Http\\Middleware\\CheckAbilities:admin:access",
+      "Illuminate\\Routing\\Middleware\\ThrottleRequests:catalog-admin"
+    ],
+    "path": null
+  },
+  {
+    "domain": null,
+    "method": "POST",
+    "uri": "api/admin/catalog/entries/{entry}/versions",
+    "name": "admin.catalog.version",
+    "action": "App\\Http\\Controllers\\Api\\Catalog\\CatalogController@write",
+    "middleware": [
+      "api",
+      "App\\Http\\Middleware\\SprintOneApi",
+      "Illuminate\\Auth\\Middleware\\Authenticate:sanctum",
+      "App\\Http\\Middleware\\EnsureUserIsAdmin",
+      "Laravel\\Sanctum\\Http\\Middleware\\CheckAbilities:admin:access",
+      "Illuminate\\Routing\\Middleware\\ThrottleRequests:catalog-admin"
+    ],
+    "path": null
+  },
+  {
+    "domain": null,
+    "method": "GET|HEAD",
+    "uri": "api/admin/catalog/grants",
+    "name": "admin.catalog.grants",
+    "action": "App\\Http\\Controllers\\Api\\Catalog\\CatalogController@grants",
+    "middleware": [
+      "api",
+      "App\\Http\\Middleware\\SprintOneApi",
+      "Illuminate\\Auth\\Middleware\\Authenticate:sanctum",
+      "App\\Http\\Middleware\\EnsureUserIsAdmin",
+      "Laravel\\Sanctum\\Http\\Middleware\\CheckAbilities:admin:access",
+      "Illuminate\\Routing\\Middleware\\ThrottleRequests:catalog-admin"
+    ],
+    "path": null
+  },
+  {
+    "domain": null,
+    "method": "POST",
+    "uri": "api/admin/catalog/grants",
+    "name": "admin.catalog.grant",
+    "action": "App\\Http\\Controllers\\Api\\Catalog\\CatalogController@write",
+    "middleware": [
+      "api",
+      "App\\Http\\Middleware\\SprintOneApi",
+      "Illuminate\\Auth\\Middleware\\Authenticate:sanctum",
+      "App\\Http\\Middleware\\EnsureUserIsAdmin",
+      "Laravel\\Sanctum\\Http\\Middleware\\CheckAbilities:admin:access",
+      "Illuminate\\Routing\\Middleware\\ThrottleRequests:catalog-admin"
+    ],
+    "path": null
+  },
+  {
+    "domain": null,
+    "method": "POST",
+    "uri": "api/admin/catalog/grants/{grant}/revoke",
+    "name": "admin.catalog.revoke",
+    "action": "App\\Http\\Controllers\\Api\\Catalog\\CatalogController@write",
+    "middleware": [
+      "api",
+      "App\\Http\\Middleware\\SprintOneApi",
+      "Illuminate\\Auth\\Middleware\\Authenticate:sanctum",
+      "App\\Http\\Middleware\\EnsureUserIsAdmin",
+      "Laravel\\Sanctum\\Http\\Middleware\\CheckAbilities:admin:access",
+      "Illuminate\\Routing\\Middleware\\ThrottleRequests:catalog-admin"
+    ],
+    "path": null
+  },
+  {
+    "domain": null,
+    "method": "GET|HEAD",
+    "uri": "api/admin/catalog/nodes",
+    "name": "admin.catalog.nodes",
+    "action": "App\\Http\\Controllers\\Api\\Catalog\\CatalogController@nodes",
+    "middleware": [
+      "api",
+      "App\\Http\\Middleware\\SprintOneApi",
+      "Illuminate\\Auth\\Middleware\\Authenticate:sanctum",
+      "App\\Http\\Middleware\\EnsureUserIsAdmin",
+      "Laravel\\Sanctum\\Http\\Middleware\\CheckAbilities:admin:access",
+      "Illuminate\\Routing\\Middleware\\ThrottleRequests:catalog-admin"
+    ],
+    "path": null
+  },
+  {
+    "domain": null,
+    "method": "POST",
+    "uri": "api/admin/catalog/nodes",
+    "name": "admin.catalog.node",
+    "action": "App\\Http\\Controllers\\Api\\Catalog\\CatalogController@write",
+    "middleware": [
+      "api",
+      "App\\Http\\Middleware\\SprintOneApi",
+      "Illuminate\\Auth\\Middleware\\Authenticate:sanctum",
+      "App\\Http\\Middleware\\EnsureUserIsAdmin",
+      "Laravel\\Sanctum\\Http\\Middleware\\CheckAbilities:admin:access",
+      "Illuminate\\Routing\\Middleware\\ThrottleRequests:catalog-admin"
+    ],
+    "path": null
+  },
+  {
+    "domain": null,
+    "method": "PATCH",
+    "uri": "api/admin/catalog/nodes/{node}",
+    "name": "admin.catalog.updateNode",
+    "action": "App\\Http\\Controllers\\Api\\Catalog\\CatalogController@write",
+    "middleware": [
+      "api",
+      "App\\Http\\Middleware\\SprintOneApi",
+      "Illuminate\\Auth\\Middleware\\Authenticate:sanctum",
+      "App\\Http\\Middleware\\EnsureUserIsAdmin",
+      "Laravel\\Sanctum\\Http\\Middleware\\CheckAbilities:admin:access",
+      "Illuminate\\Routing\\Middleware\\ThrottleRequests:catalog-admin"
+    ],
+    "path": null
+  },
+  {
+    "domain": null,
+    "method": "GET|HEAD",
+    "uri": "api/admin/catalog/versions/{version}/impact",
+    "name": "admin.catalog.impact",
+    "action": "App\\Http\\Controllers\\Api\\Catalog\\CatalogController@impact",
+    "middleware": [
+      "api",
+      "App\\Http\\Middleware\\SprintOneApi",
+      "Illuminate\\Auth\\Middleware\\Authenticate:sanctum",
+      "App\\Http\\Middleware\\EnsureUserIsAdmin",
+      "Laravel\\Sanctum\\Http\\Middleware\\CheckAbilities:admin:access",
+      "Illuminate\\Routing\\Middleware\\ThrottleRequests:catalog-admin"
+    ],
+    "path": null
+  },
+  {
+    "domain": null,
+    "method": "POST",
+    "uri": "api/admin/catalog/versions/{version}/pause",
+    "name": "admin.catalog.pause",
+    "action": "App\\Http\\Controllers\\Api\\Catalog\\CatalogController@write",
+    "middleware": [
+      "api",
+      "App\\Http\\Middleware\\SprintOneApi",
+      "Illuminate\\Auth\\Middleware\\Authenticate:sanctum",
+      "App\\Http\\Middleware\\EnsureUserIsAdmin",
+      "Laravel\\Sanctum\\Http\\Middleware\\CheckAbilities:admin:access",
+      "Illuminate\\Routing\\Middleware\\ThrottleRequests:catalog-admin"
+    ],
+    "path": null
+  },
+  {
+    "domain": null,
+    "method": "POST",
+    "uri": "api/admin/catalog/versions/{version}/publish",
+    "name": "admin.catalog.publish",
+    "action": "App\\Http\\Controllers\\Api\\Catalog\\CatalogController@write",
+    "middleware": [
+      "api",
+      "App\\Http\\Middleware\\SprintOneApi",
+      "Illuminate\\Auth\\Middleware\\Authenticate:sanctum",
+      "App\\Http\\Middleware\\EnsureUserIsAdmin",
+      "Laravel\\Sanctum\\Http\\Middleware\\CheckAbilities:admin:access",
+      "Illuminate\\Routing\\Middleware\\ThrottleRequests:catalog-admin"
+    ],
+    "path": null
+  },
+  {
+    "domain": null,
+    "method": "POST",
+    "uri": "api/admin/catalog/versions/{version}/review",
+    "name": "admin.catalog.review",
+    "action": "App\\Http\\Controllers\\Api\\Catalog\\CatalogController@write",
+    "middleware": [
+      "api",
+      "App\\Http\\Middleware\\SprintOneApi",
+      "Illuminate\\Auth\\Middleware\\Authenticate:sanctum",
+      "App\\Http\\Middleware\\EnsureUserIsAdmin",
+      "Laravel\\Sanctum\\Http\\Middleware\\CheckAbilities:admin:access",
+      "Illuminate\\Routing\\Middleware\\ThrottleRequests:catalog-admin"
+    ],
+    "path": null
+  },
+  {
+    "domain": null,
+    "method": "GET|HEAD",
+    "uri": "api/admin/catalog/waiting-cases",
+    "name": "admin.catalog.waiting",
+    "action": "App\\Http\\Controllers\\Api\\Catalog\\CatalogController@waiting",
+    "middleware": [
+      "api",
+      "App\\Http\\Middleware\\SprintOneApi",
+      "Illuminate\\Auth\\Middleware\\Authenticate:sanctum",
+      "App\\Http\\Middleware\\EnsureUserIsAdmin",
+      "Laravel\\Sanctum\\Http\\Middleware\\CheckAbilities:admin:access",
+      "Illuminate\\Routing\\Middleware\\ThrottleRequests:catalog-admin"
+    ],
+    "path": null
+  },
+  {
+    "domain": null,
+    "method": "GET|HEAD",
+    "uri": "api/catalog/countries",
+    "name": "catalog.countries",
+    "action": "App\\Http\\Controllers\\Api\\Catalog\\CatalogController@nodes",
+    "middleware": [
+      "api",
+      "App\\Http\\Middleware\\SprintOneApi",
+      "Illuminate\\Routing\\Middleware\\ThrottleRequests:catalog-read"
+    ],
+    "path": null
+  },
+  {
+    "domain": null,
+    "method": "GET|HEAD",
+    "uri": "api/catalog/delivery-modes",
+    "name": "catalog.delivery-modes",
+    "action": "App\\Http\\Controllers\\Api\\Catalog\\CatalogController@nodes",
+    "middleware": [
+      "api",
+      "App\\Http\\Middleware\\SprintOneApi",
+      "Illuminate\\Routing\\Middleware\\ThrottleRequests:catalog-read"
+    ],
+    "path": null
+  },
+  {
+    "domain": null,
+    "method": "GET|HEAD",
+    "uri": "api/catalog/domains",
+    "name": "catalog.domains",
+    "action": "App\\Http\\Controllers\\Api\\Catalog\\CatalogController@nodes",
+    "middleware": [
+      "api",
+      "App\\Http\\Middleware\\SprintOneApi",
+      "Illuminate\\Routing\\Middleware\\ThrottleRequests:catalog-read"
+    ],
+    "path": null
+  },
+  {
+    "domain": null,
+    "method": "GET|HEAD",
+    "uri": "api/catalog/entries",
+    "name": "catalog.entries",
+    "action": "App\\Http\\Controllers\\Api\\Catalog\\CatalogController@entries",
+    "middleware": [
+      "api",
+      "App\\Http\\Middleware\\SprintOneApi",
+      "Illuminate\\Routing\\Middleware\\ThrottleRequests:catalog-read"
+    ],
+    "path": null
+  },
+  {
+    "domain": null,
+    "method": "GET|HEAD",
+    "uri": "api/catalog/intake-schema/{entry}",
+    "name": "catalog.schema",
+    "action": "App\\Http\\Controllers\\Api\\Catalog\\CatalogController@schema",
+    "middleware": [
+      "api",
+      "App\\Http\\Middleware\\SprintOneApi",
+      "Illuminate\\Routing\\Middleware\\ThrottleRequests:catalog-read"
+    ],
+    "path": null
+  },
+  {
+    "domain": null,
+    "method": "GET|HEAD",
+    "uri": "api/catalog/jurisdictions",
+    "name": "catalog.jurisdictions",
+    "action": "App\\Http\\Controllers\\Api\\Catalog\\CatalogController@nodes",
+    "middleware": [
+      "api",
+      "App\\Http\\Middleware\\SprintOneApi",
+      "Illuminate\\Routing\\Middleware\\ThrottleRequests:catalog-read"
+    ],
+    "path": null
+  },
+  {
+    "domain": null,
+    "method": "GET|HEAD",
+    "uri": "api/catalog/services",
+    "name": "catalog.services",
+    "action": "App\\Http\\Controllers\\Api\\Catalog\\CatalogController@nodes",
+    "middleware": [
+      "api",
+      "App\\Http\\Middleware\\SprintOneApi",
+      "Illuminate\\Routing\\Middleware\\ThrottleRequests:catalog-read"
+    ],
+    "path": null
+  },
+  {
+    "domain": null,
+    "method": "GET|HEAD",
+    "uri": "api/catalog/specialties",
+    "name": "catalog.specialties",
+    "action": "App\\Http\\Controllers\\Api\\Catalog\\CatalogController@nodes",
+    "middleware": [
+      "api",
+      "App\\Http\\Middleware\\SprintOneApi",
+      "Illuminate\\Routing\\Middleware\\ThrottleRequests:catalog-read"
+    ],
+    "path": null
+  },
+  {
+    "domain": null,
+    "method": "GET|HEAD",
+    "uri": "api/v2/admin/cases",
+    "name": "v2.admin.cases.index",
+    "action": "App\\Http\\Controllers\\Api\\Admin\\CaseV2OversightController@index",
+    "middleware": [
+      "api",
+      "App\\Http\\Middleware\\SprintOneApi",
+      "Illuminate\\Auth\\Middleware\\Authenticate:sanctum",
+      "App\\Http\\Middleware\\EnsureUserIsAdmin",
+      "Laravel\\Sanctum\\Http\\Middleware\\CheckAbilities:admin:access",
+      "Illuminate\\Routing\\Middleware\\ThrottleRequests:cases-read"
+    ],
+    "path": null
+  },
+  {
+    "domain": null,
+    "method": "GET|HEAD",
+    "uri": "api/v2/admin/cases/{case}",
+    "name": "v2.admin.cases.show",
+    "action": "App\\Http\\Controllers\\Api\\Admin\\CaseV2OversightController@show",
+    "middleware": [
+      "api",
+      "App\\Http\\Middleware\\SprintOneApi",
+      "Illuminate\\Auth\\Middleware\\Authenticate:sanctum",
+      "App\\Http\\Middleware\\EnsureUserIsAdmin",
+      "Laravel\\Sanctum\\Http\\Middleware\\CheckAbilities:admin:access",
+      "Illuminate\\Routing\\Middleware\\ThrottleRequests:cases-read"
+    ],
+    "path": null
+  },
+  {
+    "domain": null,
+    "method": "GET|HEAD",
+    "uri": "api/v2/user/cases",
+    "name": "v2.user.cases.index",
+    "action": "App\\Http\\Controllers\\Api\\User\\Cases\\CaseV2Controller@index",
+    "middleware": [
+      "api",
+      "App\\Http\\Middleware\\SprintOneApi",
+      "Illuminate\\Auth\\Middleware\\Authenticate:sanctum",
+      "App\\Http\\Middleware\\EnsureUserIsRegularUser",
+      "App\\Http\\Middleware\\EnsureUserEmailIsVerified",
+      "Laravel\\Sanctum\\Http\\Middleware\\CheckAbilities:user:access",
+      "Illuminate\\Routing\\Middleware\\ThrottleRequests:cases-read"
+    ],
+    "path": null
+  },
+  {
+    "domain": null,
+    "method": "POST",
+    "uri": "api/v2/user/cases",
+    "name": "v2.user.cases.store",
+    "action": "App\\Http\\Controllers\\Api\\User\\Cases\\CaseV2Controller@write",
+    "middleware": [
+      "api",
+      "App\\Http\\Middleware\\SprintOneApi",
+      "Illuminate\\Auth\\Middleware\\Authenticate:sanctum",
+      "App\\Http\\Middleware\\EnsureUserIsRegularUser",
+      "App\\Http\\Middleware\\EnsureUserEmailIsVerified",
+      "Laravel\\Sanctum\\Http\\Middleware\\CheckAbilities:user:access",
+      "Illuminate\\Routing\\Middleware\\ThrottleRequests:cases-create"
+    ],
+    "path": null
+  },
+  {
+    "domain": null,
+    "method": "GET|HEAD",
+    "uri": "api/v2/user/cases/{case}",
+    "name": "v2.user.cases.show",
+    "action": "App\\Http\\Controllers\\Api\\User\\Cases\\CaseV2Controller@show",
+    "middleware": [
+      "api",
+      "App\\Http\\Middleware\\SprintOneApi",
+      "Illuminate\\Auth\\Middleware\\Authenticate:sanctum",
+      "App\\Http\\Middleware\\EnsureUserIsRegularUser",
+      "App\\Http\\Middleware\\EnsureUserEmailIsVerified",
+      "Laravel\\Sanctum\\Http\\Middleware\\CheckAbilities:user:access",
+      "Illuminate\\Routing\\Middleware\\ThrottleRequests:cases-read"
+    ],
+    "path": null
+  },
+  {
+    "domain": null,
+    "method": "PATCH",
+    "uri": "api/v2/user/cases/{case}",
+    "name": "v2.user.cases.update",
+    "action": "App\\Http\\Controllers\\Api\\User\\Cases\\CaseV2Controller@write",
+    "middleware": [
+      "api",
+      "App\\Http\\Middleware\\SprintOneApi",
+      "Illuminate\\Auth\\Middleware\\Authenticate:sanctum",
+      "App\\Http\\Middleware\\EnsureUserIsRegularUser",
+      "App\\Http\\Middleware\\EnsureUserEmailIsVerified",
+      "Laravel\\Sanctum\\Http\\Middleware\\CheckAbilities:user:access",
+      "Illuminate\\Routing\\Middleware\\ThrottleRequests:cases-autosave"
+    ],
+    "path": null
+  },
+  {
+    "domain": null,
+    "method": "POST",
+    "uri": "api/v2/user/cases/{case}/assessment",
+    "name": "v2.user.cases.assessment",
+    "action": "App\\Http\\Controllers\\Api\\User\\Cases\\CaseV2Controller@write",
+    "middleware": [
+      "api",
+      "App\\Http\\Middleware\\SprintOneApi",
+      "Illuminate\\Auth\\Middleware\\Authenticate:sanctum",
+      "App\\Http\\Middleware\\EnsureUserIsRegularUser",
+      "App\\Http\\Middleware\\EnsureUserEmailIsVerified",
+      "Laravel\\Sanctum\\Http\\Middleware\\CheckAbilities:user:access",
+      "Illuminate\\Routing\\Middleware\\ThrottleRequests:cases-write"
+    ],
+    "path": null
+  },
+  {
+    "domain": null,
+    "method": "POST",
+    "uri": "api/v2/user/cases/{case}/cancel",
+    "name": "v2.user.cases.cancel",
+    "action": "App\\Http\\Controllers\\Api\\User\\Cases\\CaseV2Controller@write",
+    "middleware": [
+      "api",
+      "App\\Http\\Middleware\\SprintOneApi",
+      "Illuminate\\Auth\\Middleware\\Authenticate:sanctum",
+      "App\\Http\\Middleware\\EnsureUserIsRegularUser",
+      "App\\Http\\Middleware\\EnsureUserEmailIsVerified",
+      "Laravel\\Sanctum\\Http\\Middleware\\CheckAbilities:user:access",
+      "Illuminate\\Routing\\Middleware\\ThrottleRequests:cases-write"
+    ],
+    "path": null
+  },
+  {
+    "domain": null,
+    "method": "POST",
+    "uri": "api/v2/user/cases/{case}/confirm",
+    "name": "v2.user.cases.confirm",
+    "action": "App\\Http\\Controllers\\Api\\User\\Cases\\CaseV2Controller@write",
+    "middleware": [
+      "api",
+      "App\\Http\\Middleware\\SprintOneApi",
+      "Illuminate\\Auth\\Middleware\\Authenticate:sanctum",
+      "App\\Http\\Middleware\\EnsureUserIsRegularUser",
+      "App\\Http\\Middleware\\EnsureUserEmailIsVerified",
+      "Laravel\\Sanctum\\Http\\Middleware\\CheckAbilities:user:access",
+      "Illuminate\\Routing\\Middleware\\ThrottleRequests:cases-write"
+    ],
+    "path": null
+  },
+  {
+    "domain": null,
+    "method": "GET|HEAD",
+    "uri": "api/v2/user/cases/{case}/readiness",
+    "name": "v2.user.cases.readiness",
+    "action": "App\\Http\\Controllers\\Api\\User\\Cases\\CaseV2Controller@readiness",
+    "middleware": [
+      "api",
+      "App\\Http\\Middleware\\SprintOneApi",
+      "Illuminate\\Auth\\Middleware\\Authenticate:sanctum",
+      "App\\Http\\Middleware\\EnsureUserIsRegularUser",
+      "App\\Http\\Middleware\\EnsureUserEmailIsVerified",
+      "Laravel\\Sanctum\\Http\\Middleware\\CheckAbilities:user:access",
+      "Illuminate\\Routing\\Middleware\\ThrottleRequests:cases-read"
+    ],
+    "path": null
+  },
+  {
+    "domain": null,
+    "method": "PUT",
+    "uri": "api/v2/user/cases/{case}/scopes",
+    "name": "v2.user.cases.scopes",
+    "action": "App\\Http\\Controllers\\Api\\User\\Cases\\CaseV2Controller@write",
+    "middleware": [
+      "api",
+      "App\\Http\\Middleware\\SprintOneApi",
+      "Illuminate\\Auth\\Middleware\\Authenticate:sanctum",
+      "App\\Http\\Middleware\\EnsureUserIsRegularUser",
+      "App\\Http\\Middleware\\EnsureUserEmailIsVerified",
+      "Laravel\\Sanctum\\Http\\Middleware\\CheckAbilities:user:access",
+      "Illuminate\\Routing\\Middleware\\ThrottleRequests:cases-write"
+    ],
+    "path": null
+  },
+  {
+    "domain": null,
+    "method": "POST",
+    "uri": "api/v2/user/cases/{case}/submit",
+    "name": "v2.user.cases.submit",
+    "action": "App\\Http\\Controllers\\Api\\User\\Cases\\CaseV2Controller@write",
+    "middleware": [
+      "api",
+      "App\\Http\\Middleware\\SprintOneApi",
+      "Illuminate\\Auth\\Middleware\\Authenticate:sanctum",
+      "App\\Http\\Middleware\\EnsureUserIsRegularUser",
+      "App\\Http\\Middleware\\EnsureUserEmailIsVerified",
+      "Laravel\\Sanctum\\Http\\Middleware\\CheckAbilities:user:access",
+      "Illuminate\\Routing\\Middleware\\ThrottleRequests:cases-submit"
+    ],
+    "path": null
+  }
+]

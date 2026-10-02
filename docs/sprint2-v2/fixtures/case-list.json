@@ -1,0 +1,42 @@
+{
+    "contractVersion": "2.0.0",
+    "synthetic": true,
+    "request": {
+        "method": "GET",
+        "url": "\/api\/v2\/user\/cases?perPage=10&status=ready_for_matching",
+        "headers": {
+            "Accept": "application\/json",
+            "Authorization": "Bearer <ACCOUNT_TOKEN>"
+        },
+        "body": {}
+    },
+    "response": {
+        "status": 200,
+        "headers": {
+            "X-Request-ID": "0ddd85d8-0e19-4970-8a0f-a7490aef6981",
+            "Retry-After": null
+        },
+        "body": {
+            "status": true,
+            "message": "Records retrieved successfully.",
+            "data": {
+                "items": [
+                    {
+                        "id": 1,
+                        "status": "ready_for_matching",
+                        "version": 5,
+                        "title": "مراجعة نظام متجر",
+                        "caseCountry": "PS",
+                        "updatedAt": "2026-10-01T12:00:00.000000Z"
+                    }
+                ],
+                "pagination": {
+                    "currentPage": 1,
+                    "perPage": 10,
+                    "lastPage": 1,
+                    "total": 1
+                }
+            }
+        }
+    }
+}

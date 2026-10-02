@@ -1,0 +1,378 @@
+{
+  "totalApiRoutes": 130,
+  "newRoutes": 22,
+  "routes": [
+    {
+      "domain": null,
+      "method": "GET|HEAD",
+      "uri": "api/admin/cases",
+      "name": "admin.cases.index",
+      "action": "App\\Http\\Controllers\\Api\\Admin\\CaseOversightController@index",
+      "middleware": [
+        "api",
+        "App\\Http\\Middleware\\SprintOneApi",
+        "Illuminate\\Auth\\Middleware\\Authenticate:sanctum",
+        "App\\Http\\Middleware\\EnsureUserIsAdmin",
+        "Laravel\\Sanctum\\Http\\Middleware\\CheckAbilities:admin:access",
+        "Illuminate\\Routing\\Middleware\\ThrottleRequests:cases-read"
+      ],
+      "path": null
+    },
+    {
+      "domain": null,
+      "method": "GET|HEAD",
+      "uri": "api/admin/cases/{case}",
+      "name": "admin.cases.show",
+      "action": "App\\Http\\Controllers\\Api\\Admin\\CaseOversightController@show",
+      "middleware": [
+        "api",
+        "App\\Http\\Middleware\\SprintOneApi",
+        "Illuminate\\Auth\\Middleware\\Authenticate:sanctum",
+        "App\\Http\\Middleware\\EnsureUserIsAdmin",
+        "Laravel\\Sanctum\\Http\\Middleware\\CheckAbilities:admin:access",
+        "Illuminate\\Routing\\Middleware\\ThrottleRequests:cases-read"
+      ],
+      "path": null
+    },
+    {
+      "domain": null,
+      "method": "GET|HEAD",
+      "uri": "api/user/case-intake/bootstrap",
+      "name": "user.case-intake.bootstrap",
+      "action": "App\\Http\\Controllers\\Api\\User\\Cases\\CaseController@bootstrap",
+      "middleware": [
+        "api",
+        "App\\Http\\Middleware\\SprintOneApi",
+        "Illuminate\\Auth\\Middleware\\Authenticate:sanctum",
+        "App\\Http\\Middleware\\EnsureUserIsRegularUser",
+        "App\\Http\\Middleware\\EnsureUserEmailIsVerified",
+        "Laravel\\Sanctum\\Http\\Middleware\\CheckAbilities:user:access",
+        "Illuminate\\Routing\\Middleware\\ThrottleRequests:cases-read"
+      ],
+      "path": null
+    },
+    {
+      "domain": null,
+      "method": "GET|HEAD",
+      "uri": "api/user/cases",
+      "name": "user.cases.index",
+      "action": "App\\Http\\Controllers\\Api\\User\\Cases\\CaseController@index",
+      "middleware": [
+        "api",
+        "App\\Http\\Middleware\\SprintOneApi",
+        "Illuminate\\Auth\\Middleware\\Authenticate:sanctum",
+        "App\\Http\\Middleware\\EnsureUserIsRegularUser",
+        "App\\Http\\Middleware\\EnsureUserEmailIsVerified",
+        "Laravel\\Sanctum\\Http\\Middleware\\CheckAbilities:user:access",
+        "Illuminate\\Routing\\Middleware\\ThrottleRequests:cases-read"
+      ],
+      "path": null
+    },
+    {
+      "domain": null,
+      "method": "POST",
+      "uri": "api/user/cases",
+      "name": "user.cases.store",
+      "action": "App\\Http\\Controllers\\Api\\User\\Cases\\CaseController@store",
+      "middleware": [
+        "api",
+        "App\\Http\\Middleware\\SprintOneApi",
+        "Illuminate\\Auth\\Middleware\\Authenticate:sanctum",
+        "App\\Http\\Middleware\\EnsureUserIsRegularUser",
+        "App\\Http\\Middleware\\EnsureUserEmailIsVerified",
+        "Laravel\\Sanctum\\Http\\Middleware\\CheckAbilities:user:access",
+        "Illuminate\\Routing\\Middleware\\ThrottleRequests:cases-create"
+      ],
+      "path": null
+    },
+    {
+      "domain": null,
+      "method": "GET|HEAD",
+      "uri": "api/user/cases/{case}",
+      "name": "user.cases.show",
+      "action": "App\\Http\\Controllers\\Api\\User\\Cases\\CaseController@show",
+      "middleware": [
+        "api",
+        "App\\Http\\Middleware\\SprintOneApi",
+        "Illuminate\\Auth\\Middleware\\Authenticate:sanctum",
+        "App\\Http\\Middleware\\EnsureUserIsRegularUser",
+        "App\\Http\\Middleware\\EnsureUserEmailIsVerified",
+        "Laravel\\Sanctum\\Http\\Middleware\\CheckAbilities:user:access",
+        "Illuminate\\Routing\\Middleware\\ThrottleRequests:cases-read"
+      ],
+      "path": null
+    },
+    {
+      "domain": null,
+      "method": "PATCH",
+      "uri": "api/user/cases/{case}",
+      "name": "user.cases.update",
+      "action": "App\\Http\\Controllers\\Api\\User\\Cases\\CaseController@update",
+      "middleware": [
+        "api",
+        "App\\Http\\Middleware\\SprintOneApi",
+        "Illuminate\\Auth\\Middleware\\Authenticate:sanctum",
+        "App\\Http\\Middleware\\EnsureUserIsRegularUser",
+        "App\\Http\\Middleware\\EnsureUserEmailIsVerified",
+        "Laravel\\Sanctum\\Http\\Middleware\\CheckAbilities:user:access",
+        "Illuminate\\Routing\\Middleware\\ThrottleRequests:cases-autosave"
+      ],
+      "path": null
+    },
+    {
+      "domain": null,
+      "method": "POST",
+      "uri": "api/user/cases/{case}/cancel",
+      "name": "user.cases.cancel",
+      "action": "App\\Http\\Controllers\\Api\\User\\Cases\\CaseController@cancel",
+      "middleware": [
+        "api",
+        "App\\Http\\Middleware\\SprintOneApi",
+        "Illuminate\\Auth\\Middleware\\Authenticate:sanctum",
+        "App\\Http\\Middleware\\EnsureUserIsRegularUser",
+        "App\\Http\\Middleware\\EnsureUserEmailIsVerified",
+        "Laravel\\Sanctum\\Http\\Middleware\\CheckAbilities:user:access",
+        "Illuminate\\Routing\\Middleware\\ThrottleRequests:cases-write"
+      ],
+      "path": null
+    },
+    {
+      "domain": null,
+      "method": "GET|HEAD",
+      "uri": "api/user/cases/{case}/clarifications",
+      "name": "user.cases.clarifications.index",
+      "action": "App\\Http\\Controllers\\Api\\User\\Cases\\CaseController@clarifications",
+      "middleware": [
+        "api",
+        "App\\Http\\Middleware\\SprintOneApi",
+        "Illuminate\\Auth\\Middleware\\Authenticate:sanctum",
+        "App\\Http\\Middleware\\EnsureUserIsRegularUser",
+        "App\\Http\\Middleware\\EnsureUserEmailIsVerified",
+        "Laravel\\Sanctum\\Http\\Middleware\\CheckAbilities:user:access",
+        "Illuminate\\Routing\\Middleware\\ThrottleRequests:cases-read"
+      ],
+      "path": null
+    },
+    {
+      "domain": null,
+      "method": "POST",
+      "uri": "api/user/cases/{case}/context-snapshots",
+      "name": "user.cases.context-snapshots.store",
+      "action": "App\\Http\\Controllers\\Api\\User\\Cases\\CaseController@attach",
+      "middleware": [
+        "api",
+        "App\\Http\\Middleware\\SprintOneApi",
+        "Illuminate\\Auth\\Middleware\\Authenticate:sanctum",
+        "App\\Http\\Middleware\\EnsureUserIsRegularUser",
+        "App\\Http\\Middleware\\EnsureUserEmailIsVerified",
+        "Laravel\\Sanctum\\Http\\Middleware\\CheckAbilities:user:access",
+        "Illuminate\\Routing\\Middleware\\ThrottleRequests:cases-write"
+      ],
+      "path": null
+    },
+    {
+      "domain": null,
+      "method": "DELETE",
+      "uri": "api/user/cases/{case}/context-snapshots/{snapshot}",
+      "name": "user.cases.context-snapshots.destroy",
+      "action": "App\\Http\\Controllers\\Api\\User\\Cases\\CaseController@detach",
+      "middleware": [
+        "api",
+        "App\\Http\\Middleware\\SprintOneApi",
+        "Illuminate\\Auth\\Middleware\\Authenticate:sanctum",
+        "App\\Http\\Middleware\\EnsureUserIsRegularUser",
+        "App\\Http\\Middleware\\EnsureUserEmailIsVerified",
+        "Laravel\\Sanctum\\Http\\Middleware\\CheckAbilities:user:access",
+        "Illuminate\\Routing\\Middleware\\ThrottleRequests:cases-write"
+      ],
+      "path": null
+    },
+    {
+      "domain": null,
+      "method": "GET|HEAD",
+      "uri": "api/user/cases/{case}/documents",
+      "name": "user.cases.documents.index",
+      "action": "App\\Http\\Controllers\\Api\\User\\Cases\\CaseDocumentController@index",
+      "middleware": [
+        "api",
+        "App\\Http\\Middleware\\SprintOneApi",
+        "Illuminate\\Auth\\Middleware\\Authenticate:sanctum",
+        "App\\Http\\Middleware\\EnsureUserIsRegularUser",
+        "App\\Http\\Middleware\\EnsureUserEmailIsVerified",
+        "Laravel\\Sanctum\\Http\\Middleware\\CheckAbilities:user:access",
+        "Illuminate\\Routing\\Middleware\\ThrottleRequests:cases-read"
+      ],
+      "path": null
+    },
+    {
+      "domain": null,
+      "method": "POST",
+      "uri": "api/user/cases/{case}/documents",
+      "name": "user.cases.documents.store",
+      "action": "App\\Http\\Controllers\\Api\\User\\Cases\\CaseDocumentController@store",
+      "middleware": [
+        "api",
+        "App\\Http\\Middleware\\SprintOneApi",
+        "Illuminate\\Auth\\Middleware\\Authenticate:sanctum",
+        "App\\Http\\Middleware\\EnsureUserIsRegularUser",
+        "App\\Http\\Middleware\\EnsureUserEmailIsVerified",
+        "Laravel\\Sanctum\\Http\\Middleware\\CheckAbilities:user:access",
+        "Illuminate\\Routing\\Middleware\\ThrottleRequests:cases-upload"
+      ],
+      "path": null
+    },
+    {
+      "domain": null,
+      "method": "DELETE",
+      "uri": "api/user/cases/{case}/documents/{document}",
+      "name": "user.cases.documents.destroy",
+      "action": "App\\Http\\Controllers\\Api\\User\\Cases\\CaseDocumentController@destroy",
+      "middleware": [
+        "api",
+        "App\\Http\\Middleware\\SprintOneApi",
+        "Illuminate\\Auth\\Middleware\\Authenticate:sanctum",
+        "App\\Http\\Middleware\\EnsureUserIsRegularUser",
+        "App\\Http\\Middleware\\EnsureUserEmailIsVerified",
+        "Laravel\\Sanctum\\Http\\Middleware\\CheckAbilities:user:access",
+        "Illuminate\\Routing\\Middleware\\ThrottleRequests:cases-write"
+      ],
+      "path": null
+    },
+    {
+      "domain": null,
+      "method": "GET|HEAD",
+      "uri": "api/user/cases/{case}/documents/{document}/versions",
+      "name": "user.cases.documents.versions.index",
+      "action": "App\\Http\\Controllers\\Api\\User\\Cases\\CaseDocumentController@versions",
+      "middleware": [
+        "api",
+        "App\\Http\\Middleware\\SprintOneApi",
+        "Illuminate\\Auth\\Middleware\\Authenticate:sanctum",
+        "App\\Http\\Middleware\\EnsureUserIsRegularUser",
+        "App\\Http\\Middleware\\EnsureUserEmailIsVerified",
+        "Laravel\\Sanctum\\Http\\Middleware\\CheckAbilities:user:access",
+        "Illuminate\\Routing\\Middleware\\ThrottleRequests:cases-read"
+      ],
+      "path": null
+    },
+    {
+      "domain": null,
+      "method": "POST",
+      "uri": "api/user/cases/{case}/documents/{document}/versions",
+      "name": "user.cases.documents.versions.store",
+      "action": "App\\Http\\Controllers\\Api\\User\\Cases\\CaseDocumentController@replace",
+      "middleware": [
+        "api",
+        "App\\Http\\Middleware\\SprintOneApi",
+        "Illuminate\\Auth\\Middleware\\Authenticate:sanctum",
+        "App\\Http\\Middleware\\EnsureUserIsRegularUser",
+        "App\\Http\\Middleware\\EnsureUserEmailIsVerified",
+        "Laravel\\Sanctum\\Http\\Middleware\\CheckAbilities:user:access",
+        "Illuminate\\Routing\\Middleware\\ThrottleRequests:cases-upload"
+      ],
+      "path": null
+    },
+    {
+      "domain": null,
+      "method": "GET|HEAD",
+      "uri": "api/user/cases/{case}/documents/{document}/versions/{version}/download",
+      "name": "user.cases.documents.versions.download",
+      "action": "App\\Http\\Controllers\\Api\\User\\Cases\\CaseDocumentController@download",
+      "middleware": [
+        "api",
+        "App\\Http\\Middleware\\SprintOneApi",
+        "Illuminate\\Auth\\Middleware\\Authenticate:sanctum",
+        "App\\Http\\Middleware\\EnsureUserIsRegularUser",
+        "App\\Http\\Middleware\\EnsureUserEmailIsVerified",
+        "Laravel\\Sanctum\\Http\\Middleware\\CheckAbilities:user:access",
+        "Illuminate\\Routing\\Middleware\\ThrottleRequests:cases-download"
+      ],
+      "path": null
+    },
+    {
+      "domain": null,
+      "method": "GET|HEAD",
+      "uri": "api/user/cases/{case}/documents/{document}/versions/{version}/preview",
+      "name": "user.cases.documents.versions.preview",
+      "action": "App\\Http\\Controllers\\Api\\User\\Cases\\CaseDocumentController@preview",
+      "middleware": [
+        "api",
+        "App\\Http\\Middleware\\SprintOneApi",
+        "Illuminate\\Auth\\Middleware\\Authenticate:sanctum",
+        "App\\Http\\Middleware\\EnsureUserIsRegularUser",
+        "App\\Http\\Middleware\\EnsureUserEmailIsVerified",
+        "Laravel\\Sanctum\\Http\\Middleware\\CheckAbilities:user:access",
+        "Illuminate\\Routing\\Middleware\\ThrottleRequests:cases-download"
+      ],
+      "path": null
+    },
+    {
+      "domain": null,
+      "method": "POST",
+      "uri": "api/user/cases/{case}/intake-assessments",
+      "name": "user.cases.intake-assessments.store",
+      "action": "App\\Http\\Controllers\\Api\\User\\Cases\\CaseController@assess",
+      "middleware": [
+        "api",
+        "App\\Http\\Middleware\\SprintOneApi",
+        "Illuminate\\Auth\\Middleware\\Authenticate:sanctum",
+        "App\\Http\\Middleware\\EnsureUserIsRegularUser",
+        "App\\Http\\Middleware\\EnsureUserEmailIsVerified",
+        "Laravel\\Sanctum\\Http\\Middleware\\CheckAbilities:user:access",
+        "Illuminate\\Routing\\Middleware\\ThrottleRequests:cases-assessment"
+      ],
+      "path": null
+    },
+    {
+      "domain": null,
+      "method": "POST",
+      "uri": "api/user/cases/{case}/intake-confirmation",
+      "name": "user.cases.intake-confirmation.store",
+      "action": "App\\Http\\Controllers\\Api\\User\\Cases\\CaseController@confirm",
+      "middleware": [
+        "api",
+        "App\\Http\\Middleware\\SprintOneApi",
+        "Illuminate\\Auth\\Middleware\\Authenticate:sanctum",
+        "App\\Http\\Middleware\\EnsureUserIsRegularUser",
+        "App\\Http\\Middleware\\EnsureUserEmailIsVerified",
+        "Laravel\\Sanctum\\Http\\Middleware\\CheckAbilities:user:access",
+        "Illuminate\\Routing\\Middleware\\ThrottleRequests:cases-write"
+      ],
+      "path": null
+    },
+    {
+      "domain": null,
+      "method": "POST",
+      "uri": "api/user/cases/{case}/submit",
+      "name": "user.cases.submit",
+      "action": "App\\Http\\Controllers\\Api\\User\\Cases\\CaseController@submit",
+      "middleware": [
+        "api",
+        "App\\Http\\Middleware\\SprintOneApi",
+        "Illuminate\\Auth\\Middleware\\Authenticate:sanctum",
+        "App\\Http\\Middleware\\EnsureUserIsRegularUser",
+        "App\\Http\\Middleware\\EnsureUserEmailIsVerified",
+        "Laravel\\Sanctum\\Http\\Middleware\\CheckAbilities:user:access",
+        "Illuminate\\Routing\\Middleware\\ThrottleRequests:cases-submit"
+      ],
+      "path": null
+    },
+    {
+      "domain": null,
+      "method": "GET|HEAD",
+      "uri": "api/user/cases/{case}/timeline",
+      "name": "user.cases.timeline.index",
+      "action": "App\\Http\\Controllers\\Api\\User\\Cases\\CaseController@timeline",
+      "middleware": [
+        "api",
+        "App\\Http\\Middleware\\SprintOneApi",
+        "Illuminate\\Auth\\Middleware\\Authenticate:sanctum",
+        "App\\Http\\Middleware\\EnsureUserIsRegularUser",
+        "App\\Http\\Middleware\\EnsureUserEmailIsVerified",
+        "Laravel\\Sanctum\\Http\\Middleware\\CheckAbilities:user:access",
+        "Illuminate\\Routing\\Middleware\\ThrottleRequests:cases-read"
+      ],
+      "path": null
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+{
+    "contractVersion": "2.0.0",
+    "synthetic": true,
+    "request": {
+        "method": "POST",
+        "url": "\/api\/v2\/user\/cases\/1\/assessment",
+        "headers": {
+            "Accept": "application\/json",
+            "Authorization": "Bearer <ACCOUNT_TOKEN>",
+            "Idempotency-Key": "9a32a71a-24a6-4dc8-8ddb-ffff48380f5f"
+        },
+        "body": {
+            "expectedVersion": 2
+        }
+    },
+    "response": {
+        "status": 200,
+        "headers": {
+            "X-Request-ID": "d5d9a1ec-701f-40c0-9a60-5c35a42bcd8c",
+            "Retry-After": null
+        },
+        "body": {
+            "status": true,
+            "message": "Case updated.",
+            "data": {
+                "item": {
+                    "id": 1,
+                    "contractVersion": "2.0.0",
+                    "status": "intake_in_progress",
+                    "version": 3,
+                    "intake": {
+                        "privacyChoice": "private",
+                        "subjectType": "self",
+                        "answers": {
+                            "immediateDanger": false,
+                            "requiresInPerson": false,
+                            "ambiguousHighRisk": false
+                        },
+                        "title": "مراجعة نظام متجر",
+                        "problemDescription": "أحتاج مراجعة برمجية لمتجري",
+                        "desiredOutcome": "تحسين موثوقية النظام",
+                        "language": "ar",
+                        "urgency": "normal",
+                        "caseCountry": "PS"
+                    },
+                    "scopes": [
+                        {
+                            "id": 1,
+                            "catalogEntryId": 42,
+                            "catalogVersion": 1,
+                            "domain": "technology",
+                            "specialty": "technology_software",
+                            "serviceType": "technology_software_advisory",
+                            "deliveryMode": "written_consultation",
+                            "jurisdictionMode": "GLOBAL",
+                            "jurisdictionCodes": [],
+                            "answers": {},
+                            "confirmed": true,
+                            "status": "intake_in_progress",
+                            "reasonCodes": [],
+                            "policySnapshot": null,
+                            "readinessCheckedAt": "2026-10-01T12:00:00.000000Z",
+                            "submittedAt": null
+                        }
+                    ],
+                    "readinessCheckedAt": "2026-10-01T12:00:00.000000Z",
+                    "createdAt": "2026-10-01T12:00:00.000000Z",
+                    "updatedAt": "2026-10-01T12:00:00.000000Z"
+                }
+            }
+        }
+    }
+}

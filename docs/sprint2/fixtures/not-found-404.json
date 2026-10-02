@@ -1,0 +1,27 @@
+{
+    "contractVersion": "1.0.0",
+    "synthetic": true,
+    "request": {
+        "method": "GET",
+        "url": "\/api\/user\/cases\/999999",
+        "headers": {
+            "Accept": "application\/json",
+            "Authorization": "Bearer <ACCOUNT_TOKEN>",
+            "Content-Type": "application\/json"
+        },
+        "body": {}
+    },
+    "response": {
+        "status": 404,
+        "headers": {
+            "Content-Type": "application\/json",
+            "Cache-Control": "no-store, private",
+            "Retry-After": null
+        },
+        "body": {
+            "status": false,
+            "code": "RESOURCE_NOT_FOUND",
+            "message": "The requested resource was not found."
+        }
+    }
+}

@@ -1,247 +1,217 @@
-# Sprint1 Changes-Only — revision3, 2026-09-30 Asia/Jerusalem
+# SolveIt Back-End Sprint 2 Repair
 
-Cumulative against the uploaded Sprint0 baseline (local commit681ca02). Preserve paths and apply
-at the Laravel root. Includes all previously delivered core-profile/context/consent/privacy work
-plus the approved single-scope Expert renewal addition. This replaces revision2 of this bundle.
-No deleted files; no vendor, credentials, local databases or unchanged Composer manifests included.
+## Package purpose
 
-Latest:227 tests/1564 assertions passed; focused renewal16/231; Pint and Composer strict passed;
-108 API routes,15 renewal routes;2 new renewal tables (13 total new Sprint1 tables).
-Final deletion/anonymization remain excluded. Staging/React and production DB concurrency untested.
-Full deployment/permissions/states/field mapping/handoff/20 renewal fixtures:
-docs/sprint1/expert-renewal/README.md and docs/api/SPRINT1_EXPERT_RENEWAL_CONTRACT.md.
-Earlier privacy fixtures and queue verification remain included. Do not confuse historical release
-counts with the latest cumulative verification under docs/sprint1/expert-renewal/verification/.
+This changes-only package repairs the incomplete Sprint 2 merge in
+`backend-2-10-2026.zip` (SHA-256:
+`5e6f1fdd0beef6f99bd50b23ebe74528bb000669c7ef033cec043f82ff5e4a9e`).
 
-## Upgrade commands
+The repair was reconstructed from the verified Case Core delivery
+`backend-30-9-2026 (2).zip` (SHA-256:
+`5cbfeb68ec9f76287bb5b49261708fc33e0a485eb2f6d4f77b6e8661953dc128`)
+and the existing Sprint 2 v2/catalog delta. It preserves both the legacy Case Core
+contract and the v2 catalog-backed contract.
+
+## Summary
+
+- Added project files: **89**
+- Modified project files: **3**
+- Package metadata: `CHANGED_FILES.md` and `PACKAGE_MANIFEST.sha256`
+- Not included: `.env`, secrets, `vendor/`, caches, logs, generated views,
+  runtime storage, test output, or unrelated files.
+- The obsolete `SPRINT2_MANIFEST.sha256` was intentionally excluded because its
+  historical hashes no longer describe the merged v2 tree. Use the package-level
+  `PACKAGE_MANIFEST.sha256` instead.
+
+## Added files
+
+- `.github/workflows/backend-ci.yml` — added/restored.
+- `app/Console/Commands/CleanupCaseDocuments.php` — added/restored.
+- `app/Console/Commands/RetryCaseDocumentScans.php` — added/restored.
+- `app/Enums/CaseDocumentScanStatus.php` — added/restored.
+- `app/Enums/CaseStatus.php` — added/restored.
+- `app/Enums/CaseSuitability.php` — added/restored.
+- `app/Http/Controllers/Api/Admin/CaseOversightController.php` — added/restored.
+- `app/Http/Controllers/Api/User/Cases/CaseController.php` — added/restored.
+- `app/Http/Controllers/Api/User/Cases/CaseDocumentController.php` — added/restored.
+- `app/Http/Requests/Cases/CaseListRequest.php` — added/restored.
+- `app/Http/Requests/Cases/CaseMutationRequest.php` — added/restored.
+- `app/Http/Requests/Cases/CaseRequest.php` — added/restored.
+- `app/Http/Requests/Cases/IntakeRequest.php` — added/restored.
+- `app/Http/Resources/Cases/CaseAssessmentResource.php` — added/restored.
+- `app/Http/Resources/Cases/CaseContextSnapshotResource.php` — added/restored.
+- `app/Http/Resources/Cases/CaseDocumentResource.php` — added/restored.
+- `app/Http/Resources/Cases/CaseDocumentVersionResource.php` — added/restored.
+- `app/Http/Resources/Cases/CaseTimelineResource.php` — added/restored.
+- `app/Jobs/Cases/ScanCaseDocument.php` — added/restored.
+- `app/Models/CaseContextSnapshot.php` — added/restored.
+- `app/Models/CaseDocumentVersion.php` — added/restored.
+- `app/Models/CaseDomain.php` — added/restored.
+- `app/Models/CaseIntakeAssessment.php` — added/restored.
+- `app/Models/CaseIntakeVersion.php` — added/restored.
+- `app/Policies/CaseRecordPolicy.php` — added/restored.
+- `app/Services/Cases/CaseDocumentStorage.php` — added/restored.
+- `app/Services/Cases/ClamAvDocumentScanner.php` — added/restored.
+- `app/Services/Cases/DocumentScanner.php` — added/restored.
+- `database/factories/CaseRecordFactory.php` — added/restored.
+- `database/migrations/2026_09_30_100000_create_case_core_tables.php` — added/restored.
+- `database/seeders/CasePermissionsSeeder.php` — added/restored.
+- `docs/adr/ADR-003-case-core-intake.md` — added/restored.
+- `docs/sprint2/API_SCHEMAS.json` — added/restored.
+- `docs/sprint2/DATABASE_MAPPING.md` — added/restored.
+- `docs/sprint2/DECISIONS_AND_LIMITATIONS.md` — added/restored.
+- `docs/sprint2/ENDPOINTS.md` — added/restored.
+- `docs/sprint2/PERMISSION_MATRIX.md` — added/restored.
+- `docs/sprint2/STATE_TRANSITIONS.md` — added/restored.
+- `docs/sprint2/fixtures/admin-detail.json` — added/restored.
+- `docs/sprint2/fixtures/admin-list.json` — added/restored.
+- `docs/sprint2/fixtures/autosave-complete.json` — added/restored.
+- `docs/sprint2/fixtures/bootstrap.json` — added/restored.
+- `docs/sprint2/fixtures/cancelled.json` — added/restored.
+- `docs/sprint2/fixtures/case-list.json` — added/restored.
+- `docs/sprint2/fixtures/clarifications.json` — added/restored.
+- `docs/sprint2/fixtures/context-attached.json` — added/restored.
+- `docs/sprint2/fixtures/context-detached.json` — added/restored.
+- `docs/sprint2/fixtures/document-clean.json` — added/restored.
+- `docs/sprint2/fixtures/document-deleted.json` — added/restored.
+- `docs/sprint2/fixtures/document-failed.json` — added/restored.
+- `docs/sprint2/fixtures/document-list.json` — added/restored.
+- `docs/sprint2/fixtures/document-not-ready-409.json` — added/restored.
+- `docs/sprint2/fixtures/document-pending.json` — added/restored.
+- `docs/sprint2/fixtures/document-rejected.json` — added/restored.
+- `docs/sprint2/fixtures/document-replacement-failed.json` — added/restored.
+- `docs/sprint2/fixtures/document-replacement-rejected.json` — added/restored.
+- `docs/sprint2/fixtures/document-versions.json` — added/restored.
+- `docs/sprint2/fixtures/draft-created.json` — added/restored.
+- `docs/sprint2/fixtures/draft-resumed.json` — added/restored.
+- `docs/sprint2/fixtures/guest-401.json` — added/restored.
+- `docs/sprint2/fixtures/human-triage-required.json` — added/restored.
+- `docs/sprint2/fixtures/incomplete-submit-422.json` — added/restored.
+- `docs/sprint2/fixtures/intake-confirmed.json` — added/restored.
+- `docs/sprint2/fixtures/needs-information.json` — added/restored.
+- `docs/sprint2/fixtures/not-found-404.json` — added/restored.
+- `docs/sprint2/fixtures/rate-limit-429.json` — added/restored.
+- `docs/sprint2/fixtures/ready-for-matching.json` — added/restored.
+- `docs/sprint2/fixtures/suitable-assessment.json` — added/restored.
+- `docs/sprint2/fixtures/timeline.json` — added/restored.
+- `docs/sprint2/fixtures/unsupported.json` — added/restored.
+- `docs/sprint2/fixtures/urgent.json` — added/restored.
+- `docs/sprint2/fixtures/validation-422.json` — added/restored.
+- `docs/sprint2/fixtures/version-conflict-409.json` — added/restored.
+- `docs/sprint2/fixtures/wrong-account-403.json` — added/restored.
+- `docs/sprint2/verification/baseline-preservation.json` — added/restored.
+- `docs/sprint2/verification/composer.txt` — added/restored.
+- `docs/sprint2/verification/final-review.json` — added/restored.
+- `docs/sprint2/verification/focused-tests.json` — added/restored.
+- `docs/sprint2/verification/full-suite.json` — added/restored.
+- `docs/sprint2/verification/migrations.json` — added/restored.
+- `docs/sprint2/verification/pint.json` — added/restored.
+- `docs/sprint2/verification/queue-integration.json` — added/restored.
+- `docs/sprint2/verification/routes.json` — added/restored.
+- `docs/sprint2/verification/static-analysis-unavailable.txt` — added/restored.
+- `docs/sprint2/verification/syntax.json` — added/restored.
+- `routes/cases_v2.php` — added/restored.
+- `scripts/verify_case_concurrency.py` — added/restored.
+- `tests/Feature/Cases/CaseContextAndAdminTest.php` — added/restored.
+- `tests/Feature/Cases/CaseDocumentsTest.php` — added/restored.
+
+## Modified files
+
+- `app/Services/Privacy/AccountExport.php` — modified.
+- `config/filesystems.php` — modified.
+- `routes/cases.php` — modified.
+
+## Why the three existing files were modified
+
+- `routes/cases.php`: restores the original 22-route Case Core API. The v2 routes
+  remain isolated in the added `routes/cases_v2.php` file.
+- `config/filesystems.php`: restores the private `case-documents` disk required
+  for encrypted Case attachments and protected downloads/previews.
+- `app/Services/Privacy/AccountExport.php`: records Case data as outside the v1
+  privacy export contract instead of incorrectly claiming that Case data is not
+  implemented.
+
+## Apply order
+
+1. Back up the database, the private storage volume, and the current source tree.
+2. Extract this ZIP directly over the Laravel project root, preserving paths.
+3. Install the locked dependencies:
+
+   ```bash
+   composer install --no-dev --no-interaction --prefer-dist --optimize-autoloader
+   ```
+
+4. Clear stale bootstrap/config/route caches:
+
+   ```bash
+   php artisan optimize:clear
+   ```
+
+5. Apply the additive migrations and permissions/catalog data:
+
+   ```bash
+   php artisan migrate --force
+   php artisan db:seed --class=CasePermissionsSeeder --force
+   php artisan db:seed --class=CatalogPermissionsSeeder --force
+   php artisan db:seed --class=ServiceCatalogSeeder --force
+   ```
+
+6. Provision a real malware scanner and queue worker. In production,
+   `CASE_DOCUMENT_SCANNER_BINARY` must point to the absolute executable path
+   (for example `/usr/bin/clamscan`). Do not use the test scanner.
+7. Rebuild production caches and restart workers:
+
+   ```bash
+   php artisan config:cache
+   php artisan route:cache
+   php artisan queue:restart
+   php artisan schedule:list
+   ```
+
+8. Confirm that both route generations exist:
+
+   ```bash
+   php artisan route:list --path=api/user/cases
+   php artisan route:list --path=api/v2/user/cases
+   ```
+
+## Verification commands
 
 ```bash
-php artisan migrate --force
-php artisan db:seed --class=PrivacyPermissionsSeeder --force
-php artisan db:seed --class=ExpertRenewalPermissionsSeeder --force
-php artisan route:cache
-php artisan route:list --name=renewals
+composer validate --strict
+vendor/bin/pint --test
+vendor/bin/phpstan analyse --no-progress --memory-limit=1G
+vendor/bin/phpstan analyse -c phpstan-legacy.neon --no-progress --memory-limit=1G
+php artisan migrate:fresh --env=testing
+php artisan test
 ```
 
-Review backups/private storage and test production-engine migrations/concurrency on Staging first.
-No project .env modification is supplied. Re-running AuthorizationSeeder on existing installations
-would sync role grants; use the additive seeders above instead. Read existing privacy deployment
-gates for policy publication, rights SLA, worker and scheduler. No irreversible data executor added.
+Use an isolated test database for `migrate:fresh`; never run it against
+production. The actual reconstructed tree passed 282/282 tests with 2548
+assertions, Pint, both PHPStan configurations, route caching, and a clean
+migration/seed cycle.
 
-## Shared-file impact of renewal
+## Deployment notes
 
-- Expert and ExpertVerifiedScope: renewal relations only.
-- ExpertKycWorkflow: expose its existing evidence validator for reuse; no validation rule rewrite.
-- AdminPermission/AuthorizationSeeder: four independent renewal permissions; upgrade seeder additive.
-- bootstrap/app.php: typed409 errors on explicitly enrolled SprintOneApi routes, including renewal.
-- routes/api.php: load additive renewal routes.
-- ADR002/docs: record accepted addition, retain previous decisions/evidence as historical.
+- The `case-documents` disk is private and local by default. A multi-instance
+  deployment must mount shared durable private storage or configure an equivalent
+  private object-storage disk before accepting uploads.
+- Run a supervised queue worker. Scans remain pending without a worker.
+- Keep the same `APP_KEY` on all web and worker instances; changing it makes
+  encrypted Case documents unreadable.
+- Run the scheduler so orphan cleanup and catalog review jobs execute.
+- Validate the v1 and v2 API contracts against the real staging database engine.
 
-## Added files (187)
+## Rollback
 
-- SPRINT1_MANIFEST.sha256
-- app/Console/Commands/CleanupPrivacyArtifacts.php
-- app/Console/Commands/RetryPrivacyRequest.php
-- app/Enums/ConsentDecision.php
-- app/Enums/ContextStatus.php
-- app/Enums/DataRequestStatus.php
-- app/Enums/DataRequestType.php
-- app/Enums/ExpertRenewalStatus.php
-- app/Exceptions/PrivacyException.php
-- app/Http/Controllers/Api/Admin/ExpertRenewalController.php
-- app/Http/Controllers/Api/Admin/PrivacyOversightController.php
-- app/Http/Controllers/Api/Expert/Renewal/RenewalController.php
-- app/Http/Controllers/Api/User/Privacy/ConsentController.php
-- app/Http/Controllers/Api/User/Privacy/ContextController.php
-- app/Http/Controllers/Api/User/Privacy/DataRightsRequestController.php
-- app/Http/Controllers/Api/User/Privacy/PasswordConfirmationController.php
-- app/Http/Controllers/Api/User/Privacy/PreferenceController.php
-- app/Http/Controllers/Api/User/Privacy/PrivacyResponses.php
-- app/Http/Controllers/Api/User/Privacy/ProfileController.php
-- app/Http/Middleware/SprintOneApi.php
-- app/Http/Requests/Expert/Renewal/RenewalRequest.php
-- app/Http/Requests/User/Privacy/ConfirmPasswordRequest.php
-- app/Http/Requests/User/Privacy/ConsentDecisionRequest.php
-- app/Http/Requests/User/Privacy/ContextRequest.php
-- app/Http/Requests/User/Privacy/ListPrivacyRequest.php
-- app/Http/Requests/User/Privacy/PrivacyRequest.php
-- app/Http/Requests/User/Privacy/StoreDataRequest.php
-- app/Http/Requests/User/Privacy/TransitionRequest.php
-- app/Http/Requests/User/Privacy/UpdatePreferencesRequest.php
-- app/Http/Requests/User/Privacy/UpdateProfileRequest.php
-- app/Http/Resources/Admin/ConsentMetadataResource.php
-- app/Http/Resources/Admin/DataRequestMetadataResource.php
-- app/Http/Resources/Expert/Renewal/RenewalResource.php
-- app/Http/Resources/User/Privacy/ConsentResource.php
-- app/Http/Resources/User/Privacy/ContextResource.php
-- app/Http/Resources/User/Privacy/ContextVersionResource.php
-- app/Http/Resources/User/Privacy/DataRequestResource.php
-- app/Http/Resources/User/Privacy/PolicyResource.php
-- app/Http/Resources/User/Privacy/PreferenceResource.php
-- app/Http/Resources/User/Privacy/ProfileResource.php
-- app/Jobs/Privacy/ProcessDataRightsRequest.php
-- app/Models/AuditEvent.php
-- app/Models/Concerns/AppendOnly.php
-- app/Models/DataRightsRequest.php
-- app/Models/DataRightsRequestItem.php
-- app/Models/ExpertScopeRenewal.php
-- app/Models/ExpertScopeRenewalSubmission.php
-- app/Models/IdempotencyRecord.php
-- app/Models/PolicyVersion.php
-- app/Models/SpecializedContext.php
-- app/Models/SpecializedContextVersion.php
-- app/Models/UserConsentRecord.php
-- app/Models/UserPreference.php
-- app/Models/UserProfile.php
-- app/Models/UserProfileVersion.php
-- app/Policies/DataRightsRequestPolicy.php
-- app/Policies/ExpertScopeRenewalPolicy.php
-- app/Policies/SpecializedContextPolicy.php
-- app/Policies/UserConsentRecordPolicy.php
-- app/Policies/UserPreferencePolicy.php
-- app/Policies/UserProfilePolicy.php
-- app/Services/Expert/Renewal/ScopeRenewal.php
-- app/Services/Privacy/AccountExport.php
-- app/Services/Privacy/AuditWriter.php
-- app/Services/Privacy/ConsentManager.php
-- app/Services/Privacy/ContextManager.php
-- app/Services/Privacy/DataRightsManager.php
-- app/Services/Privacy/ExportDownload.php
-- app/Services/Privacy/Idempotency.php
-- app/Services/Privacy/PasswordConfirmation.php
-- app/Services/Privacy/ProfileManager.php
-- config/context_schemas.php
-- config/countries.php
-- config/data_rights.php
-- config/expert_renewal.php
-- config/privacy.php
-- database/migrations/2026_09_29_000000_create_user_privacy_foundation.php
-- database/migrations/2026_09_30_000000_create_expert_scope_renewals.php
-- database/seeders/ExpertRenewalPermissionsSeeder.php
-- database/seeders/PrivacyDevelopmentSeeder.php
-- database/seeders/PrivacyPermissionsSeeder.php
-- docs/api/SPRINT1_EXPERT_RENEWAL_CONTRACT.md
-- docs/api/SPRINT1_PROFILE_CONTEXT_PRIVACY_CONTRACT.md
-- docs/sprint1/core-profile-context-privacy/AUDIT_AND_SECURITY.md
-- docs/sprint1/core-profile-context-privacy/DATABASE_MAPPING.md
-- docs/sprint1/core-profile-context-privacy/DEFERRED.md
-- docs/sprint1/core-profile-context-privacy/DEPLOYMENT.md
-- docs/sprint1/core-profile-context-privacy/ENDPOINTS.md
-- docs/sprint1/core-profile-context-privacy/EXPERT_REVIEW_BOUNDARY.md
-- docs/sprint1/core-profile-context-privacy/FRONTEND_HANDOFF.md
-- docs/sprint1/core-profile-context-privacy/PERMISSION_MATRIX.md
-- docs/sprint1/core-profile-context-privacy/QUEUE_INTEGRATION.md
-- docs/sprint1/core-profile-context-privacy/README.md
-- docs/sprint1/core-profile-context-privacy/RELEASE_REPORT_AR.md
-- docs/sprint1/core-profile-context-privacy/STATE_TRANSITIONS.md
-- docs/sprint1/core-profile-context-privacy/VERIFICATION.md
-- docs/sprint1/core-profile-context-privacy/fixtures/admin-consent-metadata.json
-- docs/sprint1/core-profile-context-privacy/fixtures/admin-request-detail.json
-- docs/sprint1/core-profile-context-privacy/fixtures/admin-request-list.json
-- docs/sprint1/core-profile-context-privacy/fixtures/consent-declined.json
-- docs/sprint1/core-profile-context-privacy/fixtures/consent-granted.json
-- docs/sprint1/core-profile-context-privacy/fixtures/consent-history.json
-- docs/sprint1/core-profile-context-privacy/fixtures/consent-regranted.json
-- docs/sprint1/core-profile-context-privacy/fixtures/consent-withdrawn.json
-- docs/sprint1/core-profile-context-privacy/fixtures/consents-effective.json
-- docs/sprint1/core-profile-context-privacy/fixtures/consents-initial.json
-- docs/sprint1/core-profile-context-privacy/fixtures/consents-reconsent-required.json
-- docs/sprint1/core-profile-context-privacy/fixtures/context-archived.json
-- docs/sprint1/core-profile-context-privacy/fixtures/context-clarified.json
-- docs/sprint1/core-profile-context-privacy/fixtures/context-conflict.json
-- docs/sprint1/core-profile-context-privacy/fixtures/context-created.json
-- docs/sprint1/core-profile-context-privacy/fixtures/context-deleted.json
-- docs/sprint1/core-profile-context-privacy/fixtures/context-detail.json
-- docs/sprint1/core-profile-context-privacy/fixtures/context-list.json
-- docs/sprint1/core-profile-context-privacy/fixtures/context-restored.json
-- docs/sprint1/core-profile-context-privacy/fixtures/context-schemas.json
-- docs/sprint1/core-profile-context-privacy/fixtures/context-versions.json
-- docs/sprint1/core-profile-context-privacy/fixtures/data-request-list.json
-- docs/sprint1/core-profile-context-privacy/fixtures/deletion-cancelled.json
-- docs/sprint1/core-profile-context-privacy/fixtures/deletion-deferred.json
-- docs/sprint1/core-profile-context-privacy/fixtures/deletion-requested.json
-- docs/sprint1/core-profile-context-privacy/fixtures/error-401.json
-- docs/sprint1/core-profile-context-privacy/fixtures/error-403-reauthentication.json
-- docs/sprint1/core-profile-context-privacy/fixtures/error-403.json
-- docs/sprint1/core-profile-context-privacy/fixtures/error-404.json
-- docs/sprint1/core-profile-context-privacy/fixtures/error-409-export-expired.json
-- docs/sprint1/core-profile-context-privacy/fixtures/error-409.json
-- docs/sprint1/core-profile-context-privacy/fixtures/error-422.json
-- docs/sprint1/core-profile-context-privacy/fixtures/error-429.json
-- docs/sprint1/core-profile-context-privacy/fixtures/export-completed.json
-- docs/sprint1/core-profile-context-privacy/fixtures/export-download.json
-- docs/sprint1/core-profile-context-privacy/fixtures/export-expired.json
-- docs/sprint1/core-profile-context-privacy/fixtures/export-failed.json
-- docs/sprint1/core-profile-context-privacy/fixtures/export-processing.json
-- docs/sprint1/core-profile-context-privacy/fixtures/export-requested.json
-- docs/sprint1/core-profile-context-privacy/fixtures/password-confirmed.json
-- docs/sprint1/core-profile-context-privacy/fixtures/policies.json
-- docs/sprint1/core-profile-context-privacy/fixtures/preferences-initial.json
-- docs/sprint1/core-profile-context-privacy/fixtures/preferences-updated.json
-- docs/sprint1/core-profile-context-privacy/fixtures/profile-initial.json
-- docs/sprint1/core-profile-context-privacy/fixtures/profile-updated.json
-- docs/sprint1/core-profile-context-privacy/fixtures/request-rejected-reserved.json
-- docs/sprint1/core-profile-context-privacy/verification/api-routes.json
-- docs/sprint1/core-profile-context-privacy/verification/migrations.json
-- docs/sprint1/core-profile-context-privacy/verification/queue-integration.json
-- docs/sprint1/core-profile-context-privacy/verification/results.json
-- docs/sprint1/expert-renewal/README.md
-- docs/sprint1/expert-renewal/VERIFICATION.md
-- docs/sprint1/expert-renewal/fixtures/admin-detail.json
-- docs/sprint1/expert-renewal/fixtures/admin-queue.json
-- docs/sprint1/expert-renewal/fixtures/approved.json
-- docs/sprint1/expert-renewal/fixtures/cancelled.json
-- docs/sprint1/expert-renewal/fixtures/draft.json
-- docs/sprint1/expert-renewal/fixtures/duplicate-409.json
-- docs/sprint1/expert-renewal/fixtures/error-401.json
-- docs/sprint1/expert-renewal/fixtures/error-403.json
-- docs/sprint1/expert-renewal/fixtures/error-404.json
-- docs/sprint1/expert-renewal/fixtures/evidence-replaced.json
-- docs/sprint1/expert-renewal/fixtures/evidence-uploaded.json
-- docs/sprint1/expert-renewal/fixtures/expert-detail.json
-- docs/sprint1/expert-renewal/fixtures/expert-list.json
-- docs/sprint1/expert-renewal/fixtures/needs-information.json
-- docs/sprint1/expert-renewal/fixtures/rejected.json
-- docs/sprint1/expert-renewal/fixtures/resubmitted.json
-- docs/sprint1/expert-renewal/fixtures/scopes-eligible.json
-- docs/sprint1/expert-renewal/fixtures/submitted.json
-- docs/sprint1/expert-renewal/fixtures/under-review.json
-- docs/sprint1/expert-renewal/fixtures/validation-422.json
-- docs/sprint1/expert-renewal/verification/focused-tests.json
-- docs/sprint1/expert-renewal/verification/full-suite.json
-- docs/sprint1/expert-renewal/verification/migrations.json
-- docs/sprint1/expert-renewal/verification/pint.json
-- docs/sprint1/expert-renewal/verification/results.json
-- docs/sprint1/expert-renewal/verification/routes.json
-- routes/expert_renewals.php
-- routes/privacy.php
-- tests/Feature/Expert/Renewal/ScopeRenewalTest.php
-- tests/Feature/Privacy/AuthorizationPrivacyTest.php
-- tests/Feature/Privacy/BoundaryPrivacyTest.php
-- tests/Feature/Privacy/ConsentPrivacyTest.php
-- tests/Feature/Privacy/ContextPrivacyTest.php
-- tests/Feature/Privacy/ContractFixturesTest.php
-- tests/Feature/Privacy/DataRightsPrivacyTest.php
-- tests/Feature/Privacy/PrivacyTestCase.php
-- tests/Feature/Privacy/ProfilePrivacyTest.php
-- tests/Feature/Privacy/QueuedPrivacyIntegrationTest.php
-- tests/Support/privacy_queue_process.php
+- Prefer restoring the source backup while retaining the new tables and private
+  files once real Case data exists.
+- Do not run `migrate:fresh` or destructively roll back populated Case tables.
+- If no Case writes have ever occurred, an operator may roll back the new
+  migrations only inside a verified maintenance window after stopping workers.
 
-## Modified files (16)
+## Package metadata
 
-- CHANGED_FILES.md
-- app/Enums/AdminPermission.php
-- app/Models/Expert.php
-- app/Models/ExpertVerifiedScope.php
-- app/Models/User.php
-- app/Providers/AppServiceProvider.php
-- app/Services/Kyc/ExpertKycWorkflow.php
-- bootstrap/app.php
-- config/cors.php
-- config/filesystems.php
-- database/seeders/AuthorizationSeeder.php
-- docs/api/CHANGELOG.md
-- docs/architecture/ADR-002-expert-eligibility-and-verification.md
-- docs/architecture/AUDIT_EVENTS.md
-- routes/api.php
-- routes/console.php
+- **Added:** `CHANGED_FILES.md` — this installation and file manifest.
+- **Added:** `PACKAGE_MANIFEST.sha256` — SHA-256 checksums for every other file
+  in the archive.

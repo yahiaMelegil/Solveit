@@ -1,0 +1,116 @@
+{
+    "contractVersion": "1.0.0",
+    "synthetic": true,
+    "request": {
+        "method": "GET",
+        "url": "\/api\/user\/cases\/1\/timeline?perPage=10",
+        "headers": {
+            "Accept": "application\/json",
+            "Authorization": "Bearer <ACCOUNT_TOKEN>",
+            "Content-Type": "application\/json"
+        },
+        "body": {}
+    },
+    "response": {
+        "status": 200,
+        "headers": {
+            "Content-Type": "application\/json",
+            "Cache-Control": "no-store, private",
+            "Retry-After": null
+        },
+        "body": {
+            "status": true,
+            "message": "Records retrieved successfully.",
+            "data": {
+                "items": [
+                    {
+                        "id": "5d79e868-5a10-4042-94be-2a4c2d2fc332",
+                        "action": "case.status_changed",
+                        "previousState": null,
+                        "newState": "ready_for_matching",
+                        "reasonCode": null,
+                        "occurredAt": "2026-10-01T12:30:03.000000Z"
+                    },
+                    {
+                        "id": "3e42dd44-5645-4258-ab4f-192f48a7b02d",
+                        "action": "case.catalog_submitted",
+                        "previousState": null,
+                        "newState": null,
+                        "reasonCode": null,
+                        "occurredAt": "2026-10-01T12:30:03.000000Z"
+                    },
+                    {
+                        "id": "efe2051e-42be-435e-9873-bbd6ed75ecdb",
+                        "action": "case.scope_submitted",
+                        "previousState": null,
+                        "newState": null,
+                        "reasonCode": "FULL_SCOPE_CONSENT",
+                        "occurredAt": "2026-10-01T12:30:03.000000Z"
+                    },
+                    {
+                        "id": "38f52ed5-1510-4330-b886-ed09ceea3de0",
+                        "action": "case.catalog_confirmed",
+                        "previousState": null,
+                        "newState": null,
+                        "reasonCode": null,
+                        "occurredAt": "2026-10-01T12:30:03.000000Z"
+                    },
+                    {
+                        "id": "3f2e3616-1f1e-46d4-b87a-9ec8eaf0a3ec",
+                        "action": "case.scopes_selected",
+                        "previousState": null,
+                        "newState": null,
+                        "reasonCode": null,
+                        "occurredAt": "2026-10-01T12:30:03.000000Z"
+                    },
+                    {
+                        "id": "f687d39f-e185-47d9-9ff0-b831b0e22467",
+                        "action": "case.intake_confirmed",
+                        "previousState": null,
+                        "newState": null,
+                        "reasonCode": null,
+                        "occurredAt": "2026-10-01T12:30:03.000000Z"
+                    },
+                    {
+                        "id": "b25c77dd-70b1-46dc-a136-b670a7bbf97c",
+                        "action": "case.assessed",
+                        "previousState": null,
+                        "newState": null,
+                        "reasonCode": null,
+                        "occurredAt": "2026-10-01T12:30:03.000000Z"
+                    },
+                    {
+                        "id": "adfa7711-a196-4fe7-b0ea-7bac9caedcf2",
+                        "action": "case.intake_updated",
+                        "previousState": null,
+                        "newState": null,
+                        "reasonCode": null,
+                        "occurredAt": "2026-10-01T12:30:03.000000Z"
+                    },
+                    {
+                        "id": "5efcb40c-f351-4bbc-9ad2-65370dd691de",
+                        "action": "case.assessed",
+                        "previousState": null,
+                        "newState": null,
+                        "reasonCode": null,
+                        "occurredAt": "2026-10-01T12:30:03.000000Z"
+                    },
+                    {
+                        "id": "2fb85306-3ee2-4747-8831-7b85a595c237",
+                        "action": "case.status_changed",
+                        "previousState": "draft",
+                        "newState": "needs_information",
+                        "reasonCode": null,
+                        "occurredAt": "2026-10-01T12:30:03.000000Z"
+                    }
+                ],
+                "pagination": {
+                    "currentPage": 1,
+                    "perPage": 10,
+                    "lastPage": 2,
+                    "total": 11
+                }
+            }
+        }
+    }
+}

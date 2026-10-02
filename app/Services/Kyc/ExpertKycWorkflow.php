@@ -9,11 +9,13 @@ use App\Enums\ExpertKycStatus;
 use App\Enums\ExpertScopeStatus;
 use App\Exceptions\InvalidKycTransitionException;
 use App\Models\Admin;
+use App\Models\CatalogVersion;
 use App\Models\Expert;
 use App\Models\ExpertKycApplication;
 use App\Models\ExpertKycCredential;
 use App\Models\ExpertKycQualification;
 use App\Notifications\Expert\KycReviewStatusNotification;
+use App\Services\Catalog\CatalogTaxonomy;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Carbon;
@@ -617,8 +619,16 @@ class ExpertKycWorkflow
                 ]);
             }
 
-            $regulated = in_array($domain, config('expert_verification.regulated_domains', []), true);
-            $unregulated = in_array($domain, config('expert_verification.non_regulated_domains', []), true);
+            $regulated = in_array($domain, CatalogTaxonomy::domains(true), true) || (($scope['professionalReview']['statusChecked'] ?? null) === 'active');
+            $unregulated = in_array($domain, CatalogTaxonomy::domains(false), true);
+            if (isset($scope['catalogPolicyVersionId'])) {
+                $policy = CatalogVersion::find($scope['catalogPolicyVersionId']);
+                if (! $policy || ! $policy->reviewed_at || $policy->policy['domain'] !== $domain) {
+                    throw ValidationException::withMessages(["$prefix.catalogPolicyVersionId" => 'Select a reviewed policy for this domain.']);
+                }
+                $regulated = $regulated || $policy->policy['regulated'] || $policy->policy['requiresProfessionalLicense'];
+                $unregulated = ! $regulated && $unregulated;
+            }
 
             if (! $regulated && ! $unregulated) {
                 throw ValidationException::withMessages([

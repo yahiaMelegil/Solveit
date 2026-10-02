@@ -1,0 +1,48 @@
+{
+    "contractVersion": "2.0.0",
+    "synthetic": true,
+    "request": {
+        "method": "GET",
+        "url": "\/api\/v2\/user\/cases\/1\/readiness",
+        "headers": {
+            "Accept": "application\/json",
+            "Authorization": "Bearer <ACCOUNT_TOKEN>"
+        },
+        "body": {}
+    },
+    "response": {
+        "status": 200,
+        "headers": {
+            "X-Request-ID": "4e2b1fc7-dd09-44e8-9709-3f88534e50f8",
+            "Retry-After": null
+        },
+        "body": {
+            "status": true,
+            "message": "Request completed successfully.",
+            "data": {
+                "item": {
+                    "status": "ready_for_matching",
+                    "reasonCodes": [],
+                    "scopes": [
+                        {
+                            "scopeId": 1,
+                            "status": "ready_for_matching",
+                            "reasonCodes": [],
+                            "coverage": [
+                                {
+                                    "jurisdictionCode": "GLOBAL",
+                                    "eligibleExperts": 1,
+                                    "minimumExperts": 1
+                                }
+                            ],
+                            "alreadySubmitted": false
+                        }
+                    ],
+                    "suggestions": [],
+                    "nextAction": "complete_or_confirm_intake",
+                    "triageUrl": null
+                }
+            }
+        }
+    }
+}

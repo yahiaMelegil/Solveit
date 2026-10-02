@@ -1,0 +1,100 @@
+{
+    "contractVersion": "1.0.0",
+    "synthetic": true,
+    "request": {
+        "method": "GET",
+        "url": "\/api\/user\/cases\/1\/timeline?perPage=10",
+        "headers": {
+            "Accept": "application\/json",
+            "Authorization": "Bearer <ACCOUNT_TOKEN>",
+            "Content-Type": "application\/json"
+        },
+        "body": {}
+    },
+    "response": {
+        "status": 200,
+        "headers": {
+            "Content-Type": "application\/json",
+            "Cache-Control": "no-store, private",
+            "Retry-After": null
+        },
+        "body": {
+            "status": true,
+            "message": "Records retrieved successfully.",
+            "data": {
+                "items": [
+                    {
+                        "id": "ac5349c9-2ace-4050-a1ad-1e28f132177b",
+                        "action": "case.submitted",
+                        "previousState": null,
+                        "newState": null,
+                        "reasonCode": null,
+                        "occurredAt": "2026-09-30T13:13:22.000000Z"
+                    },
+                    {
+                        "id": "31251341-fda1-4b07-ad5b-62c2b83179e2",
+                        "action": "case.status_changed",
+                        "previousState": "needs_information",
+                        "newState": "ready_for_matching",
+                        "reasonCode": null,
+                        "occurredAt": "2026-09-30T13:13:22.000000Z"
+                    },
+                    {
+                        "id": "cb2f2a71-e7c6-45e0-ae35-38afe087f0b5",
+                        "action": "case.intake_confirmed",
+                        "previousState": null,
+                        "newState": null,
+                        "reasonCode": null,
+                        "occurredAt": "2026-09-30T13:13:22.000000Z"
+                    },
+                    {
+                        "id": "eb82f2c3-33ef-4cb5-983e-1e0d26c1745d",
+                        "action": "case.assessed",
+                        "previousState": null,
+                        "newState": null,
+                        "reasonCode": null,
+                        "occurredAt": "2026-09-30T13:13:22.000000Z"
+                    },
+                    {
+                        "id": "0f98f38c-ffa2-4409-8940-532848631768",
+                        "action": "case.intake_updated",
+                        "previousState": null,
+                        "newState": null,
+                        "reasonCode": null,
+                        "occurredAt": "2026-09-30T13:13:22.000000Z"
+                    },
+                    {
+                        "id": "dc880450-4666-4cd3-903f-0ee4ba41257b",
+                        "action": "case.assessed",
+                        "previousState": null,
+                        "newState": null,
+                        "reasonCode": null,
+                        "occurredAt": "2026-09-30T13:13:22.000000Z"
+                    },
+                    {
+                        "id": "6d6e2a06-9b56-46d7-bd61-17726027af43",
+                        "action": "case.status_changed",
+                        "previousState": "draft",
+                        "newState": "needs_information",
+                        "reasonCode": null,
+                        "occurredAt": "2026-09-30T13:13:22.000000Z"
+                    },
+                    {
+                        "id": "841f197d-90ca-4edf-a878-803c5a8f89dc",
+                        "action": "case.created",
+                        "previousState": null,
+                        "newState": "draft",
+                        "reasonCode": null,
+                        "occurredAt": "2026-09-30T13:13:22.000000Z"
+                    }
+                ],
+                "pagination": {
+                    "currentPage": 1,
+                    "perPage": 10,
+                    "lastPage": 1,
+                    "total": 8
+                }
+            }
+        }
+    }
+}

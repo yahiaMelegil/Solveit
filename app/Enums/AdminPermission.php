@@ -33,6 +33,16 @@ enum AdminPermission: string
     case ExpertRenewalsViewEvidence = 'expertRenewals.viewEvidence';
     case ExpertRenewalsReview = 'expertRenewals.review';
 
+    case CatalogView = 'catalog.view';
+    case CatalogManageDrafts = 'catalog.manageDrafts';
+    case CatalogReview = 'catalog.review';
+    case CatalogPublish = 'catalog.publish';
+    case CatalogPause = 'catalog.pause';
+    case CatalogViewImpact = 'catalog.viewImpact';
+
+    case CasesViewAny = 'cases.viewAny';
+    case CasesView = 'cases.view';
+
     case SupportViewAny = 'support.viewAny';
     case SupportView = 'support.view';
     case SupportUpdate = 'support.update';

@@ -1,0 +1,446 @@
+{
+    "contractVersion": "1.0.0",
+    "synthetic": true,
+    "request": {
+        "method": "GET",
+        "url": "\/api\/user\/case-intake\/bootstrap",
+        "headers": {
+            "Accept": "application\/json",
+            "Authorization": "Bearer <ACCOUNT_TOKEN>",
+            "Content-Type": "application\/json"
+        },
+        "body": {}
+    },
+    "response": {
+        "status": 200,
+        "headers": {
+            "Content-Type": "application\/json",
+            "Cache-Control": "no-store, private",
+            "Retry-After": null
+        },
+        "body": {
+            "status": true,
+            "message": "Request completed successfully.",
+            "data": {
+                "item": {
+                    "contractVersion": "1.0.0",
+                    "schemaVersion": 1,
+                    "rulesVersion": "deterministic-1",
+                    "domains": [
+                        {
+                            "key": "technology",
+                            "enabled": true
+                        },
+                        {
+                            "key": "design",
+                            "enabled": true
+                        },
+                        {
+                            "key": "marketing",
+                            "enabled": true
+                        },
+                        {
+                            "key": "career",
+                            "enabled": true
+                        },
+                        {
+                            "key": "education",
+                            "enabled": true
+                        },
+                        {
+                            "key": "translation",
+                            "enabled": true
+                        },
+                        {
+                            "key": "business",
+                            "enabled": true
+                        },
+                        {
+                            "key": "legal",
+                            "enabled": false
+                        },
+                        {
+                            "key": "medical",
+                            "enabled": false
+                        },
+                        {
+                            "key": "health",
+                            "enabled": false
+                        },
+                        {
+                            "key": "finance",
+                            "enabled": false
+                        },
+                        {
+                            "key": "investment",
+                            "enabled": false
+                        },
+                        {
+                            "key": "tax",
+                            "enabled": false
+                        },
+                        {
+                            "key": "accounting",
+                            "enabled": false
+                        },
+                        {
+                            "key": "engineering",
+                            "enabled": false
+                        }
+                    ],
+                    "jurisdictions": [
+                        "AW",
+                        "AF",
+                        "AO",
+                        "AI",
+                        "AX",
+                        "AL",
+                        "AD",
+                        "AE",
+                        "AR",
+                        "AM",
+                        "AS",
+                        "AQ",
+                        "TF",
+                        "AG",
+                        "AU",
+                        "AT",
+                        "AZ",
+                        "BI",
+                        "BE",
+                        "BJ",
+                        "BQ",
+                        "BF",
+                        "BD",
+                        "BG",
+                        "BH",
+                        "BS",
+                        "BA",
+                        "BL",
+                        "BY",
+                        "BZ",
+                        "BM",
+                        "BO",
+                        "BR",
+                        "BB",
+                        "BN",
+                        "BT",
+                        "BV",
+                        "BW",
+                        "CF",
+                        "CA",
+                        "CC",
+                        "CH",
+                        "CL",
+                        "CN",
+                        "CI",
+                        "CM",
+                        "CD",
+                        "CG",
+                        "CK",
+                        "CO",
+                        "KM",
+                        "CV",
+                        "CR",
+                        "CU",
+                        "CW",
+                        "CX",
+                        "KY",
+                        "CY",
+                        "CZ",
+                        "DE",
+                        "DJ",
+                        "DM",
+                        "DK",
+                        "DO",
+                        "DZ",
+                        "EC",
+                        "EG",
+                        "ER",
+                        "EH",
+                        "ES",
+                        "EE",
+                        "ET",
+                        "FI",
+                        "FJ",
+                        "FK",
+                        "FR",
+                        "FO",
+                        "FM",
+                        "GA",
+                        "GB",
+                        "GE",
+                        "GG",
+                        "GH",
+                        "GI",
+                        "GN",
+                        "GP",
+                        "GM",
+                        "GW",
+                        "GQ",
+                        "GR",
+                        "GD",
+                        "GL",
+                        "GT",
+                        "GF",
+                        "GU",
+                        "GY",
+                        "HK",
+                        "HM",
+                        "HN",
+                        "HR",
+                        "HT",
+                        "HU",
+                        "ID",
+                        "IM",
+                        "IN",
+                        "IO",
+                        "IE",
+                        "IR",
+                        "IQ",
+                        "IS",
+                        "IL",
+                        "IT",
+                        "JM",
+                        "JE",
+                        "JO",
+                        "JP",
+                        "KZ",
+                        "KE",
+                        "KG",
+                        "KH",
+                        "KI",
+                        "KN",
+                        "KR",
+                        "KW",
+                        "LA",
+                        "LB",
+                        "LR",
+                        "LY",
+                        "LC",
+                        "LI",
+                        "LK",
+                        "LS",
+                        "LT",
+                        "LU",
+                        "LV",
+                        "MO",
+                        "MF",
+                        "MA",
+                        "MC",
+                        "MD",
+                        "MG",
+                        "MV",
+                        "MX",
+                        "MH",
+                        "MK",
+                        "ML",
+                        "MT",
+                        "MM",
+                        "ME",
+                        "MN",
+                        "MP",
+                        "MZ",
+                        "MR",
+                        "MS",
+                        "MQ",
+                        "MU",
+                        "MW",
+                        "MY",
+                        "YT",
+                        "NA",
+                        "NC",
+                        "NE",
+                        "NF",
+                        "NG",
+                        "NI",
+                        "NU",
+                        "NL",
+                        "NO",
+                        "NP",
+                        "NR",
+                        "NZ",
+                        "OM",
+                        "PK",
+                        "PA",
+                        "PN",
+                        "PE",
+                        "PH",
+                        "PW",
+                        "PG",
+                        "PL",
+                        "PR",
+                        "KP",
+                        "PT",
+                        "PY",
+                        "PS",
+                        "PF",
+                        "QA",
+                        "RE",
+                        "RO",
+                        "RU",
+                        "RW",
+                        "SA",
+                        "SD",
+                        "SN",
+                        "SG",
+                        "GS",
+                        "SH",
+                        "SJ",
+                        "SB",
+                        "SL",
+                        "SV",
+                        "SM",
+                        "SO",
+                        "PM",
+                        "RS",
+                        "SS",
+                        "ST",
+                        "SR",
+                        "SK",
+                        "SI",
+                        "SE",
+                        "SZ",
+                        "SX",
+                        "SC",
+                        "SY",
+                        "TC",
+                        "TD",
+                        "TG",
+                        "TH",
+                        "TJ",
+                        "TK",
+                        "TM",
+                        "TL",
+                        "TO",
+                        "TT",
+                        "TN",
+                        "TR",
+                        "TV",
+                        "TW",
+                        "TZ",
+                        "UG",
+                        "UA",
+                        "UM",
+                        "UY",
+                        "US",
+                        "UZ",
+                        "VA",
+                        "VC",
+                        "VE",
+                        "VG",
+                        "VI",
+                        "VN",
+                        "VU",
+                        "WF",
+                        "WS",
+                        "YE",
+                        "ZA",
+                        "ZM",
+                        "ZW"
+                    ],
+                    "enabledJurisdictions": [
+                        "PS"
+                    ],
+                    "languages": [
+                        "ar",
+                        "en"
+                    ],
+                    "serviceNeeds": [
+                        "written_consultation",
+                        "video_consultation",
+                        "audio_consultation",
+                        "document_review",
+                        "project_advisory"
+                    ],
+                    "urgencies": [
+                        "normal",
+                        "soon",
+                        "urgent"
+                    ],
+                    "fields": {
+                        "title": {
+                            "type": "string",
+                            "maxLength": 160
+                        },
+                        "problemDescription": {
+                            "type": "string",
+                            "maxLength": 10000
+                        },
+                        "desiredOutcome": {
+                            "type": "string",
+                            "maxLength": 4000
+                        }
+                    },
+                    "requiredForSubmit": [
+                        "title",
+                        "problemDescription",
+                        "desiredOutcome",
+                        "primaryDomain",
+                        "domains",
+                        "serviceNeeds",
+                        "jurisdiction",
+                        "language",
+                        "urgency",
+                        "privacyChoice",
+                        "subjectType"
+                    ],
+                    "questions": [
+                        {
+                            "key": "immediateDanger",
+                            "type": "boolean",
+                            "requiredForSubmit": true
+                        },
+                        {
+                            "key": "requiresInPerson",
+                            "type": "boolean",
+                            "requiredForSubmit": true
+                        },
+                        {
+                            "key": "ambiguousHighRisk",
+                            "type": "boolean",
+                            "requiredForSubmit": true
+                        }
+                    ],
+                    "steps": [
+                        "description",
+                        "context",
+                        "details",
+                        "documents",
+                        "review"
+                    ],
+                    "privacyChoices": [
+                        "private"
+                    ],
+                    "subjectTypes": [
+                        "self",
+                        "other"
+                    ],
+                    "limits": {
+                        "maxDomains": 5,
+                        "maxDocuments": 20,
+                        "maxRevisions": 20,
+                        "maxFileKiB": 10240
+                    },
+                    "documents": {
+                        "allowedMimeTypes": [
+                            "application\/pdf",
+                            "image\/jpeg",
+                            "image\/png"
+                        ],
+                        "previewMimeTypes": [
+                            "image\/jpeg",
+                            "image\/png"
+                        ],
+                        "scanRequired": true
+                    },
+                    "operational": {
+                        "serviceConfigured": true,
+                        "thirdPartySubmissionEnabled": false,
+                        "humanTriageConfigured": false
+                    }
+                }
+            }
+        }
+    }
+}

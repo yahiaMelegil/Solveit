@@ -1,5 +1,8 @@
 <?php
 
+require __DIR__.'/catalog.php';
+require __DIR__.'/cases_v2.php';
+
 use App\Http\Controllers\Api\Admin\AdminExpertController;
 use App\Http\Controllers\Api\Admin\AdminManagementController;
 use App\Http\Controllers\Api\Admin\AdminUserController;
@@ -211,3 +214,5 @@ Route::prefix('expert/auth')->name('expert.auth.')->group(function (): void {
 require __DIR__.'/privacy.php';
 
 require __DIR__.'/expert_renewals.php';
+
+require __DIR__.'/cases.php';

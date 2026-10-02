@@ -27,10 +27,13 @@ abstract class PrivacyTestCase extends TestCase
         config()->set('data_rights.due_days', 30); // Synthetic test SLA, not a production/legal policy.
         Queue::fake();
         Storage::fake('data-exports');
+        $this->freezeFixtureClock();
         $this->seed([AuthorizationSeeder::class, PrivacyDevelopmentSeeder::class]);
         $this->owner = User::factory()->create(['name' => 'Mariam Hasan', 'email' => 'mariam@example.com']);
         $this->asAccount($this->owner);
     }
+
+    protected function freezeFixtureClock(): void {}
 
     protected function asAccount(User|Admin|Expert $actor, ?array $abilities = null): string
     {

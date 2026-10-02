@@ -17,7 +17,7 @@ class AccountExport
             'manifest' => ['formatVersion' => 'solveit.account-export.v1', 'generatedAt' => $captured,
                 'scope' => 'current_user_account', 'sections' => config('data_rights.sections'),
                 'snapshotSemantics' => 'best_effort_with_immutable_version_references',
-                'exclusions' => ['credentials_and_tokens', 'other_account_types', 'kyc', 'security_audit_metadata', 'case_data_not_implemented']],
+                'exclusions' => ['credentials_and_tokens', 'other_account_types', 'kyc', 'security_audit_metadata', 'case_data_outside_export_v1']],
             'account' => ['id' => $user->id, 'name' => $user->name, 'email' => $user->email,
                 'createdAt' => $user->created_at?->toISOString()],
             'profile' => ['current' => $this->profiles->snapshot($user), 'versions' => $user->profileVersions()->orderBy('version')->get()

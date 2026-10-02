@@ -9,3 +9,7 @@ Artisan::command('inspire', function () {
 })->purpose('Display an inspiring quote');
 
 Schedule::command('privacy:cleanup')->hourly()->withoutOverlapping();
+
+Schedule::command('case-documents:cleanup')->hourly()->withoutOverlapping();
+
+Schedule::command('catalog:review-cases')->everyFiveMinutes()->withoutOverlapping();

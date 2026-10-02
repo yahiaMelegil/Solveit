@@ -54,31 +54,37 @@ class Expert extends Authenticatable implements MustVerifyEmail
         $this->notify(new ResetPasswordNotification($token));
     }
 
+    /** @return HasMany<ExpertKycApplication, $this> */
     public function kycApplications(): HasMany
     {
         return $this->hasMany(ExpertKycApplication::class);
     }
 
+    /** @return HasOne<ExpertKycApplication, $this> */
     public function latestKycApplication(): HasOne
     {
         return $this->hasOne(ExpertKycApplication::class)->ofMany('attempt_number', 'max');
     }
 
+    /** @return HasOne<ExpertProfile, $this> */
     public function profile(): HasOne
     {
         return $this->hasOne(ExpertProfile::class);
     }
 
+    /** @return HasOne<ExpertAvailabilitySetting, $this> */
     public function availability(): HasOne
     {
         return $this->hasOne(ExpertAvailabilitySetting::class);
     }
 
+    /** @return HasMany<ExpertScopeRenewal, $this> */
     public function scopeRenewals(): HasMany
     {
         return $this->hasMany(ExpertScopeRenewal::class);
     }
 
+    /** @return HasMany<ExpertVerifiedScope, $this> */
     public function verifiedScopes(): HasMany
     {
         return $this->hasMany(ExpertVerifiedScope::class);

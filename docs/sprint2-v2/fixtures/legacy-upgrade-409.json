@@ -1,0 +1,28 @@
+{
+    "contractVersion": "2.0.0",
+    "synthetic": true,
+    "request": {
+        "method": "POST",
+        "url": "\/api\/user\/cases\/1\/submit",
+        "headers": {
+            "Accept": "application\/json",
+            "Authorization": "Bearer <ACCOUNT_TOKEN>",
+            "Idempotency-Key": "8d5d73dd-6e18-4f3f-9779-616f85ab6e4e"
+        },
+        "body": {
+            "expectedVersion": 5
+        }
+    },
+    "response": {
+        "status": 409,
+        "headers": {
+            "X-Request-ID": "86ccfda5-b3e6-4b99-a0ea-40308988a250",
+            "Retry-After": null
+        },
+        "body": {
+            "status": false,
+            "code": "CATALOG_UPGRADE_REQUIRED",
+            "message": "Use Case Core v2 for catalog submission."
+        }
+    }
+}

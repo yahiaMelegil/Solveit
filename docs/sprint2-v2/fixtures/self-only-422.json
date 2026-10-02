@@ -1,0 +1,33 @@
+{
+    "contractVersion": "2.0.0",
+    "synthetic": true,
+    "request": {
+        "method": "POST",
+        "url": "\/api\/v2\/user\/cases",
+        "headers": {
+            "Accept": "application\/json",
+            "Authorization": "Bearer <ACCOUNT_TOKEN>",
+            "Idempotency-Key": "e9285612-4962-4fd1-890b-d7f835d268fe"
+        },
+        "body": {
+            "subjectType": "other"
+        }
+    },
+    "response": {
+        "status": 422,
+        "headers": {
+            "X-Request-ID": "3acc5646-3369-4f2c-8b0e-d9eef4b36435",
+            "Retry-After": null
+        },
+        "body": {
+            "status": false,
+            "message": "The provided data is invalid.",
+            "errors": {
+                "subjectType": [
+                    "The selected subject type is invalid."
+                ]
+            },
+            "code": "VALIDATION_FAILED"
+        }
+    }
+}

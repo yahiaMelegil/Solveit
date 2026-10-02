@@ -1,0 +1,139 @@
+{
+    "contractVersion": "2.0.0",
+    "synthetic": true,
+    "request": {
+        "method": "GET",
+        "url": "\/api\/v2\/user\/cases\/1",
+        "headers": {
+            "Accept": "application\/json",
+            "Authorization": "Bearer <ACCOUNT_TOKEN>"
+        },
+        "body": {}
+    },
+    "response": {
+        "status": 200,
+        "headers": {
+            "X-Request-ID": "c88065f6-2c97-4130-8ce6-3b94aafdd742",
+            "Retry-After": null
+        },
+        "body": {
+            "status": true,
+            "message": "Request completed successfully.",
+            "data": {
+                "item": {
+                    "id": 1,
+                    "contractVersion": "2.0.0",
+                    "status": "ready_for_matching",
+                    "version": 5,
+                    "intake": {
+                        "privacyChoice": "private",
+                        "subjectType": "self",
+                        "answers": {
+                            "immediateDanger": false,
+                            "requiresInPerson": false,
+                            "ambiguousHighRisk": false
+                        },
+                        "title": "مراجعة نظام متجر",
+                        "problemDescription": "أحتاج مراجعة برمجية لمتجري",
+                        "desiredOutcome": "تحسين موثوقية النظام",
+                        "language": "ar",
+                        "urgency": "normal",
+                        "caseCountry": "PS"
+                    },
+                    "scopes": [
+                        {
+                            "id": 1,
+                            "catalogEntryId": 42,
+                            "catalogVersion": 1,
+                            "domain": "technology",
+                            "specialty": "technology_software",
+                            "serviceType": "technology_software_advisory",
+                            "deliveryMode": "written_consultation",
+                            "jurisdictionMode": "GLOBAL",
+                            "jurisdictionCodes": [],
+                            "answers": {},
+                            "confirmed": true,
+                            "status": "ready_for_matching",
+                            "reasonCodes": [],
+                            "policySnapshot": {
+                                "catalogEntryId": 42,
+                                "catalogVersion": 1,
+                                "jurisdictionCodes": [],
+                                "policy": {
+                                    "domain": "technology",
+                                    "specialty": "technology_software",
+                                    "serviceType": "technology_software_advisory",
+                                    "jurisdictionMode": "GLOBAL",
+                                    "jurisdictionCodes": [],
+                                    "regulated": false,
+                                    "remoteDeliveryAllowed": true,
+                                    "requiresVerifiedScope": true,
+                                    "requiresProfessionalLicense": false,
+                                    "requiredEvidenceType": "qualification",
+                                    "minimumExperts": 1,
+                                    "maximumExperts": 1,
+                                    "commerciallyAvailable": true,
+                                    "operationallyAvailable": true,
+                                    "effectiveFrom": "2026-09-30T12:00:00Z",
+                                    "effectiveUntil": null,
+                                    "requiredDocuments": [],
+                                    "intakeSchema": [],
+                                    "matchingRules": {
+                                        "keywords": [
+                                            "software",
+                                            "برمجة"
+                                        ],
+                                        "prohibitedKeywords": [
+                                            "malware attack"
+                                        ],
+                                        "humanReviewRequired": false
+                                    },
+                                    "deliveryModes": [
+                                        "written_consultation",
+                                        "video_consultation",
+                                        "document_review"
+                                    ],
+                                    "requiredConsents": [
+                                        "terms",
+                                        "privacy"
+                                    ]
+                                },
+                                "policyHash": "9d0a748721f453e38d858c946984805c25b4987d05102c0239b04eaa92ec986e",
+                                "intakeVersionId": 1,
+                                "contextSnapshotIds": [],
+                                "documentVersions": [],
+                                "consents": [
+                                    {
+                                        "purpose": "terms",
+                                        "decision": "granted",
+                                        "recordId": 1,
+                                        "policyVersionId": 1,
+                                        "decidedAt": "2026-10-01T12:00:00.000000Z",
+                                        "requiresReconsent": false,
+                                        "effective": true,
+                                        "withdrawable": false
+                                    },
+                                    {
+                                        "purpose": "privacy",
+                                        "decision": "granted",
+                                        "recordId": 2,
+                                        "policyVersionId": 3,
+                                        "decidedAt": "2026-10-01T12:00:00.000000Z",
+                                        "requiresReconsent": false,
+                                        "effective": true,
+                                        "withdrawable": false
+                                    }
+                                ]
+                            },
+                            "readinessCheckedAt": "2026-10-01T12:00:00.000000Z",
+                            "submittedAt": "2026-10-01T12:00:00.000000Z"
+                        }
+                    ],
+                    "readinessCheckedAt": "2026-10-01T12:00:00.000000Z",
+                    "createdAt": "2026-10-01T12:00:00.000000Z",
+                    "updatedAt": "2026-10-01T12:00:00.000000Z"
+                }
+            }
+        }
+    }
+}

@@ -8,9 +8,11 @@ use App\Enums\ExpertScopeStatus;
 use App\Exceptions\PrivacyException;
 use App\Models\Admin;
 use App\Models\Expert;
+use App\Models\ExpertCatalogGrant;
 use App\Models\ExpertScopeRenewal;
 use App\Models\ExpertScopeRenewalSubmission;
 use App\Models\ExpertVerifiedScope;
+use App\Services\Catalog\CatalogTaxonomy;
 use App\Services\Kyc\ExpertKycWorkflow;
 use App\Services\Privacy\AuditWriter;
 use Illuminate\Database\Eloquent\Collection;
@@ -33,7 +35,7 @@ class ScopeRenewal
             ! $expert->is_active || $expert->kyc_status !== ExpertKycStatus::Approved => 'EXPERT_NOT_APPROVED',
             ! in_array($scope->status, [ExpertScopeStatus::Active, ExpertScopeStatus::Expired], true) => 'SCOPE_NOT_RENEWABLE',
             ! $scope->verified_country => 'LEGACY_REVIEW_REQUIRED',
-            ! in_array($scope->domain, array_merge(config('expert_verification.regulated_domains'), config('expert_verification.non_regulated_domains')), true) => 'DOMAIN_POLICY_REQUIRED',
+            ! in_array($scope->domain, array_merge(CatalogTaxonomy::domains(true), CatalogTaxonomy::domains(false)), true) => 'DOMAIN_POLICY_REQUIRED',
             $openId !== null => 'OPEN_RENEWAL_EXISTS',
             $due === null => 'REVIEW_DATE_REQUIRED',
             $opens->gt(today()) => 'RENEWAL_WINDOW_NOT_OPEN',
@@ -171,7 +173,7 @@ class ScopeRenewal
 
     private function regulated(ExpertVerifiedScope $scope): bool
     {
-        return in_array($scope->domain, config('expert_verification.regulated_domains'), true);
+        return in_array($scope->domain, CatalogTaxonomy::domains(true), true) || ($scope->evidence_type === 'credential' && $scope->status_checked === 'active');
     }
 
     private function approveScope(ExpertScopeRenewal $row, ExpertVerifiedScope $scope, Admin $admin, array $data): void
@@ -209,6 +211,7 @@ class ScopeRenewal
         $application->load(['credentials.document', 'qualifications.document', 'experiences']);
         $application->setRelation('documents', new Collection([$document]));
         $validated = app(ExpertKycWorkflow::class)->verifiedScopeEvidence($application, [[
+            'catalogPolicyVersionId' => ExpertCatalogGrant::where('scope_id', $scope->id)->orderByDesc('id')->value('catalog_version_id'),
             'domain' => $scope->domain, 'jurisdiction' => $scope->jurisdiction, 'jurisdictionCountry' => $scope->verified_country,
             'validUntil' => $data['validUntil'], 'evidence' => ['type' => $evidence['type'], 'id' => $record->id], 'professionalReview' => $review,
         ]])[0];

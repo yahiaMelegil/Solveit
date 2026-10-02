@@ -1,0 +1,1488 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SolveIt Sprint2 API schemas 1.0.0",
+  "$defs": {
+    "CreateCase": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schemaVersion": {
+          "const": 1
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 160
+        },
+        "problemDescription": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 10000
+        },
+        "desiredOutcome": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4000
+        },
+        "primaryDomain": {
+          "type": "string",
+          "enum": [
+            "technology",
+            "design",
+            "marketing",
+            "career",
+            "education",
+            "translation",
+            "business",
+            "legal",
+            "medical",
+            "health",
+            "finance",
+            "investment",
+            "tax",
+            "accounting",
+            "engineering"
+          ]
+        },
+        "domains": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 5,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "enum": [
+              "technology",
+              "design",
+              "marketing",
+              "career",
+              "education",
+              "translation",
+              "business",
+              "legal",
+              "medical",
+              "health",
+              "finance",
+              "investment",
+              "tax",
+              "accounting",
+              "engineering"
+            ]
+          }
+        },
+        "serviceNeeds": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 5,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "enum": [
+              "written_consultation",
+              "video_consultation",
+              "audio_consultation",
+              "document_review",
+              "project_advisory"
+            ]
+          }
+        },
+        "jurisdiction": {
+          "type": "string",
+          "pattern": "^[A-Z]{2}$",
+          "description": "Must also be present in bootstrap jurisdictions; enabling is checked separately."
+        },
+        "language": {
+          "type": "string",
+          "enum": [
+            "ar",
+            "en"
+          ]
+        },
+        "urgency": {
+          "type": "string",
+          "enum": [
+            "normal",
+            "soon",
+            "urgent"
+          ]
+        },
+        "privacyChoice": {
+          "const": "private"
+        },
+        "subjectType": {
+          "type": "string",
+          "enum": [
+            "self",
+            "other"
+          ]
+        },
+        "answers": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "immediateDanger": {
+              "type": "boolean"
+            },
+            "requiresInPerson": {
+              "type": "boolean"
+            },
+            "ambiguousHighRisk": {
+              "type": "boolean"
+            }
+          }
+        },
+        "lastCompletedStep": {
+          "type": "string",
+          "enum": [
+            "description",
+            "context",
+            "details",
+            "documents",
+            "review"
+          ]
+        }
+      },
+      "required": []
+    },
+    "UpdateCase": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schemaVersion": {
+          "const": 1
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 160
+        },
+        "problemDescription": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 10000
+        },
+        "desiredOutcome": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4000
+        },
+        "primaryDomain": {
+          "type": "string",
+          "enum": [
+            "technology",
+            "design",
+            "marketing",
+            "career",
+            "education",
+            "translation",
+            "business",
+            "legal",
+            "medical",
+            "health",
+            "finance",
+            "investment",
+            "tax",
+            "accounting",
+            "engineering"
+          ]
+        },
+        "domains": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 5,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "enum": [
+              "technology",
+              "design",
+              "marketing",
+              "career",
+              "education",
+              "translation",
+              "business",
+              "legal",
+              "medical",
+              "health",
+              "finance",
+              "investment",
+              "tax",
+              "accounting",
+              "engineering"
+            ]
+          }
+        },
+        "serviceNeeds": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 5,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "enum": [
+              "written_consultation",
+              "video_consultation",
+              "audio_consultation",
+              "document_review",
+              "project_advisory"
+            ]
+          }
+        },
+        "jurisdiction": {
+          "type": "string",
+          "pattern": "^[A-Z]{2}$",
+          "description": "Must also be present in bootstrap jurisdictions; enabling is checked separately."
+        },
+        "language": {
+          "type": "string",
+          "enum": [
+            "ar",
+            "en"
+          ]
+        },
+        "urgency": {
+          "type": "string",
+          "enum": [
+            "normal",
+            "soon",
+            "urgent"
+          ]
+        },
+        "privacyChoice": {
+          "const": "private"
+        },
+        "subjectType": {
+          "type": "string",
+          "enum": [
+            "self",
+            "other"
+          ]
+        },
+        "answers": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "immediateDanger": {
+              "type": "boolean"
+            },
+            "requiresInPerson": {
+              "type": "boolean"
+            },
+            "ambiguousHighRisk": {
+              "type": "boolean"
+            }
+          }
+        },
+        "lastCompletedStep": {
+          "type": "string",
+          "enum": [
+            "description",
+            "context",
+            "details",
+            "documents",
+            "review"
+          ]
+        },
+        "expectedVersion": {
+          "type": "integer",
+          "minimum": 1
+        }
+      },
+      "required": [
+        "expectedVersion"
+      ],
+      "minProperties": 2
+    },
+    "Transition": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "expectedVersion": {
+          "type": "integer",
+          "minimum": 1
+        }
+      },
+      "required": [
+        "expectedVersion"
+      ]
+    },
+    "AttachContext": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "expectedVersion": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "contextId": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "contextVersion": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "selectedFactKeys": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 20,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "maxLength": 80
+          }
+        },
+        "authorizeUse": {
+          "const": true
+        }
+      },
+      "required": [
+        "expectedVersion",
+        "contextId",
+        "contextVersion",
+        "selectedFactKeys",
+        "authorizeUse"
+      ]
+    },
+    "ConfirmIntake": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "expectedVersion": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "assessmentId": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "confirmed": {
+          "const": true
+        }
+      },
+      "required": [
+        "expectedVersion",
+        "assessmentId",
+        "confirmed"
+      ]
+    },
+    "UploadDocument": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "expectedVersion": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 160
+        },
+        "category": {
+          "type": "string",
+          "enum": [
+            "supporting",
+            "reference",
+            "work_sample"
+          ]
+        },
+        "file": {
+          "type": "string",
+          "format": "binary"
+        }
+      },
+      "required": [
+        "expectedVersion",
+        "title",
+        "category",
+        "file"
+      ]
+    },
+    "Error": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "const": false
+        },
+        "code": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        },
+        "errors": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "email_verified": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "status",
+        "code",
+        "message"
+      ]
+    },
+    "Pagination": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "currentPage": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "perPage": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "lastPage": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "total": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "currentPage",
+        "perPage",
+        "lastPage",
+        "total"
+      ]
+    },
+    "CaseSummary": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "status": {
+          "enum": [
+            "draft",
+            "needs_information",
+            "ready_for_matching",
+            "cancelled"
+          ]
+        },
+        "version": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "schemaVersion": {
+          "const": 1
+        },
+        "title": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "primaryDomain": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "domains": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "language": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "jurisdiction": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "urgency": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "suitability": {
+          "enum": [
+            "not_assessed",
+            "suitable",
+            "needs_clarification",
+            "unsupported",
+            "urgent_stop"
+          ]
+        },
+        "createdAt": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "submittedAt": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "cancelledAt": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "id",
+        "status",
+        "version",
+        "schemaVersion",
+        "title",
+        "primaryDomain",
+        "domains",
+        "language",
+        "jurisdiction",
+        "urgency",
+        "suitability",
+        "createdAt",
+        "updatedAt",
+        "submittedAt",
+        "cancelledAt"
+      ]
+    },
+    "ContextSnapshot": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "sourceContextVersionId": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "selectedFactKeys": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "snapshot": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "contextId": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "contextVersion": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "domain": {
+              "type": "string"
+            },
+            "country": {
+              "type": "string"
+            },
+            "facts": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "key": {
+                    "type": "string"
+                  },
+                  "value": {
+                    "type": "string"
+                  },
+                  "source": {
+                    "type": "string"
+                  },
+                  "effectiveDate": {
+                    "type": "string",
+                    "format": "date"
+                  }
+                },
+                "required": [
+                  "key",
+                  "value",
+                  "source",
+                  "effectiveDate"
+                ]
+              }
+            }
+          },
+          "required": [
+            "contextId",
+            "contextVersion",
+            "domain",
+            "country",
+            "facts"
+          ]
+        },
+        "policyVersionId": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "authorizedAt": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "detachedAt": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "id",
+        "sourceContextVersionId",
+        "selectedFactKeys",
+        "snapshot",
+        "policyVersionId",
+        "authorizedAt",
+        "detachedAt"
+      ]
+    },
+    "Assessment": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "intakeVersionId": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "rulesVersion": {
+          "type": "string"
+        },
+        "suitability": {
+          "enum": [
+            "not_assessed",
+            "suitable",
+            "needs_clarification",
+            "unsupported",
+            "urgent_stop"
+          ]
+        },
+        "createdAt": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "origin": {
+          "const": "rules"
+        },
+        "reasonCodes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "clarifications": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "field": {
+                "type": "string"
+              },
+              "reasonCode": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "field",
+              "reasonCode"
+            ]
+          }
+        },
+        "suggestions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "domain": {
+                "type": "string"
+              },
+              "origin": {
+                "const": "rules"
+              },
+              "reasonCode": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "domain",
+              "origin",
+              "reasonCode"
+            ]
+          }
+        },
+        "nextAction": {
+          "type": "string"
+        },
+        "triageUrl": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "relatedCases": {
+          "type": "array",
+          "maxItems": 5,
+          "items": {
+            "type": "integer",
+            "minimum": 1
+          }
+        }
+      },
+      "required": [
+        "id",
+        "intakeVersionId",
+        "rulesVersion",
+        "suitability",
+        "createdAt",
+        "origin",
+        "reasonCodes",
+        "clarifications",
+        "suggestions",
+        "nextAction",
+        "triageUrl",
+        "relatedCases"
+      ]
+    },
+    "CaseDetail": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "status": {
+          "enum": [
+            "draft",
+            "needs_information",
+            "ready_for_matching",
+            "cancelled"
+          ]
+        },
+        "version": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "schemaVersion": {
+          "const": 1
+        },
+        "title": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "primaryDomain": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "domains": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "language": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "jurisdiction": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "urgency": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "suitability": {
+          "enum": [
+            "not_assessed",
+            "suitable",
+            "needs_clarification",
+            "unsupported",
+            "urgent_stop"
+          ]
+        },
+        "createdAt": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "submittedAt": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "cancelledAt": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "intakeVersion": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "intake": {
+          "$ref": "#/$defs/CreateCase"
+        },
+        "confirmedAssessmentId": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "confirmedAt": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "contextSnapshots": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ContextSnapshot"
+          }
+        },
+        "assessment": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Assessment"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "status",
+        "version",
+        "schemaVersion",
+        "title",
+        "primaryDomain",
+        "domains",
+        "language",
+        "jurisdiction",
+        "urgency",
+        "suitability",
+        "createdAt",
+        "updatedAt",
+        "submittedAt",
+        "cancelledAt",
+        "intakeVersion",
+        "intake",
+        "confirmedAssessmentId",
+        "confirmedAt",
+        "contextSnapshots",
+        "assessment"
+      ]
+    },
+    "AdminMetadata": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "status": {
+          "enum": [
+            "draft",
+            "needs_information",
+            "ready_for_matching",
+            "cancelled"
+          ]
+        },
+        "version": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "primaryDomain": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "domains": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "language": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "jurisdiction": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "urgency": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "suitability": {
+          "enum": [
+            "not_assessed",
+            "suitable",
+            "needs_clarification",
+            "unsupported",
+            "urgent_stop"
+          ]
+        },
+        "createdAt": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "submittedAt": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "cancelledAt": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "userId": {
+          "type": "integer",
+          "minimum": 1
+        }
+      },
+      "required": [
+        "id",
+        "status",
+        "version",
+        "primaryDomain",
+        "domains",
+        "language",
+        "jurisdiction",
+        "urgency",
+        "suitability",
+        "createdAt",
+        "updatedAt",
+        "submittedAt",
+        "cancelledAt",
+        "userId"
+      ]
+    },
+    "DocumentVersion": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "version": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "title": {
+          "type": "string"
+        },
+        "category": {
+          "enum": [
+            "supporting",
+            "reference",
+            "work_sample"
+          ]
+        },
+        "mimeType": {
+          "enum": [
+            "application/pdf",
+            "image/jpeg",
+            "image/png"
+          ]
+        },
+        "size": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "checksum": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "scanStatus": {
+          "enum": [
+            "pending",
+            "clean",
+            "rejected",
+            "failed"
+          ]
+        },
+        "scanReason": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "scannedAt": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "createdAt": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "id",
+        "version",
+        "title",
+        "category",
+        "mimeType",
+        "size",
+        "checksum",
+        "scanStatus",
+        "scanReason",
+        "scannedAt",
+        "createdAt"
+      ]
+    },
+    "Document": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "caseId": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "caseVersion": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "deletedAt": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "currentVersion": {
+          "$ref": "#/$defs/DocumentVersion"
+        }
+      },
+      "required": [
+        "id",
+        "caseId",
+        "deletedAt",
+        "currentVersion"
+      ]
+    },
+    "TimelineEvent": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "action": {
+          "type": "string"
+        },
+        "previousState": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "newState": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "reasonCode": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "occurredAt": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "id",
+        "action",
+        "previousState",
+        "newState",
+        "reasonCode",
+        "occurredAt"
+      ]
+    },
+    "CaseDetailResponse": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "const": true
+        },
+        "message": {
+          "type": "string"
+        },
+        "data": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "item": {
+              "$ref": "#/$defs/CaseDetail"
+            }
+          },
+          "required": [
+            "item"
+          ]
+        }
+      },
+      "required": [
+        "status",
+        "message",
+        "data"
+      ]
+    },
+    "AdminMetadataResponse": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "const": true
+        },
+        "message": {
+          "type": "string"
+        },
+        "data": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "item": {
+              "$ref": "#/$defs/AdminMetadata"
+            }
+          },
+          "required": [
+            "item"
+          ]
+        }
+      },
+      "required": [
+        "status",
+        "message",
+        "data"
+      ]
+    },
+    "DocumentResponse": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "const": true
+        },
+        "message": {
+          "type": "string"
+        },
+        "data": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "item": {
+              "$ref": "#/$defs/Document"
+            }
+          },
+          "required": [
+            "item"
+          ]
+        }
+      },
+      "required": [
+        "status",
+        "message",
+        "data"
+      ]
+    },
+    "CaseSummaryListResponse": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "const": true
+        },
+        "message": {
+          "type": "string"
+        },
+        "data": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "items": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/CaseSummary"
+              }
+            },
+            "pagination": {
+              "$ref": "#/$defs/Pagination"
+            }
+          },
+          "required": [
+            "items",
+            "pagination"
+          ]
+        }
+      },
+      "required": [
+        "status",
+        "message",
+        "data"
+      ]
+    },
+    "AdminMetadataListResponse": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "const": true
+        },
+        "message": {
+          "type": "string"
+        },
+        "data": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "items": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/AdminMetadata"
+              }
+            },
+            "pagination": {
+              "$ref": "#/$defs/Pagination"
+            }
+          },
+          "required": [
+            "items",
+            "pagination"
+          ]
+        }
+      },
+      "required": [
+        "status",
+        "message",
+        "data"
+      ]
+    },
+    "DocumentListResponse": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "const": true
+        },
+        "message": {
+          "type": "string"
+        },
+        "data": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "items": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/Document"
+              }
+            },
+            "pagination": {
+              "$ref": "#/$defs/Pagination"
+            }
+          },
+          "required": [
+            "items",
+            "pagination"
+          ]
+        }
+      },
+      "required": [
+        "status",
+        "message",
+        "data"
+      ]
+    },
+    "DocumentVersionListResponse": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "const": true
+        },
+        "message": {
+          "type": "string"
+        },
+        "data": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "items": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/DocumentVersion"
+              }
+            },
+            "pagination": {
+              "$ref": "#/$defs/Pagination"
+            }
+          },
+          "required": [
+            "items",
+            "pagination"
+          ]
+        }
+      },
+      "required": [
+        "status",
+        "message",
+        "data"
+      ]
+    },
+    "TimelineEventListResponse": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "const": true
+        },
+        "message": {
+          "type": "string"
+        },
+        "data": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "items": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/TimelineEvent"
+              }
+            },
+            "pagination": {
+              "$ref": "#/$defs/Pagination"
+            }
+          },
+          "required": [
+            "items",
+            "pagination"
+          ]
+        }
+      },
+      "required": [
+        "status",
+        "message",
+        "data"
+      ]
+    }
+  }
+}

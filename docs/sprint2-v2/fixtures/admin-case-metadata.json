@@ -1,0 +1,38 @@
+{
+    "contractVersion": "2.0.0",
+    "synthetic": true,
+    "request": {
+        "method": "GET",
+        "url": "\/api\/v2\/admin\/cases\/1",
+        "headers": {
+            "Accept": "application\/json",
+            "Authorization": "Bearer <ACCOUNT_TOKEN>"
+        },
+        "body": {}
+    },
+    "response": {
+        "status": 200,
+        "headers": {
+            "X-Request-ID": "209659d5-b83a-491b-a557-047084538416",
+            "Retry-After": null
+        },
+        "body": {
+            "status": true,
+            "message": "Request completed successfully.",
+            "data": {
+                "item": {
+                    "id": 1,
+                    "userId": 1,
+                    "status": "ready_for_matching",
+                    "version": 5,
+                    "scopeCount": 1,
+                    "caseCountry": "PS",
+                    "language": "ar",
+                    "readinessCheckedAt": "2026-10-01T12:00:00.000000Z",
+                    "createdAt": "2026-10-01T12:00:00.000000Z",
+                    "updatedAt": "2026-10-01T12:00:00.000000Z"
+                }
+            }
+        }
+    }
+}

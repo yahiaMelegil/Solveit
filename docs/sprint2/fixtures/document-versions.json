@@ -1,0 +1,49 @@
+{
+    "contractVersion": "1.0.0",
+    "synthetic": true,
+    "request": {
+        "method": "GET",
+        "url": "\/api\/user\/cases\/5\/documents\/1\/versions",
+        "headers": {
+            "Accept": "application\/json",
+            "Authorization": "Bearer <ACCOUNT_TOKEN>",
+            "Content-Type": "application\/json"
+        },
+        "body": {}
+    },
+    "response": {
+        "status": 200,
+        "headers": {
+            "Content-Type": "application\/json",
+            "Cache-Control": "no-store, private",
+            "Retry-After": null
+        },
+        "body": {
+            "status": true,
+            "message": "Records retrieved successfully.",
+            "data": {
+                "items": [
+                    {
+                        "id": 1,
+                        "version": 1,
+                        "title": "API brief",
+                        "category": "supporting",
+                        "mimeType": "application\/pdf",
+                        "size": 14,
+                        "checksum": "4f1949e95440af0ece666ebd5f399c1d77d22de639950784d349fa5feb47dca5",
+                        "scanStatus": "pending",
+                        "scanReason": null,
+                        "scannedAt": null,
+                        "createdAt": "2026-09-30T13:13:22.000000Z"
+                    }
+                ],
+                "pagination": {
+                    "currentPage": 1,
+                    "perPage": 20,
+                    "lastPage": 1,
+                    "total": 1
+                }
+            }
+        }
+    }
+}

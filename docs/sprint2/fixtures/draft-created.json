@@ -1,0 +1,57 @@
+{
+    "contractVersion": "1.0.0",
+    "synthetic": true,
+    "request": {
+        "method": "POST",
+        "url": "\/api\/user\/cases",
+        "headers": {
+            "Accept": "application\/json",
+            "Idempotency-Key": "<UNIQUE_REQUEST_KEY>",
+            "Authorization": "Bearer <ACCOUNT_TOKEN>",
+            "Content-Type": "application\/json"
+        },
+        "body": {}
+    },
+    "response": {
+        "status": 201,
+        "headers": {
+            "Content-Type": "application\/json",
+            "Cache-Control": "no-store, private",
+            "Retry-After": null
+        },
+        "body": {
+            "status": true,
+            "message": "Case draft created.",
+            "data": {
+                "item": {
+                    "id": 1,
+                    "status": "draft",
+                    "version": 1,
+                    "schemaVersion": 1,
+                    "title": null,
+                    "primaryDomain": null,
+                    "domains": [],
+                    "language": null,
+                    "jurisdiction": null,
+                    "urgency": null,
+                    "suitability": "not_assessed",
+                    "createdAt": "2026-09-30T13:13:22.000000Z",
+                    "updatedAt": "2026-09-30T13:13:22.000000Z",
+                    "submittedAt": null,
+                    "cancelledAt": null,
+                    "intakeVersion": 1,
+                    "intake": {
+                        "schemaVersion": 1,
+                        "privacyChoice": "private",
+                        "subjectType": "self",
+                        "answers": []
+                    },
+                    "confirmedAssessmentId": null,
+                    "confirmedAt": null,
+                    "contextSnapshots": [],
+                    "assessment": null
+                }
+            }
+        }
+    }
+}

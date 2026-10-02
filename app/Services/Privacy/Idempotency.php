@@ -22,9 +22,10 @@ class Idempotency
         /** @var User $user */
         $user = $request->user();
         $scope = $request->route()->getName().'|'.implode(':', $request->route()->parameters());
+        $preserveJson = $request->routeIs('v2.*');
         $hash = hash('sha256', json_encode($this->canonical($payload), JSON_THROW_ON_ERROR));
 
-        return DB::transaction(function () use ($user, $key, $scope, $hash, $operation): JsonResponse {
+        return DB::transaction(function () use ($user, $key, $scope, $hash, $operation, $preserveJson): JsonResponse {
             User::query()->whereKey($user->id)->lockForUpdate()->firstOrFail();
             $row = IdempotencyRecord::query()->where([
                 'actor_type' => 'user', 'actor_id' => $user->id, 'operation' => $scope, 'key_hash' => hash('sha256', $key),
@@ -38,14 +39,18 @@ class Idempotency
                     throw new PrivacyException('IDEMPOTENCY_CONFLICT', 'This request key has already been used for different input.');
                 }
 
-                return response()->json($row->response_body, $row->response_status)->header('Idempotency-Replayed', 'true');
+                // v2 preserves JSON object/list identity; historical rows retain their original format.
+                $body = $row->response_body;
+                $replay = isset($body['_responseJson']) ? JsonResponse::fromJsonString($body['_responseJson'], $row->response_status) : response()->json($body, $row->response_status);
+
+                return $replay->header('Idempotency-Replayed', 'true');
             }
             $response = $operation();
             $row = new IdempotencyRecord;
             $row->forceFill([
                 'actor_type' => 'user', 'actor_id' => $user->id, 'operation' => $scope,
                 'key_hash' => hash('sha256', $key), 'request_hash' => $hash,
-                'response_body' => $response->getData(true), 'response_status' => $response->getStatusCode(),
+                'response_body' => $preserveJson ? ['_responseJson' => $response->getContent()] : $response->getData(true), 'response_status' => $response->getStatusCode(),
                 'expires_at' => now()->addHours(config('privacy.idempotency_hours')),
             ])->save();
 

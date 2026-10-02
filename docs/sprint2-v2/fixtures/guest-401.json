@@ -1,0 +1,25 @@
+{
+    "contractVersion": "2.0.0",
+    "synthetic": true,
+    "request": {
+        "method": "GET",
+        "url": "\/api\/v2\/user\/cases\/1",
+        "headers": {
+            "Accept": "application\/json",
+            "Authorization": "Bearer <ACCOUNT_TOKEN>"
+        },
+        "body": {}
+    },
+    "response": {
+        "status": 401,
+        "headers": {
+            "X-Request-ID": "7064330e-4460-42d0-b3ca-5bded012f02e",
+            "Retry-After": null
+        },
+        "body": {
+            "status": false,
+            "message": "Unauthenticated.",
+            "code": "UNAUTHENTICATED"
+        }
+    }
+}

@@ -1,0 +1,53 @@
+{
+    "contractVersion": "1.0.0",
+    "synthetic": true,
+    "request": {
+        "method": "POST",
+        "url": "\/api\/user\/cases\/5\/documents",
+        "headers": {
+            "Accept": "application\/json",
+            "Idempotency-Key": "<UNIQUE_REQUEST_KEY>",
+            "Authorization": "Bearer <ACCOUNT_TOKEN>",
+            "Content-Type": "multipart\/form-data"
+        },
+        "body": {
+            "expectedVersion": 3,
+            "title": "API brief",
+            "category": "supporting",
+            "file": "<BINARY_PDF>"
+        }
+    },
+    "response": {
+        "status": 201,
+        "headers": {
+            "Content-Type": "application\/json",
+            "Cache-Control": "no-store, private",
+            "Retry-After": null
+        },
+        "body": {
+            "status": true,
+            "message": "Document revision stored privately.",
+            "data": {
+                "item": {
+                    "id": 1,
+                    "caseId": 5,
+                    "caseVersion": 4,
+                    "deletedAt": null,
+                    "currentVersion": {
+                        "id": 1,
+                        "version": 1,
+                        "title": "API brief",
+                        "category": "supporting",
+                        "mimeType": "application\/pdf",
+                        "size": 14,
+                        "checksum": "4f1949e95440af0ece666ebd5f399c1d77d22de639950784d349fa5feb47dca5",
+                        "scanStatus": "pending",
+                        "scanReason": null,
+                        "scannedAt": null,
+                        "createdAt": "2026-10-01T12:30:03.000000Z"
+                    }
+                }
+            }
+        }
+    }
+}

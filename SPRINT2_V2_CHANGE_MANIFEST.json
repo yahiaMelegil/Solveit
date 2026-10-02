@@ -1,0 +1,943 @@
+{
+  "contractVersion": "2.0.0",
+  "baselineZipSha256": "5cbfeb68ec9f76287bb5b49261708fc33e0a485eb2f6d4f77b6e8661953dc128",
+  "files": [
+    {
+      "path": "app/Console/Commands/ReviewCatalogCases.php",
+      "change": "Added",
+      "sha256": "e69bf4ad913f3c87248a73ce293804f1680541518ada56b467c0ae51e6742e8e",
+      "bytes": 500
+    },
+    {
+      "path": "app/Enums/AdminPermission.php",
+      "change": "Modified",
+      "sha256": "b08c14f5c87660dae347a9ed9c8c0bf75280a1e9a085267677e2d6387ed47143",
+      "bytes": 1703
+    },
+    {
+      "path": "app/Enums/CaseReadinessStatus.php",
+      "change": "Added",
+      "sha256": "34f3feeb89392eb2eff09edfc3c341a5d5ebea3f2b11a696442929ccc902bd93",
+      "bytes": 708
+    },
+    {
+      "path": "app/Enums/CatalogStatus.php",
+      "change": "Added",
+      "sha256": "b6185e3c3e49f130b45c941a63f0afa450283121b0b6f2c8dcf4f5266e562c7e",
+      "bytes": 267
+    },
+    {
+      "path": "app/Enums/JurisdictionMode.php",
+      "change": "Added",
+      "sha256": "ea54e782d79008fb79bd342be467849c476c04e955adff0a0a84b7034afc2796",
+      "bytes": 179
+    },
+    {
+      "path": "app/Http/Controllers/Api/Admin/CaseV2OversightController.php",
+      "change": "Added",
+      "sha256": "df75179dd59eb154be602e91f8d3d291e5e532564a74f1e7429c72f7afdce358",
+      "bytes": 1278
+    },
+    {
+      "path": "app/Http/Controllers/Api/Catalog/CatalogController.php",
+      "change": "Added",
+      "sha256": "e1f8abe08840a7d3434aa9638fed97b1dffd89defb911adea09e486c65c35045",
+      "bytes": 5650
+    },
+    {
+      "path": "app/Http/Controllers/Api/User/Cases/CaseV2Controller.php",
+      "change": "Added",
+      "sha256": "c87cce7053cfffc4ae1dcb0d7d0dbfd9b65a72125db25ef7a519c036d0b93220",
+      "bytes": 2098
+    },
+    {
+      "path": "app/Http/Requests/Admin/Kyc/ApproveKycApplicationRequest.php",
+      "change": "Modified",
+      "sha256": "c152cedcafba0e6e6ca106ffd54c578a607af363c59712bc90528f39fb7401fe",
+      "bytes": 4503
+    },
+    {
+      "path": "app/Http/Requests/Cases/CaseUploadRequest.php",
+      "change": "Modified",
+      "sha256": "ac947cc88fab8fc262d275a8c7ebac0ebc0e839e31c9d69d054e2d8253d2d58f",
+      "bytes": 1660
+    },
+    {
+      "path": "app/Http/Requests/Cases/CaseV2AdminRequest.php",
+      "change": "Added",
+      "sha256": "c742499e4652d555afddc640b3bb8205b6d9765b8ea200faf30475e9c2f35b9e",
+      "bytes": 511
+    },
+    {
+      "path": "app/Http/Requests/Cases/CaseV2Request.php",
+      "change": "Added",
+      "sha256": "f33d4b2b5b20a41a5783a52e77e476a36e9a7a6815c8bc4b73fbaa152956e26f",
+      "bytes": 3131
+    },
+    {
+      "path": "app/Http/Requests/Catalog/CatalogRequest.php",
+      "change": "Added",
+      "sha256": "b642b1139cc8d7383c9f9fdf31f50a99ba7ff040e33eeb1de50afe86d83d72e1",
+      "bytes": 4443
+    },
+    {
+      "path": "app/Http/Requests/Expert/Profile/UpdateExpertAvailabilityRequest.php",
+      "change": "Modified",
+      "sha256": "14c067d8b6d6ab7e03ade955f6b53e91e0888e88176d87e6283f5d99f2503378",
+      "bytes": 2769
+    },
+    {
+      "path": "app/Http/Resources/Cases/CaseMetadataResource.php",
+      "change": "Modified",
+      "sha256": "2be5ae5b52c9a4006e3f8a26f1c7a460b9b3ccfbf494b383cb694acd3d34d8a0",
+      "bytes": 990
+    },
+    {
+      "path": "app/Http/Resources/Cases/CaseResource.php",
+      "change": "Modified",
+      "sha256": "67295ec24128bf2e8ec904fcdff56128c90707f72a113b4a7d68df8106f43d5a",
+      "bytes": 1693
+    },
+    {
+      "path": "app/Http/Resources/Cases/CaseV2MetadataResource.php",
+      "change": "Added",
+      "sha256": "1510a7fb105c37ab84537446aa082dd2a06113d9f46fa39d0d20614463f9f1fa",
+      "bytes": 664
+    },
+    {
+      "path": "app/Http/Resources/Cases/CaseV2Resource.php",
+      "change": "Added",
+      "sha256": "e50c66a6a0581586de26f22ae15f007f81ed0efe5026bb01388ac260857c7e28",
+      "bytes": 2204
+    },
+    {
+      "path": "app/Http/Resources/Catalog/CatalogNodeResource.php",
+      "change": "Added",
+      "sha256": "ac8a96b5a530eaa325829409e694fbbf70c82cc417e3282f4d462e954d3ec63c",
+      "bytes": 488
+    },
+    {
+      "path": "app/Http/Resources/Catalog/CatalogVersionResource.php",
+      "change": "Added",
+      "sha256": "3f0ac88be6f7e9fe2023cc6a0f1b5b32e945c08fd635a27ecc0b7e0f36c782e9",
+      "bytes": 603
+    },
+    {
+      "path": "app/Models/CaseDocument.php",
+      "change": "Modified",
+      "sha256": "a931b7accbb12a7c8a97910667527b595d54543cfff48b6b872ce007e3159d4e",
+      "bytes": 725
+    },
+    {
+      "path": "app/Models/CaseRecord.php",
+      "change": "Modified",
+      "sha256": "6c5397761fecadd23732f886422a7e8418b3c25e2376c0a986c4003d5f2b683c",
+      "bytes": 2392
+    },
+    {
+      "path": "app/Models/CaseServiceScope.php",
+      "change": "Added",
+      "sha256": "5ad42ea0bc6d066dffe57b20a10a1c4ad81f965ed556e09ef44bc00875c96b46",
+      "bytes": 1218
+    },
+    {
+      "path": "app/Models/CatalogEntry.php",
+      "change": "Added",
+      "sha256": "1e4d88fae952fccae77d29b7872dd5b8c7bb696ce912ba574a564c80b080e8a7",
+      "bytes": 431
+    },
+    {
+      "path": "app/Models/CatalogNode.php",
+      "change": "Added",
+      "sha256": "ce1c69052fd2f9857f5f7bbe182507e7e8098152a254fcd009d19b76ddf587ac",
+      "bytes": 274
+    },
+    {
+      "path": "app/Models/CatalogVersion.php",
+      "change": "Added",
+      "sha256": "463ce95fc0528bbec0298cb381bc04ab15029df68481787cd369fec0e4558834",
+      "bytes": 1211
+    },
+    {
+      "path": "app/Models/Expert.php",
+      "change": "Modified",
+      "sha256": "0bcb1797f7b67fcf633fd3e4d0372c84dc3180860ba96a118a87f722e0526454",
+      "bytes": 3198
+    },
+    {
+      "path": "app/Models/ExpertCatalogGrant.php",
+      "change": "Added",
+      "sha256": "bdca1f5d8065d09312b0ae26758c8440c8371604d52884d23ce95bfacf90f9fb",
+      "bytes": 985
+    },
+    {
+      "path": "app/Models/ExpertVerifiedScope.php",
+      "change": "Modified",
+      "sha256": "6d2871c0a63d25534b83b389bb342bdb0cfa21214440d089fd8e2464963100c1",
+      "bytes": 2094
+    },
+    {
+      "path": "app/Models/User.php",
+      "change": "Modified",
+      "sha256": "06fd63958387b8dace57083324c9ca12e6bc50c921b2687d02457e84ae376147",
+      "bytes": 3142
+    },
+    {
+      "path": "app/Providers/AppServiceProvider.php",
+      "change": "Modified",
+      "sha256": "cc346078246c39a7f8f09a798ec6bc3575d73235e6ae68d749752dd32e7d9886",
+      "bytes": 8671
+    },
+    {
+      "path": "app/Services/Cases/CaseDocuments.php",
+      "change": "Modified",
+      "sha256": "19e80d75821bee095e7a7bd7d73962db23df155c3eba07940915b4ad2d6bfccb",
+      "bytes": 3850
+    },
+    {
+      "path": "app/Services/Cases/CaseWorkflow.php",
+      "change": "Modified",
+      "sha256": "347da56f74857ad77cbbfc099a5bb66fa9c7d8854c828d5ef6583da6f8955826",
+      "bytes": 15997
+    },
+    {
+      "path": "app/Services/Cases/DeterministicIntake.php",
+      "change": "Modified",
+      "sha256": "6395cf025ccb0a2a32140b7344a92656621260e621d7f12fee8a52264c695a83",
+      "bytes": 4253
+    },
+    {
+      "path": "app/Services/Cases/IntakeSchema.php",
+      "change": "Modified",
+      "sha256": "87e22f63ec7d5a55f91757d3d4c7b100dea37c34c09ef27badadc037e3e7ed31",
+      "bytes": 4597
+    },
+    {
+      "path": "app/Services/Catalog/CaseReadiness.php",
+      "change": "Added",
+      "sha256": "8c472816c84b55dcecdb998afd20f5f08a0e61429dc59aa086861fa34bd56446",
+      "bytes": 10648
+    },
+    {
+      "path": "app/Services/Catalog/CaseV2Workflow.php",
+      "change": "Added",
+      "sha256": "179a19af8c983a79a03441cc862cf1b0de35ebbc029a763da6316ad1f6bd629f",
+      "bytes": 9261
+    },
+    {
+      "path": "app/Services/Catalog/CatalogIdempotency.php",
+      "change": "Added",
+      "sha256": "1ea8bf3bfedd98d87819c964c0547109bb3edc3e824a6e4deb88f2832778df11",
+      "bytes": 2150
+    },
+    {
+      "path": "app/Services/Catalog/CatalogManager.php",
+      "change": "Added",
+      "sha256": "4722c7b79a60d809ae4d9225d9d61a9d1e6095277650a7b35197d68fb756246d",
+      "bytes": 11972
+    },
+    {
+      "path": "app/Services/Catalog/CatalogMutex.php",
+      "change": "Added",
+      "sha256": "a199cee45aa1f3525b2fded3bd2840e57c52197b8c8b0519b8917de461becfa9",
+      "bytes": 366
+    },
+    {
+      "path": "app/Services/Catalog/CatalogPolicy.php",
+      "change": "Added",
+      "sha256": "95ee22a55f722a67f1a37443d8c4ff01b710762cbbd6677ea9881ebc2c39263e",
+      "bytes": 6438
+    },
+    {
+      "path": "app/Services/Catalog/CatalogReview.php",
+      "change": "Added",
+      "sha256": "021ed7ee857dcb234e8aef5aeaefe6a6a6828d749838860da5892583d488f699",
+      "bytes": 3370
+    },
+    {
+      "path": "app/Services/Catalog/CatalogTaxonomy.php",
+      "change": "Added",
+      "sha256": "f5d573437c0c0c31d76d36a15ec98ba3011628050cef2d13729b5d82a40dee0b",
+      "bytes": 1745
+    },
+    {
+      "path": "app/Services/Catalog/ExpertCoverage.php",
+      "change": "Added",
+      "sha256": "b92d22dc5a4b17165bb17615127591d3e885df0e3dacaeb3b8ca694d68fe7561",
+      "bytes": 5752
+    },
+    {
+      "path": "app/Services/Expert/Renewal/ScopeRenewal.php",
+      "change": "Modified",
+      "sha256": "1dd99e33ceff6468cb459150102aa026dcaaaf5f5927701a0180a86b7a7ec140",
+      "bytes": 14415
+    },
+    {
+      "path": "app/Services/Kyc/ExpertKycWorkflow.php",
+      "change": "Modified",
+      "sha256": "265bb97df53c1a93cba155f06fd5f5f5c5942c7f229354c98bf6f3877690cc49",
+      "bytes": 32349
+    },
+    {
+      "path": "app/Services/Privacy/Idempotency.php",
+      "change": "Modified",
+      "sha256": "2d7b7f0da4da526f4cfcf4b0ebf2d7cb84276fe8c5007ec5056b1ddf098679ef",
+      "bytes": 3110
+    },
+    {
+      "path": "composer.json",
+      "change": "Modified",
+      "sha256": "3a6ed6214c58f8cc0e8371bccd1e45a17337efd593cedce1ead142feca672aa2",
+      "bytes": 2796
+    },
+    {
+      "path": "composer.lock",
+      "change": "Modified",
+      "sha256": "4061b8c42bf375f79967c60645526a5b5de4c40304c13c8e43ebada32792ebd5",
+      "bytes": 327997
+    },
+    {
+      "path": "config/case_intake.php",
+      "change": "Modified",
+      "sha256": "4717164986310fb99ec8523e42b74d85095de284024a3baa8345e90aff19a7f6",
+      "bytes": 559
+    },
+    {
+      "path": "config/expert_verification.php",
+      "change": "Modified",
+      "sha256": "26daa715eb38cdead817568d0cb668de905bb502c0a85204e23bd5fa4fad66f6",
+      "bytes": 109
+    },
+    {
+      "path": "database/data/service_catalog_initial.json",
+      "change": "Added",
+      "sha256": "64e2a9d382597d639806bec73631a42a185df27fb2f8288482b92c215e05b75f",
+      "bytes": 81457
+    },
+    {
+      "path": "database/migrations/2026_10_01_000000_create_service_catalog.php",
+      "change": "Added",
+      "sha256": "1e38c5129caf74143b308f05717ec99af42663eb5ea25d8ef474660019063b97",
+      "bytes": 5741
+    },
+    {
+      "path": "database/seeders/CatalogPermissionsSeeder.php",
+      "change": "Added",
+      "sha256": "0330b6f504e4427f3bf8f03ad6b6b4411f8740ff7bd8e8c39768e16ea338fb2c",
+      "bytes": 953
+    },
+    {
+      "path": "database/seeders/ServiceCatalogSeeder.php",
+      "change": "Added",
+      "sha256": "0c3cc4a3ab816755d2cb30296c5bc9d5b1c355f15aa2913f73f54a1b36a1fb46",
+      "bytes": 1863
+    },
+    {
+      "path": "docs/api/CHANGELOG.md",
+      "change": "Modified",
+      "sha256": "f95d4b525d76fa26c0b384dd5883a7e457e2c4cadc3fdf34642d35322c464953",
+      "bytes": 7279
+    },
+    {
+      "path": "docs/api/SPRINT2_CASE_CORE_CONTRACT.md",
+      "change": "Modified",
+      "sha256": "60f45827c875862024339970e699ac33eb7ba54104b05a5c093fe28679ed618b",
+      "bytes": 9413
+    },
+    {
+      "path": "docs/sprint2/DEPLOYMENT.md",
+      "change": "Modified",
+      "sha256": "10388969afeda382b5c9bf068e2db958c774c1362f8be4848f49889e12b630ea",
+      "bytes": 4519
+    },
+    {
+      "path": "docs/sprint2/FRONTEND_HANDOFF.md",
+      "change": "Modified",
+      "sha256": "a16373472bc33d573f19691583f263999b1fe120d04bf4cdd65fefc0434da687",
+      "bytes": 4896
+    },
+    {
+      "path": "docs/sprint2/README.md",
+      "change": "Modified",
+      "sha256": "39e01bdc483415d46ff2d3501dfcb8a23f078b9718ee7d9cd1eeb855ef3b746e",
+      "bytes": 1543
+    },
+    {
+      "path": "docs/sprint2/RELEASE_GATE_SPRINT1.md",
+      "change": "Modified",
+      "sha256": "ae291f22d25b80f1c28e10b77c1ba3db00cc8a278cb189972fa401b49620d163",
+      "bytes": 1747
+    },
+    {
+      "path": "docs/sprint2/VERIFICATION.md",
+      "change": "Modified",
+      "sha256": "af424acdcee719d5df539da80d7f3ed8ba3cde27c09199d4755d75749bed866f",
+      "bytes": 3287
+    },
+    {
+      "path": "docs/sprint2-v2/API_SCHEMAS.json",
+      "change": "Added",
+      "sha256": "d36033ec0bd3975e051a8c216233683f321214f492bcfe5538d2e158e9b1ae1a",
+      "bytes": 23709
+    },
+    {
+      "path": "docs/sprint2-v2/DATABASE_MAPPING.md",
+      "change": "Added",
+      "sha256": "dc3529f16fdcbd3fa04a9ab999ae0deeb668bfc6ada383e910f30ac15ba2f073",
+      "bytes": 4706
+    },
+    {
+      "path": "docs/sprint2-v2/DECISIONS_AND_LIMITATIONS.md",
+      "change": "Added",
+      "sha256": "16d046faa27a71da59f2d90617e10910eba1db88176f672e47a214a994fc5253",
+      "bytes": 3555
+    },
+    {
+      "path": "docs/sprint2-v2/DELIVERY_SUMMARY_AR.md",
+      "change": "Added",
+      "sha256": "a57e1d6d0d9f3e95a47d2166a5c1afcdd843b33d9f995e0678e639f213a78b00",
+      "bytes": 5111
+    },
+    {
+      "path": "docs/sprint2-v2/DEPLOYMENT.md",
+      "change": "Added",
+      "sha256": "0509c141a3951cece2e32d093cf55fc58d7f2786a19a93b9932d74248fe6b15f",
+      "bytes": 5489
+    },
+    {
+      "path": "docs/sprint2-v2/ENDPOINTS.md",
+      "change": "Added",
+      "sha256": "2cbf64a3ec3bb61528f4e054817f3ea8a602c27252b299479f732466460da5ae",
+      "bytes": 8567
+    },
+    {
+      "path": "docs/sprint2-v2/FRONTEND_HANDOFF.md",
+      "change": "Added",
+      "sha256": "648eb9447b9aa22d864216269bb7b31c848d8b2c316cd54d196973a620f52dab",
+      "bytes": 5893
+    },
+    {
+      "path": "docs/sprint2-v2/PERMISSION_MATRIX.md",
+      "change": "Added",
+      "sha256": "53309ea1652206a03259363151ca7caa5028aab368cb1e58ddfa5e9a8942bd6b",
+      "bytes": 1650
+    },
+    {
+      "path": "docs/sprint2-v2/README.md",
+      "change": "Added",
+      "sha256": "f0e58ffdf8c93cc58ae61994089f8fb79073b010291940974d21dff9e3ff1485",
+      "bytes": 892
+    },
+    {
+      "path": "docs/sprint2-v2/RELEASE_GATE_SPRINT1.md",
+      "change": "Added",
+      "sha256": "e07a7ec2b6307901fd1a54e103486d3e0d46eff68dd394f3eb6350796baaaffc",
+      "bytes": 2054
+    },
+    {
+      "path": "docs/sprint2-v2/SHARED_API_SCHEMAS.json",
+      "change": "Added",
+      "sha256": "ff1712f613302fc89cbabefe0f97ca9a5cac41e179dcc289d1f367f53438e1cc",
+      "bytes": 11725
+    },
+    {
+      "path": "docs/sprint2-v2/SHARED_CASE_API.md",
+      "change": "Added",
+      "sha256": "eba5ebaaa1eaeaed499da4ff1ac880a400dac59e94ce699d716afbb39424c42c",
+      "bytes": 9353
+    },
+    {
+      "path": "docs/sprint2-v2/SPRINT2_CASE_CORE_CONTRACT.md",
+      "change": "Added",
+      "sha256": "fdce55a081505abff0fe963584f25450ca873e64eaaf0c91112978ac3a210afe",
+      "bytes": 11227
+    },
+    {
+      "path": "docs/sprint2-v2/STATE_TRANSITIONS.md",
+      "change": "Added",
+      "sha256": "047cff0e9ef4ac8f373fed756f874f33eef8260e22a763a3e22f39351e833e3d",
+      "bytes": 3954
+    },
+    {
+      "path": "docs/sprint2-v2/VERIFICATION.md",
+      "change": "Added",
+      "sha256": "3cffc3f607d80bad2ae9452144de6aa7f2a5f69d607e08e15162b7f819a130bb",
+      "bytes": 3051
+    },
+    {
+      "path": "docs/sprint2-v2/fixtures/admin-case-metadata.json",
+      "change": "Added",
+      "sha256": "6295914fdd5da2683cf30a338585249b72f1034d2a7111baf931bbc841e389b2",
+      "bytes": 1138
+    },
+    {
+      "path": "docs/sprint2-v2/fixtures/admin-policy-created.json",
+      "change": "Added",
+      "sha256": "3285d86abe89dc1be54a185d894379c2e9d4ddbf690e5c423f7bd5e166009542",
+      "bytes": 4477
+    },
+    {
+      "path": "docs/sprint2-v2/fixtures/admin-policy-published.json",
+      "change": "Added",
+      "sha256": "13263b743b30430cc1d598da6a03413848125214c1b56bdce51420d640d1d341",
+      "bytes": 3161
+    },
+    {
+      "path": "docs/sprint2-v2/fixtures/admin-policy-reviewed.json",
+      "change": "Added",
+      "sha256": "ed966245e7f1bc2668f13a10bc1b4b30f63fb4eedbad0a08ba4cc92065feb5e6",
+      "bytes": 3078
+    },
+    {
+      "path": "docs/sprint2-v2/fixtures/admin-publish-impact.json",
+      "change": "Added",
+      "sha256": "17e2fff33910c1a4ced9597cecedac73ef0f4a4ba963f6258f96754cc4b1a9fc",
+      "bytes": 1206
+    },
+    {
+      "path": "docs/sprint2-v2/fixtures/case-assessment.json",
+      "change": "Added",
+      "sha256": "9291fa99c6d92f5f5b99e484a5ee0131251b4d891cd3a094dbdcce77513e3fe0",
+      "bytes": 2898
+    },
+    {
+      "path": "docs/sprint2-v2/fixtures/case-cancelled.json",
+      "change": "Added",
+      "sha256": "163c2e9183676e598b4d8de36f7398588aaaccf16b0a0a04dd6fe26a23670273",
+      "bytes": 6914
+    },
+    {
+      "path": "docs/sprint2-v2/fixtures/case-confirmed.json",
+      "change": "Added",
+      "sha256": "549d5453f2c46c249885f552dffbe836b8135c14a5f379bcbd42f83a1491450c",
+      "bytes": 2926
+    },
+    {
+      "path": "docs/sprint2-v2/fixtures/case-detail.json",
+      "change": "Added",
+      "sha256": "e135f8202c6850e5d1f9de129e4b834d1ade3babedb5df7524a2505bc23b32b9",
+      "bytes": 6828
+    },
+    {
+      "path": "docs/sprint2-v2/fixtures/case-draft.json",
+      "change": "Added",
+      "sha256": "ab4c0afa9eeb54121c087f0b14c1aa95bd6a8daa6942cc34b51d80a964043677",
+      "bytes": 2332
+    },
+    {
+      "path": "docs/sprint2-v2/fixtures/case-list.json",
+      "change": "Added",
+      "sha256": "64135a372c1b32f51f43d19f5817ce759a99ca9576a451d348cb46aa4bd1c674",
+      "bytes": 1248
+    },
+    {
+      "path": "docs/sprint2-v2/fixtures/case-readiness.json",
+      "change": "Added",
+      "sha256": "1ff91605cff1f041959782e0fc513a407786a077d3ffc7cce866621a1c018a83",
+      "bytes": 1547
+    },
+    {
+      "path": "docs/sprint2-v2/fixtures/case-ready.json",
+      "change": "Added",
+      "sha256": "186898a3bb2781b6c74fd0dbd9aeb863a4da02ed0f8af50322ad04a319cf9a43",
+      "bytes": 6932
+    },
+    {
+      "path": "docs/sprint2-v2/fixtures/case-scopes.json",
+      "change": "Added",
+      "sha256": "3a21a33a6681c9dbd0f3abddfb3b33f404a8e9a3ad37768056911129bff23937",
+      "bytes": 3166
+    },
+    {
+      "path": "docs/sprint2-v2/fixtures/catalog-countries.json",
+      "change": "Added",
+      "sha256": "c07dea248f4a7b5856fa95845774563105c00f26926bffa7a72230f9c1bf8610",
+      "bytes": 847
+    },
+    {
+      "path": "docs/sprint2-v2/fixtures/catalog-domains.json",
+      "change": "Added",
+      "sha256": "ba7ce9c81cac4b7da116943f87e00d9ca862c49422ea61e790b57179d683f604",
+      "bytes": 4329
+    },
+    {
+      "path": "docs/sprint2-v2/fixtures/catalog-entry-schema.json",
+      "change": "Added",
+      "sha256": "518341a50bd51d8dd4599b02edc95a784842634bd9eb0b3b1bae942b5401bc5f",
+      "bytes": 2913
+    },
+    {
+      "path": "docs/sprint2-v2/fixtures/catalog-impact.json",
+      "change": "Added",
+      "sha256": "e2b373aeb2d2b763640105a35f5ff4c36cbf0b840a4334dd382de91c43d839f8",
+      "bytes": 1206
+    },
+    {
+      "path": "docs/sprint2-v2/fixtures/catalog-specialties.json",
+      "change": "Added",
+      "sha256": "5e4d2a245ee59718377399cdd30135adc54366cd020eecd22b280b81809f7333",
+      "bytes": 11531
+    },
+    {
+      "path": "docs/sprint2-v2/fixtures/expert-forbidden-403.json",
+      "change": "Added",
+      "sha256": "d40e83b0748c3108a8a5635232a20af924f3bc39eca47a0a8bc05b38d065e09a",
+      "bytes": 642
+    },
+    {
+      "path": "docs/sprint2-v2/fixtures/foreign-case-404.json",
+      "change": "Added",
+      "sha256": "8ba979b5237deadbba928cf19382d649e4308668e9f12928515ec308eb1c02e8",
+      "bytes": 641
+    },
+    {
+      "path": "docs/sprint2-v2/fixtures/guest-401.json",
+      "change": "Added",
+      "sha256": "63c44d0e36577f29c35d4768623db98c19672476ab105091ae1f76a08f21c264",
+      "bytes": 617
+    },
+    {
+      "path": "docs/sprint2-v2/fixtures/legacy-upgrade-409.json",
+      "change": "Added",
+      "sha256": "83949246b06cb51565ded321ca74a56c032316c33f454c0cc24b7d57ab258d2a",
+      "bytes": 768
+    },
+    {
+      "path": "docs/sprint2-v2/fixtures/needs-clarification.json",
+      "change": "Added",
+      "sha256": "471324dd84e73a37ad3d379fe6907fa288bbf29e1201539d5195e459e81fb48c",
+      "bytes": 2444
+    },
+    {
+      "path": "docs/sprint2-v2/fixtures/partial-consent-required-409.json",
+      "change": "Added",
+      "sha256": "cf404b7209061c1ad84429bfce26c424fd989b87c45fbf259f6d47c19e62a81f",
+      "bytes": 847
+    },
+    {
+      "path": "docs/sprint2-v2/fixtures/partial-submitted-parent-waiting.json",
+      "change": "Added",
+      "sha256": "d099481ebc857c127c5cbfedb2ccc6c1667e396a3224f4ac8de77dbded6d7386",
+      "bytes": 8024
+    },
+    {
+      "path": "docs/sprint2-v2/fixtures/rate-limit-429.json",
+      "change": "Added",
+      "sha256": "7d56aedb3a38355cdb6863ade48cb72d1c9b0cc5384e105fe4645f24ff73e5e8",
+      "bytes": 637
+    },
+    {
+      "path": "docs/sprint2-v2/fixtures/remote-not-allowed.json",
+      "change": "Added",
+      "sha256": "5125e7f4b6bc3ef256f0cda1308419090bbc63c297e21afe4632301fb732edca",
+      "bytes": 2486
+    },
+    {
+      "path": "docs/sprint2-v2/fixtures/safety-referral.json",
+      "change": "Added",
+      "sha256": "9d7e84fb8c2e9a44751a4109c4960a82d6c31a092ed979598fddcac6b93e80d7",
+      "bytes": 2461
+    },
+    {
+      "path": "docs/sprint2-v2/fixtures/self-only-422.json",
+      "change": "Added",
+      "sha256": "fda647a1a613e7a44a4c76dce3331f99bafbc65c5a896d893a4eea94a20ef936",
+      "bytes": 895
+    },
+    {
+      "path": "docs/sprint2-v2/fixtures/stale-cancel-409.json",
+      "change": "Added",
+      "sha256": "37f8f4f5be153312bb1d54c20b5687063d29ba29ad625a9ff12116c0679151c0",
+      "bytes": 770
+    },
+    {
+      "path": "docs/sprint2-v2/fixtures/waiting-for-expert-supply.json",
+      "change": "Added",
+      "sha256": "0725d5de2b79f41a7b56feb4b606a9f3c51c833a153d047f4c65ac294fa81ae4",
+      "bytes": 1727
+    },
+    {
+      "path": "docs/sprint2-v2/shared-fixtures/context-attached.json",
+      "change": "Added",
+      "sha256": "aa9e39fb35fb4bc123762879e08c5dc32b06c580d5e24a37d324a769f66fa7e8",
+      "bytes": 4317
+    },
+    {
+      "path": "docs/sprint2-v2/shared-fixtures/context-detached.json",
+      "change": "Added",
+      "sha256": "fa5205958dcb65054e9f4fa4098446340171ad76fc890bc7a399afa19e0aebef",
+      "bytes": 3000
+    },
+    {
+      "path": "docs/sprint2-v2/shared-fixtures/document-clean.json",
+      "change": "Added",
+      "sha256": "64a3007d9b7118326ddee6a58bcbc8f3ea424cec976871cb5d20397da9b99f27",
+      "bytes": 1811
+    },
+    {
+      "path": "docs/sprint2-v2/shared-fixtures/document-deleted.json",
+      "change": "Added",
+      "sha256": "68fef0e3d83a5a92978272558ff319567e5f255e1ee4b03328838eb85f751446",
+      "bytes": 1700
+    },
+    {
+      "path": "docs/sprint2-v2/shared-fixtures/document-failed.json",
+      "change": "Added",
+      "sha256": "ba51aef76fad1ec746c1976e5bf4704199d1d7752ea66a71f6cacf9fe91d3a46",
+      "bytes": 1830
+    },
+    {
+      "path": "docs/sprint2-v2/shared-fixtures/document-list.json",
+      "change": "Added",
+      "sha256": "2ad387e34f9760614211c224131b443dcb82ce81f3ed156fe7e3c92509d114fc",
+      "bytes": 1788
+    },
+    {
+      "path": "docs/sprint2-v2/shared-fixtures/document-not-ready-409.json",
+      "change": "Added",
+      "sha256": "362fe429692ea6933b22eaf69b5da52bd4de2f483e7b08eb7bdf29ecbaeb9940",
+      "bytes": 776
+    },
+    {
+      "path": "docs/sprint2-v2/shared-fixtures/document-pending.json",
+      "change": "Added",
+      "sha256": "d92b91ff5547dcb14feeaa1d757761ea52bb638c9b0461e349db0005d0ab5978",
+      "bytes": 1740
+    },
+    {
+      "path": "docs/sprint2-v2/shared-fixtures/document-rejected.json",
+      "change": "Added",
+      "sha256": "08232103ce73866dbea0c501621201d3743ea57bfd27037f42ba101766016458",
+      "bytes": 1832
+    },
+    {
+      "path": "docs/sprint2-v2/shared-fixtures/document-replacement-failed.json",
+      "change": "Added",
+      "sha256": "8f63261225a01c4f9851489c08d6b13cabad9d9fb59238cf21561592fb30c436",
+      "bytes": 1761
+    },
+    {
+      "path": "docs/sprint2-v2/shared-fixtures/document-replacement-rejected.json",
+      "change": "Added",
+      "sha256": "f962f5e4ac4460e208f425f772784c922ef0af5ad695849c997ec19bdd5ae3d1",
+      "bytes": 1761
+    },
+    {
+      "path": "docs/sprint2-v2/shared-fixtures/document-versions.json",
+      "change": "Added",
+      "sha256": "557cba47d6ff9d14075ca087d86a15873414b84badaf4478de58aae4dcde28db",
+      "bytes": 1574
+    },
+    {
+      "path": "docs/sprint2-v2/shared-fixtures/timeline.json",
+      "change": "Added",
+      "sha256": "c8d6aab8a6b50a606eae32e21e171c53b1a2bee3856c174793d80cbf1be2d48c",
+      "bytes": 4739
+    },
+    {
+      "path": "docs/sprint2-v2/verification/composer.txt",
+      "change": "Added",
+      "sha256": "c6cb2980b78a98ccdba0f36e53c96920f18956d9c82c97abb71e3325ce115adf",
+      "bytes": 277
+    },
+    {
+      "path": "docs/sprint2-v2/verification/contract-fixtures.json",
+      "change": "Added",
+      "sha256": "00aa71cd24c3b032aa7b81e72b9b377e5dee0cbe116248d0c081bb5f417f11cc",
+      "bytes": 92
+    },
+    {
+      "path": "docs/sprint2-v2/verification/final-diff-review.json",
+      "change": "Added",
+      "sha256": "7a40965f3034462dfc315ece0706ab69f3d8ff49a94b5618073a8eca4899dcaf",
+      "bytes": 950
+    },
+    {
+      "path": "docs/sprint2-v2/verification/focused-catalog.json",
+      "change": "Added",
+      "sha256": "41bf81c1444549c4471c6280f229ca7d77f57702ac8d7ce81da21141e7444aa5",
+      "bytes": 96
+    },
+    {
+      "path": "docs/sprint2-v2/verification/full-suite.json",
+      "change": "Added",
+      "sha256": "e91213bece291e4cdb72cc468fbe41ba7b5bca34f2f1beae28d907b85a20013a",
+      "bytes": 100
+    },
+    {
+      "path": "docs/sprint2-v2/verification/migrations.json",
+      "change": "Added",
+      "sha256": "3f9e2af553bcfcf5634e1d3b4e9f200408d0dcdbd443a07c5624c26c0e1dc74d",
+      "bytes": 99888
+    },
+    {
+      "path": "docs/sprint2-v2/verification/phpstan-app-level0.json",
+      "change": "Added",
+      "sha256": "c10f74fb840de989bba7e9c2dfee7f8419b5d2ac0cc0daf18a4a187f6530aa43",
+      "bytes": 48
+    },
+    {
+      "path": "docs/sprint2-v2/verification/phpstan-new-level5.json",
+      "change": "Added",
+      "sha256": "c10f74fb840de989bba7e9c2dfee7f8419b5d2ac0cc0daf18a4a187f6530aa43",
+      "bytes": 48
+    },
+    {
+      "path": "docs/sprint2-v2/verification/pint.json",
+      "change": "Added",
+      "sha256": "cd1a94fc2cf6a965b86e1a4809d6c7fb9148b1ee374e1010ed2ac96ff4876ec2",
+      "bytes": 33
+    },
+    {
+      "path": "docs/sprint2-v2/verification/replay-privacy-regression.json",
+      "change": "Added",
+      "sha256": "202f3ebd697fe4bea36189510f499defa8f07a57581659c1bc0232ba6af3ea56",
+      "bytes": 96
+    },
+    {
+      "path": "docs/sprint2-v2/verification/routes.json",
+      "change": "Added",
+      "sha256": "59489e6431845bb64d5e6cd736b363c2857596e121225928994d103deaeeed92",
+      "bytes": 19078
+    },
+    {
+      "path": "docs/sprint2-v2/verification/shared-fixtures.json",
+      "change": "Added",
+      "sha256": "bf3d8b2e121aef4da2976a9aecdc77bdb629ba864a67044e594712af344dd96e",
+      "bytes": 92
+    },
+    {
+      "path": "docs/sprint2-v2/verification/syntax.json",
+      "change": "Added",
+      "sha256": "e2770d38f0cb8644728040ca866d0bce2f2bfa8a31e9d22a40409abe25e58262",
+      "bytes": 33
+    },
+    {
+      "path": "phpstan-legacy.neon",
+      "change": "Added",
+      "sha256": "ee26e12eeb32edfc54578eb65f45813e59be7d412919b500ebc177f99a810d2f",
+      "bytes": 190
+    },
+    {
+      "path": "phpstan.neon",
+      "change": "Added",
+      "sha256": "ccb8de9dc584c39bf3735c27fc3a5d55c392a87605bcb1d69850dee1bf77312a",
+      "bytes": 934
+    },
+    {
+      "path": "routes/api.php",
+      "change": "Modified",
+      "sha256": "76f357b93ee05276587236f7584a2bb7172021e8b64bd7738118a0ec0195f0fb",
+      "bytes": 12352
+    },
+    {
+      "path": "routes/cases_v2.php",
+      "change": "Added",
+      "sha256": "1c3701705104720f2d463aa53c3a4a8dafc386ca4c9982e3459cead6f1e77f36",
+      "bytes": 1715
+    },
+    {
+      "path": "routes/catalog.php",
+      "change": "Added",
+      "sha256": "ae0a57e0e00f25ca5f3fe632919c04bc9a397cc79128f639f3a1d04f025a3c8f",
+      "bytes": 2054
+    },
+    {
+      "path": "routes/console.php",
+      "change": "Modified",
+      "sha256": "af76bf49d3c0497315cd9bf7508110544b54cf51d52bd0588a1580db609016f3",
+      "bytes": 486
+    },
+    {
+      "path": "scripts/verify_catalog_v2_concurrency.py",
+      "change": "Added",
+      "sha256": "d86275226f6d697f67bc08bce8509fe486940999621819e954a1ea9980b84127",
+      "bytes": 5806
+    },
+    {
+      "path": "tests/Feature/Cases/CaseContractTest.php",
+      "change": "Modified",
+      "sha256": "1a4e9ae8b93c6db25f2fd4f378e37d158a22d1f86b2815766f48e74d12d2082a",
+      "bytes": 8074
+    },
+    {
+      "path": "tests/Feature/Cases/CaseLifecycleTest.php",
+      "change": "Modified",
+      "sha256": "9c8b4c6edd5b9b2c7956421782e06ba43ba3d21d9189a1685b65aab045c156e3",
+      "bytes": 13067
+    },
+    {
+      "path": "tests/Feature/Cases/CaseQueuedIntegrationTest.php",
+      "change": "Modified",
+      "sha256": "f98afae80350d4fa7e3c2acce8e48cd60b5b2926419c015ccfede8fc468b63a3",
+      "bytes": 6027
+    },
+    {
+      "path": "tests/Feature/Cases/CaseTestCase.php",
+      "change": "Modified",
+      "sha256": "eec0efe9e8fb633561485031ba86612437239d44e5c5c70fb2aef6d37d746cc7",
+      "bytes": 2123
+    },
+    {
+      "path": "tests/Feature/Catalog/CaseCatalogTest.php",
+      "change": "Added",
+      "sha256": "c491b2abe57a9cf1149055c0a2aa42b3b23b89fe5b21f8e94fe171801474be19",
+      "bytes": 7458
+    },
+    {
+      "path": "tests/Feature/Catalog/CatalogBoundaryTest.php",
+      "change": "Added",
+      "sha256": "8a98f1ecd274dd1a0cdde92129807d7968939d0086606fd42d7b25de75ba8614",
+      "bytes": 6648
+    },
+    {
+      "path": "tests/Feature/Catalog/CatalogContractTest.php",
+      "change": "Added",
+      "sha256": "5744efaa3d1fc532fe51932388184098a4cad7347671463d59268be51f09f6c4",
+      "bytes": 6559
+    },
+    {
+      "path": "tests/Feature/Catalog/CatalogManagementTest.php",
+      "change": "Added",
+      "sha256": "f3d60fcfb30abf3522d9a63e103064544fed22b5eeb4935f6fc2c22e1118fe9a",
+      "bytes": 7971
+    },
+    {
+      "path": "tests/Feature/Catalog/CatalogTestCase.php",
+      "change": "Added",
+      "sha256": "af4b82b0540c12110c72e514c6f89411628288ae237624328b80ed6e2d08a5c5",
+      "bytes": 6649
+    },
+    {
+      "path": "tests/Feature/Privacy/ContractFixturesTest.php",
+      "change": "Modified",
+      "sha256": "0b770221068fe6f5d5412004309e80307728c4a712e5a7e403fad7773ad31c8d",
+      "bytes": 10056
+    },
+    {
+      "path": "tests/Feature/Privacy/PrivacyTestCase.php",
+      "change": "Modified",
+      "sha256": "15fdb622a42895e5af35739ff4d7dacd7cb2842237074582327ac8732f55f6ae",
+      "bytes": 3217
+    },
+    {
+      "path": "tests/Support/CatalogSupplyFixture.php",
+      "change": "Added",
+      "sha256": "3127d2c556eee2b1f48336fb32a84a81c71e15038abca57800c808c82f453ac8",
+      "bytes": 2719
+    },
+    {
+      "path": "tests/Support/case_queue_process.php",
+      "change": "Modified",
+      "sha256": "d8bb395493d40c261197c230c2a286b8226e72b7a79c3a9922a6d9e264d86cc3",
+      "bytes": 5609
+    },
+    {
+      "path": "tests/TestCase.php",
+      "change": "Modified",
+      "sha256": "8d96eec106fddcb1f2d68abf14d00796ab4d7398a0e12d34a8abfab378dac9ef",
+      "bytes": 404
+    }
+  ],
+  "deletedFiles": []
+}

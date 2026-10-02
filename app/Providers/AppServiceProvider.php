@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Enums\AdminRole;
 use App\Models\Admin;
+use App\Models\CaseRecord;
 use App\Models\DataRightsRequest;
 use App\Models\Expert;
 use App\Models\SpecializedContext;
@@ -12,6 +13,7 @@ use App\Models\UserConsentRecord;
 use App\Models\UserPreference;
 use App\Models\UserProfile;
 use App\Policies\AdminPolicy;
+use App\Policies\CaseRecordPolicy;
 use App\Policies\DataRightsRequestPolicy;
 use App\Policies\ExpertPolicy;
 use App\Policies\RolePolicy;
@@ -20,6 +22,8 @@ use App\Policies\UserConsentRecordPolicy;
 use App\Policies\UserPolicy;
 use App\Policies\UserPreferencePolicy;
 use App\Policies\UserProfilePolicy;
+use App\Services\Cases\ClamAvDocumentScanner;
+use App\Services\Cases\DocumentScanner;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
@@ -43,6 +47,13 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         $this->registerAuthorization();
+        RateLimiter::for('catalog-read', fn (Request $r) => Limit::perMinute(120)->by($r->ip()));
+        RateLimiter::for('catalog-admin', fn (Request $r) => Limit::perMinute(60)->by($this->privacyKey($r)));
+        Gate::policy(CaseRecord::class, CaseRecordPolicy::class);
+        foreach (config('case_intake.limits') as $operation => $limit) {
+            RateLimiter::for('cases-'.$operation, fn (Request $request): Limit => Limit::perMinute($limit)->by($this->privacyKey($request)));
+        }
+        $this->app->bind(DocumentScanner::class, ClamAvDocumentScanner::class);
 
         RateLimiter::for('privacy-read', fn (Request $request): Limit => Limit::perMinute(120)->by($this->privacyKey($request)));
         RateLimiter::for('privacy-write', fn (Request $request): Limit => Limit::perMinute(30)->by($this->privacyKey($request)));

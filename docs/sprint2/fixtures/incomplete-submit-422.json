@@ -1,0 +1,68 @@
+{
+    "contractVersion": "1.0.0",
+    "synthetic": true,
+    "request": {
+        "method": "POST",
+        "url": "\/api\/user\/cases\/1\/submit",
+        "headers": {
+            "Accept": "application\/json",
+            "Idempotency-Key": "<UNIQUE_REQUEST_KEY>",
+            "Authorization": "Bearer <ACCOUNT_TOKEN>",
+            "Content-Type": "application\/json"
+        },
+        "body": {
+            "expectedVersion": 1
+        }
+    },
+    "response": {
+        "status": 422,
+        "headers": {
+            "Content-Type": "application\/json",
+            "Cache-Control": "no-store, private",
+            "Retry-After": null
+        },
+        "body": {
+            "status": false,
+            "message": "The provided data is invalid.",
+            "errors": {
+                "title": [
+                    "REQUIRED_INFORMATION"
+                ],
+                "problemDescription": [
+                    "REQUIRED_INFORMATION"
+                ],
+                "desiredOutcome": [
+                    "REQUIRED_INFORMATION"
+                ],
+                "primaryDomain": [
+                    "REQUIRED_INFORMATION"
+                ],
+                "domains": [
+                    "REQUIRED_INFORMATION"
+                ],
+                "serviceNeeds": [
+                    "REQUIRED_INFORMATION"
+                ],
+                "jurisdiction": [
+                    "REQUIRED_INFORMATION"
+                ],
+                "language": [
+                    "REQUIRED_INFORMATION"
+                ],
+                "urgency": [
+                    "REQUIRED_INFORMATION"
+                ],
+                "answers.immediateDanger": [
+                    "REQUIRED_RISK_ANSWER"
+                ],
+                "answers.requiresInPerson": [
+                    "REQUIRED_RISK_ANSWER"
+                ],
+                "answers.ambiguousHighRisk": [
+                    "REQUIRED_RISK_ANSWER"
+                ]
+            },
+            "code": "VALIDATION_FAILED"
+        }
+    }
+}

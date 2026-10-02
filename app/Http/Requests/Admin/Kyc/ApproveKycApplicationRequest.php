@@ -3,8 +3,8 @@
 namespace App\Http\Requests\Admin\Kyc;
 
 use App\Enums\AdminPermission;
-use App\Enums\ExpertServiceType;
 use App\Models\ExpertKycApplication;
+use App\Services\Catalog\CatalogTaxonomy;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Validation\Rule;
@@ -23,12 +23,13 @@ class ApproveKycApplicationRequest extends FormRequest
     {
         return [
             'scopes' => ['required', 'array', 'min:1', 'max:5'],
+            'scopes.*.catalogPolicyVersionId' => ['sometimes', 'integer', 'min:1'],
             'scopes.*.domain' => ['required', 'string', 'max:50'],
             'scopes.*.jurisdiction' => ['required', 'string', 'max:255'],
             'scopes.*.jurisdictionCountry' => ['sometimes', 'string', 'size:2', 'alpha'],
             'scopes.*.role' => ['required', 'string', 'min:2', 'max:100'],
             'scopes.*.serviceTypes' => ['required', 'array', 'min:1', 'max:5'],
-            'scopes.*.serviceTypes.*' => ['required', Rule::enum(ExpertServiceType::class), 'distinct:strict'],
+            'scopes.*.serviceTypes.*' => ['required', Rule::in(CatalogTaxonomy::deliveryModes()), 'distinct:strict'],
             'scopes.*.languages' => ['required', 'array', 'min:1', 'max:5'],
             'scopes.*.languages.*' => ['required', Rule::in(['ar', 'en']), 'distinct:strict'],
             'scopes.*.validUntil' => ['nullable', 'date_format:Y-m-d', 'after:today'],

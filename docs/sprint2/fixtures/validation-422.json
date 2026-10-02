@@ -1,0 +1,35 @@
+{
+    "contractVersion": "1.0.0",
+    "synthetic": true,
+    "request": {
+        "method": "POST",
+        "url": "\/api\/user\/cases",
+        "headers": {
+            "Accept": "application\/json",
+            "Idempotency-Key": "<UNIQUE_REQUEST_KEY>",
+            "Authorization": "Bearer <ACCOUNT_TOKEN>",
+            "Content-Type": "application\/json"
+        },
+        "body": {
+            "owner": 77
+        }
+    },
+    "response": {
+        "status": 422,
+        "headers": {
+            "Content-Type": "application\/json",
+            "Cache-Control": "no-store, private",
+            "Retry-After": null
+        },
+        "body": {
+            "status": false,
+            "message": "The provided data is invalid.",
+            "errors": {
+                "owner": [
+                    "This field is not allowed."
+                ]
+            },
+            "code": "VALIDATION_FAILED"
+        }
+    }
+}

@@ -1,0 +1,25 @@
+{
+    "contractVersion": "2.0.0",
+    "synthetic": true,
+    "request": {
+        "method": "GET",
+        "url": "\/api\/v2\/user\/cases\/1",
+        "headers": {
+            "Accept": "application\/json",
+            "Authorization": "Bearer <ACCOUNT_TOKEN>"
+        },
+        "body": {}
+    },
+    "response": {
+        "status": 404,
+        "headers": {
+            "X-Request-ID": "60cbb122-5d3b-4cf1-b769-2ef61705b5d1",
+            "Retry-After": null
+        },
+        "body": {
+            "status": false,
+            "code": "RESOURCE_NOT_FOUND",
+            "message": "The requested resource was not found."
+        }
+    }
+}

@@ -1,0 +1,54 @@
+{
+    "contractVersion": "1.0.0",
+    "synthetic": true,
+    "request": {
+        "method": "GET",
+        "url": "\/api\/admin\/cases?status=ready_for_matching",
+        "headers": {
+            "Accept": "application\/json",
+            "Authorization": "Bearer <ACCOUNT_TOKEN>",
+            "Content-Type": "application\/json"
+        },
+        "body": {}
+    },
+    "response": {
+        "status": 200,
+        "headers": {
+            "Content-Type": "application\/json",
+            "Cache-Control": "no-store, private",
+            "Retry-After": null
+        },
+        "body": {
+            "status": true,
+            "message": "Records retrieved successfully.",
+            "data": {
+                "items": [
+                    {
+                        "id": 1,
+                        "userId": 1,
+                        "status": "ready_for_matching",
+                        "version": 6,
+                        "primaryDomain": "technology",
+                        "domains": [
+                            "technology"
+                        ],
+                        "jurisdiction": "PS",
+                        "language": "en",
+                        "urgency": "normal",
+                        "suitability": "suitable",
+                        "createdAt": "2026-09-30T13:13:22.000000Z",
+                        "updatedAt": "2026-09-30T13:13:22.000000Z",
+                        "submittedAt": "2026-09-30T13:13:22.000000Z",
+                        "cancelledAt": null
+                    }
+                ],
+                "pagination": {
+                    "currentPage": 1,
+                    "perPage": 20,
+                    "lastPage": 1,
+                    "total": 1
+                }
+            }
+        }
+    }
+}

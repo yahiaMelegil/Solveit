@@ -1,0 +1,54 @@
+{
+    "contractVersion": "1.0.0",
+    "synthetic": true,
+    "request": {
+        "method": "GET",
+        "url": "\/api\/user\/cases\/5\/documents",
+        "headers": {
+            "Accept": "application\/json",
+            "Authorization": "Bearer <ACCOUNT_TOKEN>",
+            "Content-Type": "application\/json"
+        },
+        "body": {}
+    },
+    "response": {
+        "status": 200,
+        "headers": {
+            "Content-Type": "application\/json",
+            "Cache-Control": "no-store, private",
+            "Retry-After": null
+        },
+        "body": {
+            "status": true,
+            "message": "Records retrieved successfully.",
+            "data": {
+                "items": [
+                    {
+                        "id": 1,
+                        "caseId": 5,
+                        "deletedAt": null,
+                        "currentVersion": {
+                            "id": 2,
+                            "version": 2,
+                            "title": "Revised brief",
+                            "category": "supporting",
+                            "mimeType": "application\/pdf",
+                            "size": 21,
+                            "checksum": "633ef826379215ba45f39932fa08f01078a72cab9085ad9eaddace7839a6e20e",
+                            "scanStatus": "failed",
+                            "scanReason": "SCAN_UNAVAILABLE",
+                            "scannedAt": "2026-10-01T12:30:03.000000Z",
+                            "createdAt": "2026-10-01T12:30:03.000000Z"
+                        }
+                    }
+                ],
+                "pagination": {
+                    "currentPage": 1,
+                    "perPage": 20,
+                    "lastPage": 1,
+                    "total": 1
+                }
+            }
+        }
+    }
+}

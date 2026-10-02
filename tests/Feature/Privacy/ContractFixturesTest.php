@@ -6,10 +6,16 @@ use App\Enums\DataRequestStatus;
 use App\Models\Admin;
 use App\Models\DataRightsRequest;
 use App\Services\Privacy\DataRightsManager;
+use Carbon\CarbonImmutable;
 use Illuminate\Support\Facades\DB;
 
 class ContractFixturesTest extends PrivacyTestCase
 {
+    protected function freezeFixtureClock(): void
+    {
+        $this->travelTo(CarbonImmutable::parse('2026-09-29T12:00:00Z'));
+    }
+
     private function capture(string $name, string $method, string $url, array $body = [], int $status = 200, bool $idempotent = false, string $note = ''): array
     {
         $headers = $idempotent ? $this->key() : [];

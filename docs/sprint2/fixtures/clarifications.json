@@ -1,0 +1,52 @@
+{
+    "contractVersion": "1.0.0",
+    "synthetic": true,
+    "request": {
+        "method": "GET",
+        "url": "\/api\/user\/cases\/1\/clarifications",
+        "headers": {
+            "Accept": "application\/json",
+            "Authorization": "Bearer <ACCOUNT_TOKEN>",
+            "Content-Type": "application\/json"
+        },
+        "body": {}
+    },
+    "response": {
+        "status": 200,
+        "headers": {
+            "Content-Type": "application\/json",
+            "Cache-Control": "no-store, private",
+            "Retry-After": null
+        },
+        "body": {
+            "status": true,
+            "message": "Request completed successfully.",
+            "data": {
+                "item": {
+                    "caseVersion": 4,
+                    "assessment": {
+                        "id": 2,
+                        "intakeVersionId": 2,
+                        "rulesVersion": "deterministic-1",
+                        "suitability": "suitable",
+                        "createdAt": "2026-09-30T13:13:22.000000Z",
+                        "origin": "rules",
+                        "reasonCodes": [],
+                        "clarifications": [],
+                        "suggestions": [
+                            {
+                                "domain": "technology",
+                                "origin": "rules",
+                                "reasonCode": "KEYWORD_INDICATOR"
+                            }
+                        ],
+                        "nextAction": "confirm_intake",
+                        "triageUrl": null,
+                        "relatedCases": []
+                    },
+                    "isStale": false
+                }
+            }
+        }
+    }
+}

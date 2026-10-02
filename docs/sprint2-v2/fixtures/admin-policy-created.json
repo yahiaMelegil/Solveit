@@ -1,0 +1,117 @@
+{
+    "contractVersion": "2.0.0",
+    "synthetic": true,
+    "request": {
+        "method": "POST",
+        "url": "\/api\/admin\/catalog\/entries",
+        "headers": {
+            "Accept": "application\/json",
+            "Authorization": "Bearer <ACCOUNT_TOKEN>",
+            "Idempotency-Key": "95a4d9c0-8973-43cf-a76d-a740f32b4317"
+        },
+        "body": {
+            "code": "fixture_global_policy",
+            "policy": {
+                "domain": "technology",
+                "specialty": "technology_software",
+                "serviceType": "technology_software_advisory",
+                "deliveryModes": [
+                    "written_consultation",
+                    "video_consultation",
+                    "document_review"
+                ],
+                "jurisdictionMode": "GLOBAL",
+                "jurisdictionCodes": [],
+                "regulated": false,
+                "remoteDeliveryAllowed": true,
+                "requiresVerifiedScope": true,
+                "requiresProfessionalLicense": false,
+                "requiredEvidenceType": "qualification",
+                "minimumExperts": 1,
+                "maximumExperts": 1,
+                "intakeSchema": [],
+                "matchingRules": {
+                    "keywords": [
+                        "software",
+                        "برمجة"
+                    ],
+                    "prohibitedKeywords": [
+                        "malware attack"
+                    ],
+                    "humanReviewRequired": false
+                },
+                "commerciallyAvailable": true,
+                "operationallyAvailable": true,
+                "requiredConsents": [
+                    "terms",
+                    "privacy"
+                ],
+                "requiredDocuments": [],
+                "effectiveFrom": "2026-09-30T12:00:00Z",
+                "effectiveUntil": null
+            }
+        }
+    },
+    "response": {
+        "status": 201,
+        "headers": {
+            "X-Request-ID": "feb0ea4d-47c8-4266-bab5-c887e3a408df",
+            "Retry-After": null
+        },
+        "body": {
+            "status": true,
+            "message": "Catalog decision recorded.",
+            "data": {
+                "item": {
+                    "id": 42,
+                    "catalogEntryId": 42,
+                    "catalogVersion": 1,
+                    "revision": 1,
+                    "status": "draft",
+                    "policy": {
+                        "domain": "technology",
+                        "specialty": "technology_software",
+                        "serviceType": "technology_software_advisory",
+                        "jurisdictionMode": "GLOBAL",
+                        "jurisdictionCodes": [],
+                        "regulated": false,
+                        "remoteDeliveryAllowed": true,
+                        "requiresVerifiedScope": true,
+                        "requiresProfessionalLicense": false,
+                        "requiredEvidenceType": "qualification",
+                        "minimumExperts": 1,
+                        "maximumExperts": 1,
+                        "commerciallyAvailable": true,
+                        "operationallyAvailable": true,
+                        "effectiveFrom": "2026-09-30T12:00:00Z",
+                        "effectiveUntil": null,
+                        "requiredDocuments": [],
+                        "intakeSchema": [],
+                        "matchingRules": {
+                            "keywords": [
+                                "software",
+                                "برمجة"
+                            ],
+                            "prohibitedKeywords": [
+                                "malware attack"
+                            ],
+                            "humanReviewRequired": false
+                        },
+                        "deliveryModes": [
+                            "written_consultation",
+                            "video_consultation",
+                            "document_review"
+                        ],
+                        "requiredConsents": [
+                            "terms",
+                            "privacy"
+                        ]
+                    },
+                    "policyHash": "9d0a748721f453e38d858c946984805c25b4987d05102c0239b04eaa92ec986e",
+                    "reviewedAt": null,
+                    "publishedAt": null
+                }
+            }
+        }
+    }
+}

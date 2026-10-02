@@ -1,0 +1,1007 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SolveIt 2.0.0 request schemas and response envelopes",
+  "$defs": {
+    "CaseCreate": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "title": {
+          "type": "string",
+          "maxLength": 160,
+          "minLength": 1
+        },
+        "problemDescription": {
+          "type": "string",
+          "maxLength": 10000,
+          "minLength": 1
+        },
+        "desiredOutcome": {
+          "type": "string",
+          "maxLength": 4000,
+          "minLength": 1
+        },
+        "caseCountry": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 2,
+          "maxLength": 2
+        },
+        "language": {
+          "type": "string",
+          "enum": [
+            "ar",
+            "en"
+          ]
+        },
+        "urgency": {
+          "type": "string",
+          "enum": [
+            "normal",
+            "soon",
+            "urgent"
+          ]
+        },
+        "subjectType": {
+          "type": "string",
+          "enum": [
+            "self"
+          ]
+        },
+        "privacyChoice": {
+          "type": "string",
+          "enum": [
+            "private"
+          ]
+        },
+        "answers": {
+          "anyOf": [
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "immediateDanger": {
+                  "type": "boolean"
+                },
+                "requiresInPerson": {
+                  "type": "boolean"
+                },
+                "ambiguousHighRisk": {
+                  "type": "boolean"
+                }
+              },
+              "required": []
+            },
+            {
+              "type": "array",
+              "maxItems": 0
+            }
+          ],
+          "description": "Prefer JSON object. Empty array is accepted by existing Laravel map validation."
+        },
+        "lastCompletedStep": {
+          "type": "string",
+          "enum": [
+            "description",
+            "context",
+            "details",
+            "documents",
+            "review"
+          ]
+        }
+      },
+      "required": []
+    },
+    "CaseUpdate": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "expectedVersion": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "title": {
+          "type": "string",
+          "maxLength": 160,
+          "minLength": 1
+        },
+        "problemDescription": {
+          "type": "string",
+          "maxLength": 10000,
+          "minLength": 1
+        },
+        "desiredOutcome": {
+          "type": "string",
+          "maxLength": 4000,
+          "minLength": 1
+        },
+        "caseCountry": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 2,
+          "maxLength": 2
+        },
+        "language": {
+          "type": "string",
+          "enum": [
+            "ar",
+            "en"
+          ]
+        },
+        "urgency": {
+          "type": "string",
+          "enum": [
+            "normal",
+            "soon",
+            "urgent"
+          ]
+        },
+        "subjectType": {
+          "type": "string",
+          "enum": [
+            "self"
+          ]
+        },
+        "privacyChoice": {
+          "type": "string",
+          "enum": [
+            "private"
+          ]
+        },
+        "answers": {
+          "anyOf": [
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "immediateDanger": {
+                  "type": "boolean"
+                },
+                "requiresInPerson": {
+                  "type": "boolean"
+                },
+                "ambiguousHighRisk": {
+                  "type": "boolean"
+                }
+              },
+              "required": []
+            },
+            {
+              "type": "array",
+              "maxItems": 0
+            }
+          ],
+          "description": "Prefer JSON object. Empty array is accepted by existing Laravel map validation."
+        },
+        "lastCompletedStep": {
+          "type": "string",
+          "enum": [
+            "description",
+            "context",
+            "details",
+            "documents",
+            "review"
+          ]
+        }
+      },
+      "required": [
+        "expectedVersion"
+      ]
+    },
+    "CaseScopes": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "expectedVersion": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "scopes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "catalogEntryId": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "catalogVersion": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "deliveryMode": {
+                "type": "string",
+                "maxLength": 100
+              },
+              "jurisdictionCodes": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "maxLength": 100
+                },
+                "minItems": 0,
+                "maxItems": 20,
+                "uniqueItems": true
+              },
+              "answers": {
+                "anyOf": [
+                  {
+                    "type": "object",
+                    "maxProperties": 50,
+                    "description": "Keys/type/requiredness from the chosen policy intakeSchema; server rejects unknown keys."
+                  },
+                  {
+                    "type": "array",
+                    "maxItems": 0
+                  }
+                ],
+                "description": "Prefer JSON object. Empty array is also accepted; response emits an object."
+              },
+              "confirmed": {
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "catalogEntryId",
+              "catalogVersion",
+              "deliveryMode",
+              "jurisdictionCodes",
+              "answers",
+              "confirmed"
+            ]
+          },
+          "minItems": 1,
+          "maxItems": 20
+        }
+      },
+      "required": [
+        "expectedVersion",
+        "scopes"
+      ]
+    },
+    "CaseAction": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "expectedVersion": {
+          "type": "integer",
+          "minimum": 1
+        }
+      },
+      "required": [
+        "expectedVersion"
+      ]
+    },
+    "CaseConfirm": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "expectedVersion": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "confirmed": {
+          "const": true
+        }
+      },
+      "required": [
+        "expectedVersion",
+        "confirmed"
+      ]
+    },
+    "CaseSubmit": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "expectedVersion": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "selectedScopeIds": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "minItems": 1,
+          "maxItems": 20,
+          "uniqueItems": true
+        },
+        "partialConsent": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "expectedVersion"
+      ]
+    },
+    "CatalogPolicy": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "domain": {
+          "type": "string",
+          "maxLength": 100
+        },
+        "specialty": {
+          "type": "string",
+          "maxLength": 100
+        },
+        "serviceType": {
+          "type": "string",
+          "maxLength": 100
+        },
+        "deliveryModes": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "maxLength": 100
+          },
+          "minItems": 1,
+          "maxItems": 10,
+          "uniqueItems": true
+        },
+        "jurisdictionMode": {
+          "type": "string",
+          "enum": [
+            "GLOBAL",
+            "COUNTRY_SPECIFIC",
+            "MULTI_COUNTRY"
+          ]
+        },
+        "jurisdictionCodes": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "maxLength": 100
+          },
+          "minItems": 0,
+          "maxItems": 20,
+          "uniqueItems": true
+        },
+        "regulated": {
+          "type": "boolean"
+        },
+        "remoteDeliveryAllowed": {
+          "type": "boolean"
+        },
+        "requiresVerifiedScope": {
+          "const": true
+        },
+        "requiresProfessionalLicense": {
+          "type": "boolean"
+        },
+        "requiredEvidenceType": {
+          "type": "string",
+          "enum": [
+            "credential",
+            "qualification",
+            "experience"
+          ]
+        },
+        "minimumExperts": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 20
+        },
+        "maximumExperts": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 20
+        },
+        "commerciallyAvailable": {
+          "type": "boolean"
+        },
+        "operationallyAvailable": {
+          "type": "boolean"
+        },
+        "effectiveFrom": {
+          "type": "string",
+          "maxLength": 20,
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$"
+        },
+        "effectiveUntil": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "requiredConsents": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "terms",
+              "privacy"
+            ]
+          },
+          "minItems": 2,
+          "maxItems": 2,
+          "uniqueItems": true
+        },
+        "requiredDocuments": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "maxLength": 32,
+            "pattern": "^[a-z][a-z0-9_]{0,31}$"
+          },
+          "minItems": 0,
+          "maxItems": 20,
+          "uniqueItems": true
+        },
+        "intakeSchema": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "key": {
+                "type": "string",
+                "maxLength": 64,
+                "pattern": "^[a-z][a-zA-Z0-9_]{0,63}$"
+              },
+              "type": {
+                "type": "string",
+                "enum": [
+                  "text",
+                  "boolean",
+                  "number",
+                  "choice"
+                ]
+              },
+              "required": {
+                "type": "boolean"
+              },
+              "label": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "ar": {
+                    "type": "string",
+                    "maxLength": 200,
+                    "minLength": 1
+                  },
+                  "en": {
+                    "type": "string",
+                    "maxLength": 200,
+                    "minLength": 1
+                  }
+                },
+                "required": [
+                  "ar",
+                  "en"
+                ]
+              },
+              "options": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "maxLength": 100,
+                  "minLength": 1
+                },
+                "minItems": 1,
+                "maxItems": 50,
+                "uniqueItems": true
+              }
+            },
+            "required": [
+              "key",
+              "type",
+              "required",
+              "label"
+            ],
+            "allOf": [
+              {
+                "if": {
+                  "properties": {
+                    "type": {
+                      "const": "choice"
+                    }
+                  }
+                },
+                "then": {
+                  "required": [
+                    "options"
+                  ]
+                }
+              }
+            ]
+          },
+          "minItems": 0,
+          "maxItems": 50
+        },
+        "matchingRules": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "keywords": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "maxLength": 80,
+                "minLength": 2
+              },
+              "minItems": 0,
+              "maxItems": 50
+            },
+            "prohibitedKeywords": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "maxLength": 80,
+                "minLength": 2
+              },
+              "minItems": 0,
+              "maxItems": 50
+            },
+            "humanReviewRequired": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "keywords",
+            "prohibitedKeywords",
+            "humanReviewRequired"
+          ]
+        }
+      },
+      "required": [
+        "domain",
+        "specialty",
+        "serviceType",
+        "deliveryModes",
+        "jurisdictionMode",
+        "jurisdictionCodes",
+        "regulated",
+        "remoteDeliveryAllowed",
+        "requiresVerifiedScope",
+        "requiresProfessionalLicense",
+        "requiredEvidenceType",
+        "minimumExperts",
+        "maximumExperts",
+        "commerciallyAvailable",
+        "operationallyAvailable",
+        "effectiveFrom",
+        "requiredConsents",
+        "requiredDocuments",
+        "intakeSchema",
+        "matchingRules"
+      ]
+    },
+    "NodeCreate": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "type": "string",
+          "enum": [
+            "country",
+            "jurisdiction",
+            "domain",
+            "specialty",
+            "service",
+            "delivery_mode",
+            "safety_rule"
+          ]
+        },
+        "code": {
+          "type": "string",
+          "maxLength": 100,
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,99}$"
+        },
+        "parentId": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1
+        },
+        "regulated": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "labels": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "ar": {
+              "type": "string",
+              "maxLength": 200,
+              "minLength": 1
+            },
+            "en": {
+              "type": "string",
+              "maxLength": 200,
+              "minLength": 1
+            }
+          },
+          "required": [
+            "ar",
+            "en"
+          ]
+        },
+        "rules": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "keywords": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "maxLength": 100,
+                "minLength": 2
+              },
+              "minItems": 1,
+              "maxItems": 100
+            },
+            "reasonCode": {
+              "type": "string",
+              "enum": [
+                "SAFETY_OR_EMERGENCY",
+                "REMOTE_DELIVERY_NOT_ALLOWED",
+                "HUMAN_TRIAGE_REQUIRED"
+              ]
+            }
+          },
+          "required": [
+            "keywords",
+            "reasonCode"
+          ]
+        }
+      },
+      "required": [
+        "kind",
+        "code",
+        "labels"
+      ]
+    },
+    "NodeUpdate": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "expectedVersion": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "labels": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "ar": {
+              "type": "string",
+              "maxLength": 200,
+              "minLength": 1
+            },
+            "en": {
+              "type": "string",
+              "maxLength": 200,
+              "minLength": 1
+            }
+          },
+          "required": [
+            "ar",
+            "en"
+          ]
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "draft",
+            "enabled",
+            "paused",
+            "blocked",
+            "retired"
+          ]
+        }
+      },
+      "required": [
+        "expectedVersion"
+      ]
+    },
+    "EntryCreate": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "code": {
+          "type": "string",
+          "maxLength": 100,
+          "pattern": "^[a-z][a-z0-9_]{0,99}$"
+        },
+        "policy": {
+          "$ref": "#/$defs/CatalogPolicy"
+        }
+      },
+      "required": [
+        "code",
+        "policy"
+      ]
+    },
+    "EntryVersion": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "expectedVersion": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "policy": {
+          "$ref": "#/$defs/CatalogPolicy"
+        }
+      },
+      "required": [
+        "expectedVersion",
+        "policy"
+      ]
+    },
+    "PolicyReview": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "expectedVersion": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "approved": {
+          "const": true
+        },
+        "reasonCode": {
+          "type": "string",
+          "maxLength": 64,
+          "pattern": "^[A-Z][A-Z0-9_]{2,63}$"
+        }
+      },
+      "required": [
+        "expectedVersion",
+        "approved",
+        "reasonCode"
+      ]
+    },
+    "PolicyPublish": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "expectedVersion": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "intake_only",
+            "pilot",
+            "enabled"
+          ]
+        },
+        "impactToken": {
+          "type": "string",
+          "maxLength": 64,
+          "minLength": 64
+        }
+      },
+      "required": [
+        "expectedVersion",
+        "status",
+        "impactToken"
+      ]
+    },
+    "PolicyPause": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "expectedVersion": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "paused",
+            "retired",
+            "blocked"
+          ]
+        },
+        "impactToken": {
+          "type": "string",
+          "maxLength": 64,
+          "minLength": 64
+        },
+        "reasonCode": {
+          "type": "string",
+          "maxLength": 64,
+          "pattern": "^[A-Z][A-Z0-9_]{2,63}$"
+        }
+      },
+      "required": [
+        "expectedVersion",
+        "status",
+        "impactToken",
+        "reasonCode"
+      ]
+    },
+    "ExpertGrant": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "scopeId": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "catalogVersionId": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "jurisdictionCode": {
+          "type": "string",
+          "maxLength": 100
+        },
+        "evidenceId": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "reasonCode": {
+          "type": "string",
+          "maxLength": 64,
+          "pattern": "^[A-Z][A-Z0-9_]{2,63}$"
+        }
+      },
+      "required": [
+        "scopeId",
+        "catalogVersionId",
+        "jurisdictionCode",
+        "evidenceId",
+        "reasonCode"
+      ]
+    },
+    "ExpertRevoke": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "reasonCode": {
+          "type": "string",
+          "maxLength": 64,
+          "pattern": "^[A-Z][A-Z0-9_]{2,63}$"
+        }
+      },
+      "required": [
+        "reasonCode"
+      ]
+    },
+    "CaseStatus": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "intake_in_progress",
+        "needs_clarification",
+        "unsupported_domain",
+        "unsupported_jurisdiction",
+        "regulated_service_not_enabled",
+        "not_suitable_for_remote_service",
+        "waiting_for_expert_supply",
+        "safety_referral_required",
+        "ready_for_matching",
+        "requires_review",
+        "cancelled"
+      ]
+    },
+    "Pagination": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "currentPage": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "perPage": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 100
+        },
+        "lastPage": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "total": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "currentPage",
+        "perPage",
+        "lastPage",
+        "total"
+      ]
+    },
+    "SuccessItem": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "const": true
+        },
+        "message": {
+          "type": "string"
+        },
+        "data": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "item": {}
+          },
+          "required": [
+            "item"
+          ]
+        }
+      },
+      "required": [
+        "status",
+        "message",
+        "data"
+      ]
+    },
+    "SuccessList": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "const": true
+        },
+        "message": {
+          "type": "string"
+        },
+        "data": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "items": {
+              "type": "array"
+            },
+            "pagination": {
+              "$ref": "#/$defs/Pagination"
+            }
+          },
+          "required": [
+            "items",
+            "pagination"
+          ]
+        }
+      },
+      "required": [
+        "status",
+        "message",
+        "data"
+      ]
+    },
+    "Error": {
+      "type": "object",
+      "required": [
+        "status",
+        "message"
+      ],
+      "properties": {
+        "status": {
+          "const": false
+        },
+        "message": {
+          "type": "string"
+        },
+        "code": {
+          "type": "string"
+        },
+        "errors": {
+          "type": "object"
+        }
+      }
+    }
+  },
+  "description": "JSON-native client forms. Laravel accepted/boolean normalization also permits its documented equivalent scalars; emit real JSON booleans. Cross-record hierarchy, effective dates, policy min/max, ownership, permissions and transitions are enforced on server. No network schema resolver needed."
+}

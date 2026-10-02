@@ -1,0 +1,67 @@
+{
+    "contractVersion": "2.0.0",
+    "synthetic": true,
+    "request": {
+        "method": "GET",
+        "url": "\/api\/v2\/user\/cases\/4\/readiness",
+        "headers": {
+            "Accept": "application\/json",
+            "Authorization": "Bearer <ACCOUNT_TOKEN>"
+        },
+        "body": {}
+    },
+    "response": {
+        "status": 200,
+        "headers": {
+            "X-Request-ID": "da7aa59b-7fc5-4afa-9ae4-3b59543be321",
+            "Retry-After": null
+        },
+        "body": {
+            "status": true,
+            "message": "Request completed successfully.",
+            "data": {
+                "item": {
+                    "status": "needs_clarification",
+                    "reasonCodes": [
+                        "HUMAN_TRIAGE_REQUIRED"
+                    ],
+                    "scopes": [
+                        {
+                            "scopeId": 4,
+                            "status": "needs_clarification",
+                            "reasonCodes": [
+                                "HUMAN_TRIAGE_REQUIRED"
+                            ],
+                            "coverage": [
+                                {
+                                    "jurisdictionCode": "GLOBAL",
+                                    "eligibleExperts": 1,
+                                    "minimumExperts": 1
+                                }
+                            ],
+                            "alreadySubmitted": false
+                        }
+                    ],
+                    "suggestions": [
+                        {
+                            "catalogEntryId": 42,
+                            "catalogVersion": 1,
+                            "domain": "technology",
+                            "specialty": "technology_software",
+                            "serviceType": "technology_software_advisory",
+                            "jurisdictionMode": "GLOBAL",
+                            "jurisdictionCodes": [],
+                            "requiredExperts": 1,
+                            "origin": "rules",
+                            "confidence": null,
+                            "reasonCode": "CATALOG_KEYWORD_INDICATOR",
+                            "requiresConfirmation": true
+                        }
+                    ],
+                    "nextAction": "stop_contact_support",
+                    "triageUrl": null
+                }
+            }
+        }
+    }
+}

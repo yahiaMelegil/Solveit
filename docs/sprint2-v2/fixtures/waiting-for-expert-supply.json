@@ -1,0 +1,52 @@
+{
+    "contractVersion": "2.0.0",
+    "synthetic": true,
+    "request": {
+        "method": "GET",
+        "url": "\/api\/v2\/user\/cases\/1\/readiness",
+        "headers": {
+            "Accept": "application\/json",
+            "Authorization": "Bearer <ACCOUNT_TOKEN>"
+        },
+        "body": {}
+    },
+    "response": {
+        "status": 200,
+        "headers": {
+            "X-Request-ID": "d1e535bc-05bf-4c40-a622-b85214765333",
+            "Retry-After": null
+        },
+        "body": {
+            "status": true,
+            "message": "Request completed successfully.",
+            "data": {
+                "item": {
+                    "status": "waiting_for_expert_supply",
+                    "reasonCodes": [
+                        "NO_ELIGIBLE_EXPERT_COVERAGE"
+                    ],
+                    "scopes": [
+                        {
+                            "scopeId": 1,
+                            "status": "waiting_for_expert_supply",
+                            "reasonCodes": [
+                                "NO_ELIGIBLE_EXPERT_COVERAGE"
+                            ],
+                            "coverage": [
+                                {
+                                    "jurisdictionCode": "GLOBAL",
+                                    "eligibleExperts": 0,
+                                    "minimumExperts": 1
+                                }
+                            ],
+                            "alreadySubmitted": false
+                        }
+                    ],
+                    "suggestions": [],
+                    "nextAction": "complete_or_confirm_intake",
+                    "triageUrl": null
+                }
+            }
+        }
+    }
+}

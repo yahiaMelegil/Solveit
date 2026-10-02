@@ -45,21 +45,25 @@ class ExpertVerifiedScope extends Model
         ];
     }
 
+    /** @return BelongsTo<Expert, $this> */
     public function expert(): BelongsTo
     {
         return $this->belongsTo(Expert::class);
     }
 
+    /** @return BelongsTo<ExpertKycApplication, $this> */
     public function kycApplication(): BelongsTo
     {
         return $this->belongsTo(ExpertKycApplication::class, 'kyc_application_id');
     }
 
+    /** @return BelongsTo<Admin, $this> */
     public function verifiedBy(): BelongsTo
     {
         return $this->belongsTo(Admin::class, 'verified_by_admin_id');
     }
 
+    /** @return HasMany<ExpertScopeRenewal, $this> */
     public function renewals(): HasMany
     {
         return $this->hasMany(ExpertScopeRenewal::class, 'scope_id');

@@ -1,0 +1,53 @@
+{
+    "contractVersion": "1.0.0",
+    "synthetic": true,
+    "request": {
+        "method": "POST",
+        "url": "\/api\/user\/cases\/5\/documents\/1\/versions",
+        "headers": {
+            "Accept": "application\/json",
+            "Idempotency-Key": "<UNIQUE_REQUEST_KEY>",
+            "Authorization": "Bearer <ACCOUNT_TOKEN>",
+            "Content-Type": "multipart\/form-data"
+        },
+        "body": {
+            "expectedVersion": 5,
+            "title": "Revised brief",
+            "category": "supporting",
+            "file": "<BINARY_PDF>"
+        }
+    },
+    "response": {
+        "status": 201,
+        "headers": {
+            "Content-Type": "application\/json",
+            "Cache-Control": "no-store, private",
+            "Retry-After": null
+        },
+        "body": {
+            "status": true,
+            "message": "Document revision stored privately.",
+            "data": {
+                "item": {
+                    "id": 1,
+                    "caseId": 5,
+                    "caseVersion": 6,
+                    "deletedAt": null,
+                    "currentVersion": {
+                        "id": 2,
+                        "version": 2,
+                        "title": "Revised brief",
+                        "category": "supporting",
+                        "mimeType": "application\/pdf",
+                        "size": 21,
+                        "checksum": "633ef826379215ba45f39932fa08f01078a72cab9085ad9eaddace7839a6e20e",
+                        "scanStatus": "pending",
+                        "scanReason": null,
+                        "scannedAt": null,
+                        "createdAt": "2026-09-30T13:13:22.000000Z"
+                    }
+                }
+            }
+        }
+    }
+}

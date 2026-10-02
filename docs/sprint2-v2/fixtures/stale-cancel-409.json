@@ -1,0 +1,28 @@
+{
+    "contractVersion": "2.0.0",
+    "synthetic": true,
+    "request": {
+        "method": "POST",
+        "url": "\/api\/v2\/user\/cases\/1\/cancel",
+        "headers": {
+            "Accept": "application\/json",
+            "Authorization": "Bearer <ACCOUNT_TOKEN>",
+            "Idempotency-Key": "1b640aac-8d69-4ec7-ab69-daabd6c3caaf"
+        },
+        "body": {
+            "expectedVersion": 1
+        }
+    },
+    "response": {
+        "status": 409,
+        "headers": {
+            "X-Request-ID": "cfa0f4f3-ced3-4222-880d-9c19089de927",
+            "Retry-After": null
+        },
+        "body": {
+            "status": false,
+            "code": "VERSION_CONFLICT",
+            "message": "The case has changed. Refresh before retrying."
+        }
+    }
+}

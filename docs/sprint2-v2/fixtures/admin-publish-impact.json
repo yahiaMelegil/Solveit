@@ -1,0 +1,40 @@
+{
+    "contractVersion": "2.0.0",
+    "synthetic": true,
+    "request": {
+        "method": "GET",
+        "url": "\/api\/admin\/catalog\/versions\/42\/impact",
+        "headers": {
+            "Accept": "application\/json",
+            "Authorization": "Bearer <ACCOUNT_TOKEN>"
+        },
+        "body": {}
+    },
+    "response": {
+        "status": 200,
+        "headers": {
+            "X-Request-ID": "972c854f-4e98-4e37-883e-b2de752b406b",
+            "Retry-After": null
+        },
+        "body": {
+            "status": true,
+            "message": "Request completed successfully.",
+            "data": {
+                "item": {
+                    "catalogEntryId": 42,
+                    "catalogVersion": 1,
+                    "revision": 2,
+                    "activeScopes": 0,
+                    "waitingScopes": 0,
+                    "coverage": [
+                        {
+                            "jurisdictionCode": "GLOBAL",
+                            "eligibleExperts": 0
+                        }
+                    ],
+                    "impactToken": "1c14e28b9f2a7ca42b8025117203cc5a887f6196ec45834a4b710bf49c23bc89"
+                }
+            }
+        }
+    }
+}

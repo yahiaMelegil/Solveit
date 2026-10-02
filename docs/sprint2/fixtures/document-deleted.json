@@ -1,0 +1,50 @@
+{
+    "contractVersion": "1.0.0",
+    "synthetic": true,
+    "request": {
+        "method": "DELETE",
+        "url": "\/api\/user\/cases\/5\/documents\/1",
+        "headers": {
+            "Accept": "application\/json",
+            "Idempotency-Key": "<UNIQUE_REQUEST_KEY>",
+            "Authorization": "Bearer <ACCOUNT_TOKEN>",
+            "Content-Type": "application\/json"
+        },
+        "body": {
+            "expectedVersion": 9
+        }
+    },
+    "response": {
+        "status": 200,
+        "headers": {
+            "Content-Type": "application\/json",
+            "Cache-Control": "no-store, private",
+            "Retry-After": null
+        },
+        "body": {
+            "status": true,
+            "message": "Request completed successfully.",
+            "data": {
+                "item": {
+                    "id": 1,
+                    "caseId": 5,
+                    "caseVersion": 10,
+                    "deletedAt": "2026-09-30T13:13:22.000000Z",
+                    "currentVersion": {
+                        "id": 3,
+                        "version": 3,
+                        "title": "Revised brief",
+                        "category": "supporting",
+                        "mimeType": "application\/pdf",
+                        "size": 23,
+                        "checksum": "84ba3ed3702cc61c5175b665373e8825a97dd26c67f83d3ec6a7634e762a38e9",
+                        "scanStatus": "rejected",
+                        "scanReason": "CONTENT_REJECTED",
+                        "scannedAt": "2026-09-30T13:13:22.000000Z",
+                        "createdAt": "2026-09-30T13:13:22.000000Z"
+                    }
+                }
+            }
+        }
+    }
+}

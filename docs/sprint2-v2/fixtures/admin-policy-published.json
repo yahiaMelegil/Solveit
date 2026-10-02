@@ -1,0 +1,80 @@
+{
+    "contractVersion": "2.0.0",
+    "synthetic": true,
+    "request": {
+        "method": "POST",
+        "url": "\/api\/admin\/catalog\/versions\/42\/publish",
+        "headers": {
+            "Accept": "application\/json",
+            "Authorization": "Bearer <ACCOUNT_TOKEN>",
+            "Idempotency-Key": "081e7703-c0f9-402e-aa4c-2556325a81f1"
+        },
+        "body": {
+            "expectedVersion": 2,
+            "status": "enabled",
+            "impactToken": "1c14e28b9f2a7ca42b8025117203cc5a887f6196ec45834a4b710bf49c23bc89"
+        }
+    },
+    "response": {
+        "status": 200,
+        "headers": {
+            "X-Request-ID": "72f6581b-ed88-4af0-a5ff-be7bc8dfcf7d",
+            "Retry-After": null
+        },
+        "body": {
+            "status": true,
+            "message": "Catalog decision recorded.",
+            "data": {
+                "item": {
+                    "id": 42,
+                    "catalogEntryId": 42,
+                    "catalogVersion": 1,
+                    "revision": 3,
+                    "status": "enabled",
+                    "policy": {
+                        "domain": "technology",
+                        "specialty": "technology_software",
+                        "serviceType": "technology_software_advisory",
+                        "jurisdictionMode": "GLOBAL",
+                        "jurisdictionCodes": [],
+                        "regulated": false,
+                        "remoteDeliveryAllowed": true,
+                        "requiresVerifiedScope": true,
+                        "requiresProfessionalLicense": false,
+                        "requiredEvidenceType": "qualification",
+                        "minimumExperts": 1,
+                        "maximumExperts": 1,
+                        "commerciallyAvailable": true,
+                        "operationallyAvailable": true,
+                        "effectiveFrom": "2026-09-30T12:00:00Z",
+                        "effectiveUntil": null,
+                        "requiredDocuments": [],
+                        "intakeSchema": [],
+                        "matchingRules": {
+                            "keywords": [
+                                "software",
+                                "برمجة"
+                            ],
+                            "prohibitedKeywords": [
+                                "malware attack"
+                            ],
+                            "humanReviewRequired": false
+                        },
+                        "deliveryModes": [
+                            "written_consultation",
+                            "video_consultation",
+                            "document_review"
+                        ],
+                        "requiredConsents": [
+                            "terms",
+                            "privacy"
+                        ]
+                    },
+                    "policyHash": "9d0a748721f453e38d858c946984805c25b4987d05102c0239b04eaa92ec986e",
+                    "reviewedAt": "2026-10-01T12:00:00.000000Z",
+                    "publishedAt": "2026-10-01T12:00:00.000000Z"
+                }
+            }
+        }
+    }
+}

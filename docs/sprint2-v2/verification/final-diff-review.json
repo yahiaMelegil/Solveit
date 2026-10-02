@@ -1,0 +1,30 @@
+{
+  "baseline": "backend-30-9-2026 (1).zip",
+  "gitDiffCheck": "passed",
+  "phpSyntaxFiles": 70,
+  "jsonArtifacts": "parsed",
+  "sharedSchemaRefs": "resolved",
+  "envFilesIncluded": false,
+  "newRuntimePackages": [],
+  "newDevPackages": [
+    "larastan/larastan",
+    "phpstan/phpstan",
+    "iamcal/sql-parser"
+  ],
+  "accounts": "separate, existing policies and Gate authorization retained",
+  "v1Submit": "cannot bypass catalog",
+  "secrets": "no real tokens or .env in deliverables",
+  "staging": "not run",
+  "react": "not run",
+  "databaseConcurrencyEngine": "not run",
+  "reviewedAreas": [
+    "KYC/Renewal classification compatibility",
+    "submitted input/document immutability",
+    "ownership and realm isolation",
+    "idempotency and version checks",
+    "catalog/grant transitions and snapshot preservation",
+    "database-driven operating policy",
+    "additive migrations and seeders",
+    "fixtures and endpoint documentation"
+  ]
+}

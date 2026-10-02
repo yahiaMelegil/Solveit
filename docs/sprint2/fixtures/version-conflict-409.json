@@ -1,0 +1,31 @@
+{
+    "contractVersion": "1.0.0",
+    "synthetic": true,
+    "request": {
+        "method": "PATCH",
+        "url": "\/api\/user\/cases\/1",
+        "headers": {
+            "Accept": "application\/json",
+            "Idempotency-Key": "<UNIQUE_REQUEST_KEY>",
+            "Authorization": "Bearer <ACCOUNT_TOKEN>",
+            "Content-Type": "application\/json"
+        },
+        "body": {
+            "expectedVersion": 1,
+            "title": "Stale"
+        }
+    },
+    "response": {
+        "status": 409,
+        "headers": {
+            "Content-Type": "application\/json",
+            "Cache-Control": "no-store, private",
+            "Retry-After": null
+        },
+        "body": {
+            "status": false,
+            "code": "VERSION_CONFLICT",
+            "message": "The case has changed. Refresh before retrying."
+        }
+    }
+}
